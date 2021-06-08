@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm, FormsModule } from '@angular/forms';
 
 import { RegistrationService } from '../../registration.service';
 
@@ -7,9 +8,12 @@ import { RegistrationService } from '../../registration.service';
   templateUrl: './patient-registration.component.html',
   styleUrls: ['./patient-registration.component.css']
 })
+
 export class PatientRegistrationComponent implements OnInit {
 
-  constructor(private registrationService: RegistrationService) { }
+  constructor(private registrationService: RegistrationService) { 
+    console.log(this.maxDate)
+  }
 
   firstNameInput: any;
   lastNameInput: any;
@@ -18,11 +22,16 @@ export class PatientRegistrationComponent implements OnInit {
   email: any;
   password: any;
   confirmPassword: any;
+  date = new Date();  
+  maxDate = (new Date().getFullYear()).toString()+"-0"+(new Date().getMonth()+1).toString()+"-"+(new Date().getDate()).toString();
+
 
   ngOnInit(): void {
   }
 
-
+  dateChange(event){
+    console.log(event);
+  }
   reloadPage() {
     window.location.reload();
   }
