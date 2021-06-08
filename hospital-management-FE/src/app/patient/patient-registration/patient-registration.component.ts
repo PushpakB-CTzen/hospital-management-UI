@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import {RegistrationService} from '../../registration.service';
+import { RegistrationService } from '../../registration.service';
 
 @Component({
   selector: 'app-patient-registration',
@@ -9,17 +9,25 @@ import {RegistrationService} from '../../registration.service';
 })
 export class PatientRegistrationComponent implements OnInit {
 
-  constructor(private registrationService:RegistrationService) { }
+  constructor(private registrationService: RegistrationService) { }
+
+  firstNameInput: any;
+  lastNameInput: any;
+  dob: any;
+  contact: any;
+  email: any;
+  password: any;
+  confirmPassword: any;
 
   ngOnInit(): void {
   }
 
 
-  reloadPage(){
+  reloadPage() {
     window.location.reload();
   }
-  onSave(event) { 
-   // ((document.getElementById("firstName") as HTMLInputElement).value);
+  onSave(event) {
+    // ((document.getElementById("firstName") as HTMLInputElement).value);
     let ftitle = ((document.getElementById("titleid") as HTMLInputElement).value);
     let fName = ((document.getElementById("firstName") as HTMLInputElement).value);
     let lName = ((document.getElementById("lastName") as HTMLInputElement).value);
@@ -51,27 +59,27 @@ let isValid =true;
      alert("password not matching");
    }*/
 
-   let patientObj = {
-   title:ftitle,
-   firstName:fName,
-   lastName:lName,
-   dateOfBirth:idob,
-   contactNo:icontact,
-   email:iemail,
-   password:ipassword,
-   confirmPassword:iconfirmPassword
-   };
+    let patientObj = {
+      title: ftitle,
+      firstName: fName,
+      lastName: lName,
+      dateOfBirth: idob,
+      contactNo: icontact,
+      email: iemail,
+      password: ipassword,
+      confirmPassword: iconfirmPassword
+    };
 
-   console.log("patient OBJ "+JSON.stringify(patientObj));
+    console.log("patient OBJ " + JSON.stringify(patientObj));
 
- this.registrationService.registerPatient(patientObj).subscribe(data =>{
-   alert("sign up successful");
-  console.log("api called from component");
-  console.log(data);
-})
+    this.registrationService.registerPatient(patientObj).subscribe(data => {
+      alert("sign up successful");
+      console.log("api called from component");
+      console.log(data);
+    })
 
 
 
- }
+  }
 
 }
