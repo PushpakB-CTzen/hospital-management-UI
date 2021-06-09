@@ -37,144 +37,7 @@
 -->
 
 <style>
-   body {
-      font-family: 'Varela Round', sans-serif;
-   }
 
-   .modal-confirm {
-      color: #636363;
-      width: 325px;
-      margin: 30px auto;
-   }
-
-   .modal-confirm .modal-content {
-      padding: 20px;
-      border-radius: 5px;
-      border: none;
-   }
-
-   .modal-confirm .modal-header {
-      border-bottom: none;
-      position: relative;
-   }
-
-   .modal-confirm h4 {
-      text-align: center;
-      font-size: 26px;
-      margin: 30px 0 -15px;
-   }
-
-   .modal-confirm .form-control,
-   .modal-confirm .btn {
-      min-height: 40px;
-      border-radius: 3px;
-   }
-
-   .modal-confirm .close {
-      position: absolute;
-      top: -5px;
-      right: -5px;
-   }
-
-   .modal-confirm .modal-footer {
-      border: none;
-      text-align: center;
-      border-radius: 5px;
-      font-size: 13px;
-   }
-
-   .modal-confirm .icon-box {
-      color: #fff;
-      position: absolute;
-      margin: 0 auto;
-      left: 0;
-      right: 0;
-      top: -70px;
-      width: 95px;
-      height: 95px;
-      border-radius: 50%;
-      z-index: 9;
-      background: #82ce34;
-      padding: 15px;
-      text-align: center;
-      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
-   }
-
-   .modal-confirm .icon-box i {
-      font-size: 58px;
-      position: relative;
-      top: 3px;
-   }
-
-   .modal-confirm.modal-dialog {
-      margin-top: 80px;
-   }
-
-   .modal-confirm .btn {
-      color: #fff;
-      border-radius: 4px;
-      background: #82ce34;
-      text-decoration: none;
-      transition: all 0.4s;
-      line-height: normal;
-      border: none;
-   }
-
-   .modal-confirm .btn:hover,
-   .modal-confirm .btn:focus {
-      background: #6fb32b;
-      outline: none;
-   }
-
-   .trigger-btn {
-      display: inline-block;
-      margin: 100px auto;
-   }
-
-   .input.ng-touched.ng-invalid {
-      border: red 1px solid;
-   }
-
-   .ng-valid[required],
-   .ng-valid.required {
-      border: 1px solid green;
-   }
-
-   .ng-invalid:not(form) {
-      border: 1px solid red;
-   }
-
-   .ng-valid[required],
-   .ng-valid.required {
-      border-left: 5px solid #42A948;
-      /* green */
-   }
-
-   .ng-invalid:not(form) {
-      border-left: 5px solid #a94442;
-      /* red */
-   }
-
-   .alert div {
-      background-color: #fed3d3;
-      color: #820000;
-      padding: 1rem;
-      margin-bottom: 1rem;
-   }
-
-   .form-group {
-      margin-bottom: 1rem;
-   }
-
-   label {
-      display: block;
-      margin-bottom: .5rem;
-   }
-
-   select {
-      width: 100%;
-      padding: .5rem;
-   }
 </style>
 
 
@@ -214,15 +77,14 @@
                      <input type="text" class="form-control " #name="ngModel" name="firstNameInput"
                         [(ngModel)]="firstNameInput" placeholder="" value="" minlength="2" id="firstName" required>
 
-                     <div *ngIf="firstNameInput.invalid && (firstNameInput.dirty || firstNameInput.touched)"
-                        class="alert">
-                        <div *ngIf="firstNameInput.errors?.required">
+                     <div *ngIf="name.invalid && (name.dirty || name.touched)">
+                        <!--<div *ngIf="name.errors?.required">
                            Name is required.
+                        </div>-->
+                        <div *ngIf="name.errors?.minlength" class="validation_error_red">
+                           Atleast 2 characters
                         </div>
-                        <div *ngIf="firstNameInput.errors?.minlength">
-                           Name must be at least 2 characters long.
-                        </div>
-                        <div *ngIf="firstNameInput.errors?.forbiddenName">
+                        <div *ngIf="name.errors?.forbiddenName">
                            Name cannot be Bob.
                         </div>
                      </div>
@@ -238,17 +100,17 @@
 
                   <div class="col-sm-5">
                      <label for="lastName" class="form-label">Last name</label>
-                     <input type="text" class="form-control" id="lastName" #name="ngModel" name="lastNameInput"
+                     <input type="text" class="form-control" id="lastName" #lastname="ngModel" name="lastNameInput"
                         [(ngModel)]="lastNameInput" placeholder="" value="" required minlength="2">
 
-                     <div *ngIf="lastNameInput.invalid && (lastNameInput.dirty || lastNameInput.touched)" class="alert">
-                        <div *ngIf="lastNameInput.errors?.required">
+                     <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)">
+                        <div *ngIf="lastname.errors?.required">
                            Name is required.
                         </div>
-                        <div *ngIf="lastNameInput.errors?.minlength">
-                           Name must be at least 2 characters long.
+                        <div *ngIf="lastname.errors?.minlength" class="validation_error_red">
+                           Atleast 2 characters
                         </div>
-                        <div *ngIf="lastNameInput.errors?.forbiddenName">
+                        <div *ngIf="lastname.errors?.forbiddenName">
                            Name cannot be Bob.
                         </div>
                      </div>
@@ -266,14 +128,14 @@
                   <div class="col-12">
                      <label for="dob" class="form-label">Date of Birth </label>
                      <div class="input-group date" data-provide="datepicker">
-                        <input type="date" [max]="maxDate" (change)="dateChange($event.target)"  [(ngModel)]="dob" #name="ngModel" name="dob" id="dob" class="form-control"
-                           required>
+                        <input type="date" [max]="maxDate" (change)="dateChange($event.target)" [(ngModel)]="dob"
+                           #name="ngModel" name="dob" id="dob" class="form-control" required>
 
-                        <div *ngIf="dob.invalid && (dob.dirty || dob.touched)" class="alert">
+                        <div *ngIf="dob.invalid && (dob.dirty || dob.touched)">
                            <div *ngIf="dob.errors?.required">
                               Name is required.
                            </div>
-                           <div *ngIf="dob.errors?.minlength">
+                           <div *ngIf="dob.errors?.minlength" class="validation_error_red">
                               Name must be at least 2 characters long.
                            </div>
                            <div *ngIf="dob.errors?.forbiddenName">
@@ -299,11 +161,11 @@
                      <input type="number" [(ngModel)]="contact" #name="ngModel" name="contact" id="contact"
                         class="form-control" placeholder="" minlength="10" required>
 
-                     <div *ngIf="contact.invalid && (contact.dirty || contact.touched)" class="alert">
+                     <div *ngIf="contact.invalid && (contact.dirty || contact.touched)">
                         <div *ngIf="contact.errors?.required">
                            Name is required.
                         </div>
-                        <div *ngIf="contact.errors?.minlength">
+                        <div *ngIf="contact.errors?.minlength" class="validation_error_red">
                            Name must be at least 10 characters long.
                         </div>
                         <div *ngIf="contact.errors?.forbiddenName">
@@ -323,13 +185,13 @@
                   <div class="col-12">
                      <label for="email" class="form-label">Email Id</label>
                      <input type="email" [(ngModel)]="email" #name="ngModel" name="email" id="email"
-                        class="form-control" placeholder="" required>
+                        class="form-control" placeholder="" required email>
 
-                     <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert">
+                     <div *ngIf="email.invalid && (email.dirty || email.touched)">
                         <div *ngIf="email.errors?.required">
                            Name is required.
                         </div>
-                        <div *ngIf="email.errors?.minlength">
+                        <div *ngIf="email.errors?.minlength" class="validation_error_red">
                            Name must be at least 2 characters long.
                         </div>
                         <div *ngIf="email.errors?.forbiddenName">
@@ -352,11 +214,11 @@
                      <input type="password" [(ngModel)]="password" #name="ngModel" name="password" id="password"
                         class="form-control" placeholder="" value="" required minlength="8">
 
-                     <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert">
+                     <div *ngIf="password.invalid && (password.dirty || password.touched)">
                         <div *ngIf="password.errors?.required">
                            Name is required.
                         </div>
-                        <div *ngIf="password.errors?.minlength">
+                        <div *ngIf="password.errors?.minlength" class="validation_error_red">
                            Name must be at least 2 characters long.
                         </div>
                         <div *ngIf="password.errors?.forbiddenName">
@@ -378,12 +240,11 @@
                      <label for="confirmPassword" class="form-label">Confirmed Password</label>
                      <input type="password" [(ngModel)]="confirmPassword" #name="ngModel" name="confirmPassword"
                         id="confirmPassword" class="form-control" placeholder="" value="" required minlength="8">
-                     <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)"
-                        class="alert">
+                     <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)">
                         <div *ngIf="confirmPassword.errors?.required">
                            Name is required.
                         </div>
-                        <div *ngIf="confirmPassword.errors?.minlength">
+                        <div *ngIf="confirmPassword.errors?.minlength" class="validation_error_red">
                            Name must be at least 2 characters long.
                         </div>
                         <div *ngIf="confirmPassword.errors?.forbiddenName">

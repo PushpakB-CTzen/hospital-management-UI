@@ -11,7 +11,7 @@ import { RegistrationService } from '../../registration.service';
 
 export class PatientRegistrationComponent implements OnInit {
 
-  constructor(private registrationService: RegistrationService) { 
+  constructor(private registrationService: RegistrationService) {
     console.log(this.maxDate)
   }
 
@@ -22,14 +22,15 @@ export class PatientRegistrationComponent implements OnInit {
   email: any;
   password: any;
   confirmPassword: any;
-  date = new Date();  
-  maxDate = (new Date().getFullYear()).toString()+"-0"+(new Date().getMonth()+1).toString()+"-"+(new Date().getDate()).toString();
+  iconfirmPassword:any;
+  date = new Date();
+  maxDate = (new Date().getFullYear()).toString() + "-0" + (new Date().getMonth() + 1).toString() + "-" + (new Date().getDate()).toString();
 
 
   ngOnInit(): void {
   }
 
-  dateChange(event){
+  dateChange(event) {
     console.log(event);
   }
   reloadPage() {
