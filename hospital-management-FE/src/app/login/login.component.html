@@ -1,23 +1,35 @@
+<app-header></app-header>
 <div class="container-fluid" style="background-color:rgb(235, 233, 224);">
     <main>
         <div class="row g-6">
             <div class="col-md-4 col-lg-4 order-md-last">
                 <div class="form-signin">
-                    <form>
+                    <form (ngSubmit)="onSubmit(credentials)" #credentials="ngForm">
                         <h3 class="h3 mb-3 fw-normal">SIGN IN</h3>
                         <div class="form-floating">
-                          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                          <label for="floatingInput">Email address</label>
+                            <label for="floatingInput">Email address</label>
+                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
+                          name="email"
+                          ngModel
+                          required
+                          email
+                          #email="ngModel">
+                          <span class="help-block" *ngIf="!email.valid && email.touched">Please enter valid email address!</span>
                         </div><br>
                         <div class="form-floating">
-                          <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                          <label for="floatingPassword">Password</label>
+                            <label for="floatingPassword">Password</label>
+                          <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
+                          name="password"
+                          ngModel
+                          required
+                          #password="ngModel"
+                          >
+                          <span class="help-block" *ngIf="!password.valid && password.touched" >Please enter valid password!</span>
                         </div>
                         <div class="form-floating">
-                         <a href="#" target="_blank" rel="noopener noreferrer">Forgot Password</a> |                       
-                         <a href="#" target="_blank" rel="noopener noreferrer">Change Password</a>
+                         <a href="#" target="_blank" rel="noopener noreferrer">Forgot Password</a> 
                         </div><br>
-                        <button class="w-10 btn btn-lg btn-primary" (click)='onSignin()'type="submit">Sign in</button>&nbsp;
+                        <button class="w-10 btn btn-lg btn-primary" [disabled]="!credentials.valid" type="submit">Sign in</button>&nbsp;
                       </form>
                 </div>
             </div>
@@ -25,13 +37,19 @@
                 <ng-template #empRegistration>  
                     <div>
                         <h4 class="h3 mb-3 fw-normal">Welcome To CT General Hospital!</h4>
-                        <img src="/assets/welcome.jpg" class="img-fluid" width="600" height="400">
+                        <img src="assets/images/welcomeng.jpg"  class="img-fluid" height="400px">
+                        <h6>
+                            <img src="src/assets/images/patient.jpg" class="img-fluid" width="600" height="400">
+                        </h6>
                     </div>
                 </ng-template> 
+                <!--
                 <div *ngIf="role == 'admin'; else empRegistration" >
                     <app-employee-registration></app-employee-registration>
                 </div>
+                -->
             </div>
         </div>
     </main>
 </div>
+<app-footer></app-footer>
