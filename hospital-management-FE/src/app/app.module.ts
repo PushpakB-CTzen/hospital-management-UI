@@ -8,13 +8,15 @@ import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { PatientRegistrationComponent } from './patient/patient-registration/patient-registration.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    PatientRegistrationComponent
+    PatientRegistrationComponent,
+    RegistrationComponent
   ],
   imports: [
     FormsModule,
