@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -22,7 +22,7 @@ import { RegistrationComponent } from './registration/registration.component';
     FooterComponent,
     WelcomeComponent,
     LoginComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
     PatientRegistrationComponent,
     RegistrationComponent
   ],
