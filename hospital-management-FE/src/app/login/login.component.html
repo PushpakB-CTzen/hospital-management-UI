@@ -14,7 +14,7 @@
                           required
                           email
                           #email="ngModel">
-                          <span class="help-block" *ngIf="!email.valid && email.touched">Please enter valid email address!</span>
+                          <span class="validation_error_red" *ngIf="!email.valid && email.touched">Please enter valid email address!</span>
                         </div><br>
                         <div class="form-floating">
                             <label for="floatingPassword">Password</label>
@@ -24,12 +24,22 @@
                           required
                           #password="ngModel"
                           >
-                          <span class="help-block" *ngIf="!password.valid && password.touched" >Please enter valid password!</span>
-                        </div>
+                          <div *ngIf="password.invalid && (password.dirty || password.touched)">
+                            <div *ngIf="password.errors?.required" class="validation_error_red">
+                               password is required.
+                            </div>
+                            <div *ngIf="password.errors?.minlength" class="validation_error_red">
+                               password is weak
+                            </div>
+                            <div *ngIf="password.errors?.forbiddenName">
+                               Name cannot be Bob.
+                            </div>
+                         </div>                        </div>
                         <div class="form-floating">
                          <a href="#" target="_blank" rel="noopener noreferrer">Forgot Password</a> 
                         </div><br>
-                        <button class="w-10 btn btn-lg btn-primary" [disabled]="!credentials.valid" type="submit">Sign in</button>&nbsp;
+                        <button class="w-10 btn btn-lg btn-primary" [disabled]="!credentials.valid" type="submit">Sign in</button>&nbsp;&nbsp;
+                        <br>
                       </form>
                 </div>
             </div>
