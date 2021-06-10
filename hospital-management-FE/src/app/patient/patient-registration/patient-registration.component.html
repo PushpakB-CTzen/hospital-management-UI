@@ -98,7 +98,7 @@
                      </div>-->
                   </div>
 
-
+<br>
                   <div class="col-sm-5">
                      <label for="lastName" class="form-label">Last name</label>
                      <input type="text" class="form-control" id="lastName" #lastname="ngModel" name="lastNameInput"
@@ -126,7 +126,7 @@
 
 
 
-                  <div class="col-12">
+                  <div class="col-12" style="margin-top: 10px;">
                      <label for="dob" class="form-label">Date of Birth </label>
                      <div class="input-group date" data-provide="datepicker">
                         <input type="date" [max]="maxDate" (change)="dateChange($event.target)" [(ngModel)]="dob"
@@ -157,7 +157,7 @@
                   </div>
 
 
-                  <div class="col-12">
+                  <div class="col-12" style="margin-top: 5px;">
                      <label for="contact" class="form-label">Contact</label>
                      <input type="tel" [(ngModel)]="contact" #dcontact="ngModel" name="contact" id="contact"
                         class="form-control" placeholder="" minlength="10" required number>
@@ -183,7 +183,7 @@
                   </div>
 
 
-                  <div class="col-12">
+                  <div class="col-12" style="margin-top: 5px;">
                      <label for="email" class="form-label">Email Id</label>
                      <input type="email" [(ngModel)]="email" #demail="ngModel"
                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" id="email" class="form-control"
@@ -214,7 +214,7 @@
                   </div>
 
 
-                  <div class="col-12">
+                  <div class="col-12" style="margin-top: 5px;">
                      <label for="password" class="form-label">Password</label>
                      <input type="password" [(ngModel)]="password" #dpassword="ngModel" name="password" id="password"
                         class="form-control" placeholder="" value="" required minlength="8">
@@ -241,7 +241,7 @@
                   </div>
 
 
-                  <div class="col-12">
+                  <div class="col-12" style="margin-top: 5px;">
                      <label for="confirmPassword" class="form-label">Confirm Password</label>
                      <input type="password" [(ngModel)]="confirmPassword" #name="ngModel" name="confirmPassword"
                         id="confirmPassword" class="form-control" placeholder="" value="" required minlength="8">
