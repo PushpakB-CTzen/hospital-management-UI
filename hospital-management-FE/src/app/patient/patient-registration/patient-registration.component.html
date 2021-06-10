@@ -185,17 +185,20 @@
 
                   <div class="col-12">
                      <label for="email" class="form-label">Email Id</label>
-                     <input type="email" [(ngModel)]="email" #name="ngModel" name="email" id="email"
+                     <input type="email" [(ngModel)]="email" #demail="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  name="email" id="email"
                         class="form-control" placeholder="" required email>
 
-                     <div *ngIf="email.invalid && (email.dirty || email.touched)">
-                        <div *ngIf="email.errors?.required" class="validation_error_red">
+                     <div *ngIf="demail.invalid && (demail.dirty || demail.touched)">
+                        <div *ngIf="demail.errors?.required" class="validation_error_red">
                            email is required.
                         </div>
-                        <div *ngIf="email.errors?.minlength" class="validation_error_red">
+                        <div *ngIf="demail.errors?.minlength" class="validation_error_red">
                            email length small
                         </div>
-                        <div *ngIf="email.errors?.forbiddenName">
+                        <div *ngIf="demail.errors?.pattern" class="validation_error_red">
+                           not a valid email
+                        </div>
+                        <div *ngIf="demail.errors?.forbiddenName">
                            Name cannot be Bob.
                         </div>
                      </div>
