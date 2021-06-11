@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { ChangePasswordComponent } from './login/change-password/change-password.component';
 import { PatientRegistrationComponent } from './patient/patient-registration/patient-registration.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { AuthGuard } from './guard/auth.guard';
 
 @NgModule({
   declarations: [
