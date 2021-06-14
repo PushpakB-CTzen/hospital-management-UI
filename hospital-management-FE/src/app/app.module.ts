@@ -10,6 +10,8 @@ import { FooterComponent } from './footer/footer.component';
 import { PatientRegistrationComponent } from './patient/patient-registration/patient-registration.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardHeaderComponent } from './dashboard-header/dashboard-header.component';
+import { DashboardFooterComponent } from './dashboard-footer/dashboard-footer.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     FooterComponent,
     PatientRegistrationComponent,
     RegistrationComponent,
-    DashboardComponent
+    DashboardComponent,
+    DashboardHeaderComponent,
+    DashboardFooterComponent
   ],
   imports: [
     FormsModule,
