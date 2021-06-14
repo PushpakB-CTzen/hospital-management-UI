@@ -9,6 +9,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { PatientRegistrationComponent } from './patient/patient-registration/patient-registration.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { RegistrationComponent } from './registration/registration.component';
     HeaderComponent,
     FooterComponent,
     PatientRegistrationComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    DashboardComponent
   ],
   imports: [
     FormsModule,

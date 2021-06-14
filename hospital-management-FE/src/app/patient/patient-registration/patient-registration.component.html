@@ -98,7 +98,7 @@
                      </div>-->
                   </div>
 
-<br>
+                  <br>
                   <div class="col-sm-5">
                      <label for="lastName" class="form-label">Last name</label>
                      <input type="text" class="form-control" id="lastName" #lastname="ngModel" name="lastNameInput"
@@ -246,7 +246,7 @@
                      <input type="password" [(ngModel)]="confirmPassword" #name="ngModel" name="confirmPassword"
                         id="confirmPassword" class="form-control" placeholder="" value="" required minlength="8">
 
-                        <div *ngIf =  "confirmPassword.touched">touched</div>
+                     <div *ngIf="confirmPassword.touched">touched</div>
                      <div *ngIf="confirmPassword !== password" class="validation_error_red">password not matching
                      </div>
 
