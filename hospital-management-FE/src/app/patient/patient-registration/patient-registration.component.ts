@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm, FormsModule } from '@angular/forms';
 
 import { RegistrationService } from '../../registration.service';
@@ -9,11 +9,13 @@ import { RegistrationService } from '../../registration.service';
   styleUrls: ['./patient-registration.component.css']
 })
 
-export class PatientRegistrationComponent implements OnInit {
+export class PatientRegistrationComponent implements OnInit,AfterViewInit,AfterViewChecked {
 
   constructor(private registrationService: RegistrationService) {
     console.log(this.maxDate)
   }
+ 
+  
 
   firstNameInput: any;
   lastNameInput: any;
@@ -22,13 +24,39 @@ export class PatientRegistrationComponent implements OnInit {
   email: any;
   password: any;
   confirmPassword: any;
-  iconfirmPassword:any;
+  iconfirmPassword: any;
+  dpassword: any;
+  confirmPassword1: any;
   date = new Date();
   maxDate = (new Date().getFullYear()).toString() + "-0" + (new Date().getMonth() + 1).toString() + "-" + (new Date().getDate()).toString();
 
+  @ViewChild('someInput') someInput!: ElementRef;
+  @ViewChild('f') userFrm!: NgForm;
 
   ngOnInit(): void {
+    console.log(this.userFrm)
+    //this.userFrm.form.markAsPristine();
+    //this.userFrm.form.markAsPristine();
+    //this.dpassword= "hello";
+    //this.someInput.nativeElement.value = "update input value";
+    //((document.getElementById("titleid") as HTMLInputElement).value) = 1;
+    //this.userFrm.form.markAsPristine();
   }
+
+  ngAfterViewInit(): void {
+    console.log("step2")
+   // this.userFrm.form.markAsPristine();
+    
+  }
+
+  ngAfterViewChecked(): void {
+    console.log("step3")
+    //this.userFrm.form.markAsPristine();
+    
+  }
+  //this.frm.form.markAsPristine();
+
+  
 
   dateChange(event) {
     console.log(event);
