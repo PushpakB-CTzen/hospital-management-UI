@@ -30,11 +30,13 @@ export class PatientRegistrationComponent implements OnInit,AfterViewInit,AfterV
   date = new Date();
   maxDate = (new Date().getFullYear()).toString() + "-0" + (new Date().getMonth() + 1).toString() + "-" + (new Date().getDate()).toString();
 
-  @ViewChild('someInput') someInput!: ElementRef;
+  @ViewChild('customForm1') someInput!: ElementRef;
   @ViewChild('f') userFrm!: NgForm;
 
   ngOnInit(): void {
+    
     console.log(this.userFrm)
+    //this.someInput.markAsPristine();
     //this.userFrm.form.markAsPristine();
     //this.userFrm.form.markAsPristine();
     //this.dpassword= "hello";
