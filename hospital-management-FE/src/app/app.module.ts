@@ -14,7 +14,11 @@ import { FormsModule } from '@angular/forms';
 import { ChangePasswordComponent } from './login/change-password/change-password.component';
 import { PatientRegistrationComponent } from './patient/patient-registration/patient-registration.component';
 import { RegistrationComponent } from './registration/registration.component';
+
 import { AuthGuard } from './guard/auth.guard';
+
+import { DashboardComponent } from './dashboard/dashboard.component';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +29,8 @@ import { AuthGuard } from './guard/auth.guard';
     LoginComponent,
     ChangePasswordComponent,
     PatientRegistrationComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    DashboardComponent
   ],
   imports: [
     FormsModule,
