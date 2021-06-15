@@ -9,16 +9,18 @@ import { LoginService } from '../login/login.service';
 export class HeaderComponent implements OnInit {
 
   //isLoggedin:any=false;
-  constructor(private loginService:LoginService) { }
+  constructor(private loginService: LoginService) { }
 
   ngOnInit(): void {
   }
 
-  loggedin():boolean{
+  loggedin(): boolean {
+    console.log("logged in status");
+    console.log(this.loginService.isloggedin());
     return this.loginService.isloggedin();
   }
 
-  logout(){
+  logout() {
     this.loginService.logout();
   }
 
