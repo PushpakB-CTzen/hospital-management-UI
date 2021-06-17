@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EmpRegistrationService } from '../emp-registration.service';
 
 @Component({
   selector: 'app-registration',
@@ -7,25 +8,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private registrationService: EmpRegistrationService) { 
+    console.log(this.maxDate);
+  }
+
+  firstNameInput: any;
+  lastNameInput: any;
+  dob: any;
+  contact: any;
+  email: any;
+  role: any;
+  date = new Date();
+  maxDate = (new Date().getFullYear()).toString() + "-0" + (new Date().getMonth() + 1).toString() + "-" + (new Date().getDate()).toString();
 
   ngOnInit(): void {
   }
 
-  changeRole(e) {
-    //alert(e.target.value);
+  dateChange(event) {
+    console.log(event);
+  }
+  reloadPage() {
+    window.location.reload();
   }
 
   onSave(event) { 
-     let title = ((document.getElementById("title") as HTMLInputElement).value);
-     let fName = ((document.getElementById("firstName") as HTMLInputElement).value);
-     let lName = ((document.getElementById("lastName") as HTMLInputElement).value);     
-     let iemail = ((document.getElementById("email") as HTMLInputElement).value);
-     let icontact = ((document.getElementById("contact") as HTMLInputElement).value);
-     let idob = ((document.getElementById("dob") as HTMLInputElement).value);
-     let role1 = (document.getElementById("Admin") as HTMLInputElement); 
-     let role2 = (document.getElementById("Physician") as HTMLInputElement);
-     let role3 = (document.getElementById("Nurse") as HTMLInputElement);
+    let ftitle = ((document.getElementById("titleid") as HTMLInputElement).value);
+    let fName = ((document.getElementById("firstName") as HTMLInputElement).value);
+    let lName = ((document.getElementById("lastName") as HTMLInputElement).value);
+    let idob = ((document.getElementById("dob") as HTMLInputElement).value);
+    let icontact = ((document.getElementById("contact") as HTMLInputElement).value);
+    let iemail = ((document.getElementById("email") as HTMLInputElement).value);
+     let role1 = (document.getElementById("admin") as HTMLInputElement); 
+     let role2 = (document.getElementById("physician") as HTMLInputElement);
+     let role3 = (document.getElementById("nurse") as HTMLInputElement);
      let irole = "off";
 
     if(role1.checked){
@@ -35,39 +50,26 @@ export class RegistrationComponent implements OnInit {
     }else if(role3.checked){
       irole = role3.value;
     }
-/*
-     if(fName.length == 0){
-      alert("First name cannot be empty");
-    }else if(fName.length < 2){
-      alert("Please don’t use abbreviations");
-    }
 
-    if(lName.length == 0){
-      alert("Last name cannot be empty");
-    }else if(lName.length < 2){
-      alert("Please don’t use abbreviations");
-    }
- 
-    if(icontact.length < 10){
-      alert("Minimum length of Contact should be 10");
-    }
-
-    if(irole.startsWith("off")){
-      alert("Please select a Role");
-    }*/
 
   
     let empObj = {
-      title:title,
-    firstName:fName,
-    lastName:lName,
-    dob:idob,
-    contact:icontact,
-    email:iemail,
-    role:irole
+      title: ftitle,
+      firstName: fName,
+      lastName: lName,
+      dateOfBirth: idob,
+      contactNo: icontact,
+      email: iemail,
+      role:irole
     };
  
-    alert("Employee Object :: "+JSON.stringify(empObj));  
+    console.log("Employee Object :: "+JSON.stringify(empObj));  
+
+    this.registrationService.registerPatient(empObj).subscribe(data => {
+      alert("sign up successful");
+      console.log("api called from component");
+      console.log(data);
+    })
   }  
 
 }
