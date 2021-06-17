@@ -1,0 +1,65 @@
+<app-header></app-header>
+<div class="container-fluid" style="background-color:rgb(235, 233, 224);">
+    <main>
+        <div class="row g-6">
+            <div class="col-md-4 col-lg-4 order-md-last">
+                <div class="form-signin">
+                    <form (ngSubmit)="onSubmit(credentials)" #credentials="ngForm">
+                        <h3 class="h3 mb-3 fw-normal">SIGN IN</h3>
+                        <div class="form-floating">
+                            <label for="floatingInput">Email address</label>
+                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
+                          name="email"
+                          ngModel
+                          required
+                          email
+                          #email="ngModel">
+                          <span class="validation_error_red" *ngIf="!email.valid && email.touched">Please enter valid email address!</span>
+                        </div><br>
+                        <div class="form-floating">
+                            <label for="floatingPassword">Password</label>
+                          <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
+                          name="password"
+                          ngModel
+                          required
+                          #password="ngModel"
+                          >
+                          <div *ngIf="password.invalid && (password.dirty || password.touched)">
+                            <div *ngIf="password.errors?.required" class="validation_error_red">
+                               password is required.
+                            </div>
+                            <div *ngIf="password.errors?.minlength" class="validation_error_red">
+                               password is weak
+                            </div>
+                            <div *ngIf="password.errors?.forbiddenName">
+                               Name cannot be Bob.
+                            </div>
+                         </div>                        </div>
+                        <div class="form-floating">
+                         <a href="#" target="_blank" rel="noopener noreferrer">Forgot Password</a> 
+                        </div><br>
+                        <button class="w-10 btn btn-lg btn-primary" [disabled]="!credentials.valid" type="submit">Sign in</button>&nbsp;&nbsp;
+                        <br>
+                      </form>
+                </div>
+            </div>
+            <div class="col-md-8 col-lg-8">
+                <ng-template #empRegistration>  
+                    <div>
+                        <h4 class="h3 mb-3 fw-normal">Welcome To CT General Hospital!</h4>
+                        <img src="assets/images/welcomeng.jpg"  class="img-fluid" height="400px">
+                        <h6>
+                            <img src="src/assets/images/patient.jpg" class="img-fluid" width="600" height="400">
+                        </h6>
+                    </div>
+                </ng-template> 
+                <!--
+                <div *ngIf="role == 'admin'; else empRegistration" >
+                    <app-employee-registration></app-employee-registration>
+                </div>
+                -->
+            </div>
+        </div>
+    </main>
+</div>
+<app-footer></app-footer>
