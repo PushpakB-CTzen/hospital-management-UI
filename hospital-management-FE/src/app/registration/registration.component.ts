@@ -66,7 +66,7 @@ export class RegistrationComponent implements OnInit {
     console.log("Employee Object :: "+JSON.stringify(empObj));  
 
     this.registrationService.registerPatient(empObj).subscribe(data => {
-      alert("sign up successful");
+      //alert("sign up successful");
       console.log("api called from component");
       console.log(data);
     })

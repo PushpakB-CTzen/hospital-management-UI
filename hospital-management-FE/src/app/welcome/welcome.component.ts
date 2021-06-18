@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../login/login.service';
+import { RegistrationComponent } from '../registration/registration.component';
 
 @Component({
   selector: 'app-welcome',
@@ -8,15 +9,23 @@ import { LoginService } from '../login/login.service';
 })
 export class WelcomeComponent implements OnInit {
   
-  constructor(private loginService:LoginService) { }
+  constructor(private loginService:LoginService
+    //,private employeeRegistration:RegistrationComponent
+    ) { }
 
   ngOnInit(): void {
    // this.loggedin();
+   this.checkRole();
   }
 
   loggedin():boolean{
     console.log("in welcome loggedin"+this.loginService.isloggedin())
     return this.loginService.isloggedin();
+  }
+
+  checkRole(){
+   // let role=this.employeeRegistration.role;
+    //console.log(role);
   }
 
 }

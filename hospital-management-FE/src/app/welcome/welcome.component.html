@@ -12,6 +12,9 @@
                         <div class="col-6 col-sm-6 col-md-6">
                             <button class="btn btn-primary btn-lg"  routerLink='/patient' type="button">New Patient</button>
                         </div>
+                        <div class="col-6 col-sm-6 col-md-6">
+                            <button class="btn btn-primary btn-lg" *ngIf="loggedin()" routerLink='/employee' type="button">New Employee</button>
+                        </div>
                     </div> 
                 </div>
                 <div class="col-md-8 col-lg-8">

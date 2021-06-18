@@ -117,20 +117,20 @@
                   </div>                           
                </div>
                <div class="col-12" style="margin-top: 5px;">
-                <label for="role" class="form-label">Role</label>
                 <div class="form-group">
+                  <label for="role" class="form-label">Role</label>
                   <div>
-                    <input id="admin" name="role" value="Admin" type="radio" [(ngModel)]="role" #admin="ngModel"
-                    class="form-check-input" required>
+                    <input id="admin" name="role" value="ADMIN" type="radio" [(ngModel)]="role" #admin="ngModel"
+                    class="form-check-input" disabled>
                     <label class="form-check-label" for="admin">Admin</label>
                   </div>
                   <div>
-                      <input id="physician" name="role" value="Physician" type="radio" [(ngModel)]="role" #physician="ngModel"
+                      <input id="physician" name="role" value="DOCTOR" type="radio" [(ngModel)]="role" #physician="ngModel"
                       class="form-check-input" required>
                       <label class="form-check-label" for="physician">Physician</label>
                   </div>
                   <div>
-                      <input id="nurse" name="role" value="Nurse" type="radio" [(ngModel)]="role" #nurse="ngModel"
+                      <input id="nurse" name="role" value="NURSE" type="radio" [(ngModel)]="role" #nurse="ngModel"
                       class="form-check-input" required>
                       <label class="form-check-label" for="nurse">Nurse</label>
                   </div>
@@ -138,7 +138,9 @@
               </div>
 
                <button id="submitbutton" class="w-10 btn btn-primary btn-lg" type="button" (click)="onSave($event)"
-                  href="#myModal" data-toggle="modal">Submit</button>
+                  href="#myModal" data-toggle="modal">Submit</button>&nbsp;&nbsp;&nbsp;
+               <button id="submitbutton" class="w-10 btn btn-primary btn-lg" type="button" 
+                 routerLink="/inbox" data-toggle="modal">Inbox</button>
             </form>
          </div>
       </div>

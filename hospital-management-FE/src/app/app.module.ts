@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -17,6 +16,8 @@ import { RegistrationComponent } from './registration/registration.component';
 
 import { AuthGuard } from './guard/auth.guard';
 
+import { DashboardFooterComponent } from './dashboard-footer/dashboard-footer.component';
+import { DashboardHeaderComponent } from './dashboard-header/dashboard-header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 
@@ -30,15 +31,19 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ChangePasswordComponent,
     PatientRegistrationComponent,
     RegistrationComponent,
-    DashboardComponent
+    DashboardComponent,
+    DashboardFooterComponent,
+    DashboardHeaderComponent,
+   
   ],
   imports: [
     FormsModule,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    HttpClientModule
+    HttpClientModule,
+   
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -16,14 +16,18 @@ export class RegistrationService {
 
   registerPatient(patientInfo:any): Observable<any> {
     const headers = { 
-      'content-type': 'application/json',
-      'Access-Control-Allow-Origin':'*',
-      'Access-Control-Allow-Methods':' GET, POST, PATCH, PUT, DELETE, OPTIONS',
-      'Access-Control-Allow-Headers':' Origin, Content-Type, X-Auth-Token'
+      'content-type': 'application/json'
+      // 'Access-Control-Allow-Origin':'*',
+      // 'Access-Control-Allow-Methods':' GET, POST, PATCH, PUT, DELETE, OPTIONS',
+      // 'Access-Control-Allow-Headers':' Origin, Content-Type, X-Auth-Token'
       }  
     const body=JSON.stringify(patientInfo);
     console.log("Inside parent api calling method");
-    console.log(body)
+    console.log(body);
+    // let token=localStorage.getItem("jwtToken");
+    // let tokenStr='bearer '+token;
+    // console.log(tokenStr);
+    // const headers=new HttpHeaders().set("Auhorization",tokenStr)
     return this.http.post(this.baseURL + 'user/patient', body,{headers,responseType:'text' as 'json'})
   }
 }

@@ -7,6 +7,8 @@ import { PatientRegistrationComponent } from './patient/patient-registration/pat
 import { RegistrationComponent } from './registration/registration.component';
 import { AuthGuard } from './guard/auth.guard';
 import { LoggedinAuthGuard } from './guard/loggedin-auth.guard';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
 
 
 const routes: Routes = [
@@ -14,9 +16,13 @@ const routes: Routes = [
   {path:'welcome',component:WelcomeComponent},
   {path:'login',component:LoginComponent,canActivate:[LoggedinAuthGuard]},
   {path:'change-password',component:ChangePasswordComponent},
-  {path:'patient',component:PatientRegistrationComponent,canActivate:[AuthGuard]},
+  {path:'patient',component:PatientRegistrationComponent},
   {path:'employee',component:RegistrationComponent,canActivate:[AuthGuard]},
+  {path:'inbox',component:DashboardComponent,canActivate:[AuthGuard]},
+ 
 
+  
+  
 ];
 
 @NgModule({

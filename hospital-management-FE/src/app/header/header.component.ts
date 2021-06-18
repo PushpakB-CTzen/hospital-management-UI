@@ -15,8 +15,8 @@ export class HeaderComponent implements OnInit {
   }
 
   loggedin(): boolean {
-    console.log("logged in status");
-    console.log(this.loginService.isloggedin());
+    //console.log("logged in status");
+    //console.log(this.loginService.isloggedin());
     return this.loginService.isloggedin();
   }
 

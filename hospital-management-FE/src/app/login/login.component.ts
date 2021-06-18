@@ -19,9 +19,6 @@ enum LoginStatus {
 })
 export class LoginComponent implements OnInit {
 
-
-
-
   //@ViewChild('credentials') loginForm : NgForm;
   constructor(private jwtService:JwtClientService,
               private loginService:LoginService,
@@ -31,9 +28,8 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(form:NgForm){
-    //console.log(form.value);
+    console.log(form.value);
     let resp=this.jwtService.generateToken(form.value);
-    //localStorage.setItem("JwtToken",resp);
 
     resp.subscribe(
       response=>{
@@ -41,11 +37,12 @@ export class LoginComponent implements OnInit {
           console.log(response)
           let jwtToken:string=JSON.stringify(response);
           console.log(response)
-          sessionStorage.setItem("jwtToken",jwtToken);
+          localStorage.setItem("jwtToken",jwtToken);
           this.router.navigate(["/employee"])
         }
        
       }, (error) => {
+        console.log(error);
         location.reload();
       },
     
