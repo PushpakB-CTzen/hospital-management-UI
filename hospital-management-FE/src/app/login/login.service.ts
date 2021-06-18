@@ -16,17 +16,17 @@ export class LoginService {
   //             .post("http://localhost:8080/user/patient/login",request,{responseType:'text' as 'json'});
   // }
 
-  isloggedin(){
-    let token=localStorage.getItem("jwtToken");
-    if(token!='' && token != null && token != undefined){
+  isloggedin() {
+    let token = localStorage.getItem("jwtToken");
+    if (token != '' && token != null && token != undefined) {
       return true
-    }else{
+    } else {
       return false
     }
 
   }
 
-  logout(){
+  logout() {
     localStorage.removeItem("jwtToken")
 
     //return true;

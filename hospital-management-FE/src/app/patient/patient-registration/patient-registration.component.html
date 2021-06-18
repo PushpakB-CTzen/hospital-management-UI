@@ -1,49 +1,3 @@
-<!--
-   <style>
-    .bs-header{
-    position: -webkit-sticky; /* Safari */
-    position: sticky;
-    top: 0;
-    }
-
-    .bs-footer{
-    position: -webkit-sticky; /* Safari */
-    position: sticky;
-    bottom: 0;
-    }
- </style>
- <body>
-    <div class="bs-header">
-       <nav class="navbar navbar-expand-md navbar-light " style="background-color: #e3f2fd;">
-          <a href="#" class="navbar-brand">
-          <img src="https://images1-fabric.practo.com/obstetrics-and-gynaecology-dept-city-hospital-ernakulam-1470650539-57a858ab5ce87.JPG/thumbnail" height="28" alt="CityHospital ">
-          </a>
-          <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-          <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-             <div class="navbar-nav">
-                <a href="#" class="nav-item nav-link ">Home</a>
-                <a href="#" class="nav-item nav-link active">Patient Registration</a>
-                
-             </div>
-             <div class="navbar-nav ml-auto">
-                <a href="#" class="nav-item nav-link">Login</a>
-             </div>
-          </div>
-       </nav>
-    </div>
-
-
-
-<style>
-
-</style>
--->
-
-<!--for UI validation required libries and css files and js-->
-
-<!--UI validation ends-->
 <app-header></app-header>
 
 
@@ -56,8 +10,8 @@
       </div>
       <div class="row g-5" style="margin-left: 18%;">
          <div class="col-md-7 col-lg-8">
-            <!-- <h4 class="mb-3">Billing address</h4>-->
-            <form>
+
+            <form  #f="ngForm">
                <div class="row g-3">
                   <div class="col-sm-2">
                      <label for="title" class="form-label">Title</label>
@@ -73,7 +27,7 @@
 
 
                   <div class="col-sm-5">
-                     <label for="firstName" class="form-label ">First name</label>
+                     <label for="firstName" class="form-label">First name</label>
                      <input type="text" class="form-control " #name="ngModel" name="firstNameInput"
                         [(ngModel)]="firstNameInput" placeholder="" value="" minlength="2" id="firstName" required>
 
@@ -90,18 +44,13 @@
                         </div>
                      </div>
 
-                     <!-- <div class="valid-feedback">
-                        Looks good!
-                     </div>
-                     <div class="invalid-feedback">
-                        Valid first name is required.
-                     </div>-->
+
                   </div>
 
-<br>
+                  <br>
                   <div class="col-sm-5">
                      <label for="lastName" class="form-label">Last name</label>
-                     <input type="text" class="form-control" id="lastName" #lastname="ngModel" name="lastNameInput"
+                     <input type="text" class="form-control " id="lastName" #lastname="ngModel" name="lastNameInput"
                         [(ngModel)]="lastNameInput" placeholder="" value="" required minlength="2">
 
                      <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)">
@@ -116,12 +65,7 @@
                         </div>
                      </div>
 
-                     <!--<div class="valid-feedback">
-                        Looks good!
-                     </div>
-                     <div class="invalid-feedback">
-                        Valid last name is required.
-                     </div>-->
+
                   </div>
 
 
@@ -144,15 +88,6 @@
                            </div>
                         </div>
 
-                        <!-- <div class="valid-feedback">
-                           Looks good!
-                        </div>
-                        <div class="invalid-feedback">
-                           Valid date is required.
-                        </div>
-                        <div class="input-group-addon">
-                           <span class="glyphicon glyphicon-th"></span>
-                        </div>-->
                      </div>
                   </div>
 
@@ -173,13 +108,6 @@
                            Name cannot be Bob.
                         </div>
                      </div>
-
-                     <!-- <div class="valid-feedback">
-                        Looks good!
-                     </div>
-                     <div class="invalid-feedback">
-                        Please enter a valid valid contact number.
-                     </div>-->
                   </div>
 
 
@@ -203,14 +131,6 @@
                            Name cannot be Bob.
                         </div>
                      </div>
-
-                     <!--
-                     <div class="valid-feedback">
-                        Looks good!
-                     </div>
-                     <div class="invalid-feedback">
-                        Please enter a valid valid email.
-                     </div>-->
                   </div>
 
 
@@ -218,7 +138,7 @@
                      <label for="password" class="form-label">Password</label>
                      <input type="password" [(ngModel)]="password" #dpassword="ngModel" name="password" id="password"
                         class="form-control" placeholder="" value="" required minlength="8">
-
+                     <div>{{password}}</div>
                      <div *ngIf="dpassword.invalid && (dpassword.dirty || dpassword.touched)">
                         <div *ngIf="dpassword.errors?.required" class="validation_error_red">
                            password is required.
@@ -230,47 +150,32 @@
                            Name cannot be Bob.
                         </div>
                      </div>
-
-                     <!--
-                     <div class="valid-feedback">
-                        Looks good!
-                     </div>
-                     <div class="invalid-feedback">
-                        Valid password is required.
-                     </div>-->
                   </div>
 
 
                   <div class="col-12" style="margin-top: 5px;">
                      <label for="confirmPassword" class="form-label">Confirm Password</label>
-                     <input type="password" [(ngModel)]="confirmPassword" #name="ngModel" name="confirmPassword"
-                        id="confirmPassword" class="form-control" placeholder="" value="" required minlength="8">
+                     <input type="password" class="form-control" [(ngModel)]="confirmPassword"
+                        #confirmPassword1="ngModel" name="confirmPassword1" id="confirmPassword" placeholder="" value=""
+                        required minlength="8">
 
-                        <div *ngIf =  "confirmPassword.touched">touched</div>
+                     <div>{{confirmPassword}}</div>
                      <div *ngIf="confirmPassword !== password" class="validation_error_red">password not matching
                      </div>
 
-                     <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)">
+                     <div *ngIf="confirmPassword1.invalid && (confirmPassword1.dirty || confirmPassword1.touched)">
 
-                        <div *ngIf="confirmPassword.errors?.required">
+                        <div *ngIf="confirmPassword1.errors?.required">
                            password is required.
                         </div>
-                        <div *ngIf="confirmPassword.errors?.minlength" class="validation_error_red">
+                        <div *ngIf="confirmPassword1.errors?.minlength" class="validation_error_red">
                            password is weak
                         </div>
-                        <div *ngIf="confirmPassword.errors?.forbiddenName">
+                        <div *ngIf="confirmPassword1.errors?.forbiddenName">
                            Name cannot be Bob.
                         </div>
                      </div>
                      <br>
-
-                     <!--
-                     <div class="valid-feedback">
-                        Looks good!
-                     </div>
-                     <div class="invalid-feedback">
-                        Password must be same.
-                     </div>-->
                   </div>
                </div>
 
