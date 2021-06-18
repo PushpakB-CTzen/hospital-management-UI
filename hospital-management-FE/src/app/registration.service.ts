@@ -24,6 +24,6 @@ export class RegistrationService {
     const body=JSON.stringify(patientInfo);
     console.log("Inside parent api calling method");
     console.log(body)
-    return this.http.post(this.baseURL + 'user/patient', body,{'headers':headers})
+    return this.http.post(this.baseURL + 'user/patient', body,{headers,responseType:'text' as 'json'})
   }
 }
