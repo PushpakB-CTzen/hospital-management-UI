@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule,HTTP_INTERCEPTORS  } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { WelcomeComponent } from './welcome/welcome.component';
@@ -20,6 +20,10 @@ import { AuthGuard } from './guard/auth.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardHeaderComponent } from './dashboard-header/dashboard-header.component';
 import { DashboardFooterComponent } from './dashboard-footer/dashboard-footer.component';
+import { DataCollectionAppointmentComponent } from './data-collection-appointment/data-collection-appointment.component';
+import { PhycisianAppointmentComponent } from './phycisian-appointment/phycisian-appointment.component';
+import { AppoinementsComponent } from './appoinements/appoinements.component';
+import {HeaderInterceptor} from './interceptors/HeaderInterceptor';
 
 
 @NgModule({
@@ -34,7 +38,10 @@ import { DashboardFooterComponent } from './dashboard-footer/dashboard-footer.co
     RegistrationComponent,
     DashboardComponent,
     DashboardHeaderComponent,
-    DashboardFooterComponent
+    DashboardFooterComponent,
+    DataCollectionAppointmentComponent,
+    PhycisianAppointmentComponent,
+    AppoinementsComponent
   ],
   imports: [
     FormsModule,
@@ -44,7 +51,11 @@ import { DashboardFooterComponent } from './dashboard-footer/dashboard-footer.co
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: HeaderInterceptor,
+    multi: true,
+  },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -11,11 +11,11 @@
       <div class="row g-5" style="margin-left: 18%;">
          <div class="col-md-7 col-lg-8">
 
-            <form  #f="ngForm">
+            <form #f="ngForm">
                <div class="row g-3">
                   <div class="col-sm-2">
                      <label for="title" class="form-label">Title</label>
-                     <select class="form-select" id="titleid" required>
+                     <select class="form-select" id="titleid" [(ngModel)]="titleInput" name="titleInput" required>
                         <option selected>Mr</option>
                         <option>Mrs</option>
                         <option>Ms</option>
@@ -138,7 +138,7 @@
                      <label for="password" class="form-label">Password</label>
                      <input type="password" [(ngModel)]="password" #dpassword="ngModel" name="password" id="password"
                         class="form-control" placeholder="" value="" required minlength="8">
-                     <div>{{password}}</div>
+
                      <div *ngIf="dpassword.invalid && (dpassword.dirty || dpassword.touched)">
                         <div *ngIf="dpassword.errors?.required" class="validation_error_red">
                            password is required.
@@ -159,7 +159,7 @@
                         #confirmPassword1="ngModel" name="confirmPassword1" id="confirmPassword" placeholder="" value=""
                         required minlength="8">
 
-                     <div>{{confirmPassword}}</div>
+
                      <div *ngIf="confirmPassword !== password" class="validation_error_red">password not matching
                      </div>
 
