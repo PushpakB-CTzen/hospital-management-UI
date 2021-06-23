@@ -24,6 +24,9 @@ import { DataCollectionAppointmentComponent } from './data-collection-appointmen
 import { PhycisianAppointmentComponent } from './phycisian-appointment/phycisian-appointment.component';
 import { AppoinementsComponent } from './appoinements/appoinements.component';
 import {HeaderInterceptor} from './interceptors/HeaderInterceptor';
+import { Sidebar1Component } from './sidebar1/sidebar1.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -41,7 +44,8 @@ import {HeaderInterceptor} from './interceptors/HeaderInterceptor';
     DashboardFooterComponent,
     DataCollectionAppointmentComponent,
     PhycisianAppointmentComponent,
-    AppoinementsComponent
+    AppoinementsComponent,
+    Sidebar1Component
   ],
   imports: [
     FormsModule,
@@ -49,7 +53,8 @@ import {HeaderInterceptor} from './interceptors/HeaderInterceptor';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
