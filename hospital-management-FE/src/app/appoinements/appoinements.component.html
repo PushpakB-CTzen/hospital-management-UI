@@ -153,6 +153,9 @@
 </div> -->
 
 
+
+<!--working 1-->
+<!--
 <div class="row" style="margin-left: 18%;margin-top: 3%;">
 
     <div>
@@ -161,8 +164,8 @@
                 aria-controls="collapseOne">
                 Monday
             </button></li>
-            <li class="list-group-item"><button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
-                aria-expanded="false" aria-controls="collapseTwo">
+            <li class="list-group-item"><button class="btn btn-link collapsed" data-toggle="collapse" data-target=".multi-collapse"
+                aria-expanded="false" aria-controls="collapseTwo collapseTwo1">
                 Tuesday
             </button></li>
             <li class="list-group-item"> <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"
@@ -220,7 +223,28 @@
                     </button>
                 </h5>
             </div>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div id="collapseTwo" class="collapse  multi-collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <b>Meeting Title :</b> <br>
+                    <b>Description :</b><br>
+                    <b>Physician :</b><br>
+                    <b>Date :</b><br>
+                    <b>Time :</b><br>
+                    <b>Edit History :</b><br>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header " id="headingTwo">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                        aria-expanded="false" aria-controls="collapseTwo">
+                        Appointment #2 On Same Day
+                    </button>
+                </h5>
+            </div>
+            <div id="collapseTwo1" class="collapse  multi-collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                 <div class="card-body">
                     <b>Meeting Title :</b> <br>
                     <b>Description :</b><br>
@@ -323,3 +347,211 @@
 
 
 </div> 
+
+-->
+
+<div class="row" style="margin-left: 18%;margin-top: 3%;">
+
+    <div>
+        <ul class="list-group">
+            <li class="list-group-item "> <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+                    aria-expanded="true" aria-controls="collapseOne">
+                    Monday
+                </button></li>
+            <li class="list-group-item"><button class="btn btn-link collapsed" data-toggle="collapse"
+                    data-target=".multi-collapse" aria-expanded="false" aria-controls="collapseTwo collapseTwo1">
+                    Tuesday
+                </button></li>
+            <li class="list-group-item"> <button class="btn btn-link collapsed" data-toggle="collapse"
+                    data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Wednesday
+                </button></li>
+            <li class="list-group-item"><button class="btn btn-link collapsed" data-toggle="collapse"
+                    data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    Thursday
+                </button></li>
+            <li class="list-group-item"> <button class="btn btn-link collapsed" data-toggle="collapse"
+                    data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                    Friday
+                </button></li>
+            <li class="list-group-item"> <button class="btn btn-link collapsed" data-toggle="collapse"
+                    data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                    Saturday
+                </button></li>
+
+        </ul>
+    </div>
+
+    <div id="accordion" class="adjust_appointments_view"
+        style="border: black 1px solid; border-radius: 5px; margin-left: 0%;margin-top: 0%;">
+
+        <div class="card ">
+            <div class="card-header alert-success" id="headingOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                        aria-controls="collapseOne">
+                        Appointment #1
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                    <b>Meeting Title :</b> <br>
+                    <b>Description :</b><br>
+                    <b>Physician :</b><br>
+                    <b>Date :</b><br>
+                    <b>Time :</b><br>
+                    <b>Edit History :</b><br>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <div class="card-header " id="headingTwo">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                        aria-expanded="false" aria-controls="collapseTwo">
+                        Appointment #2
+                    </button>
+                </h5>
+            </div>
+            <div id="collapseTwo" class="collapse  multi-collapse" aria-labelledby="headingTwo"
+                data-parent="#accordion">
+                <div class="card-body">
+                    <b>Meeting Title :</b> <br>
+                    <b>Description :</b><br>
+                    <b>Physician :</b><br>
+                    <b>Date :</b><br>
+                    <b>Time :</b><br>
+                    <b>Edit History :</b><br>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header " id="headingTwo">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo11"
+                        aria-expanded="false" aria-controls="collapseTwo11">
+                        Appointment #2 On Same Day
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseTwo11" class="collapse  multi-collapse" aria-labelledby="headingTwo"
+                data-parent="#accordion">
+                <div class="card-body">
+                    <b>Meeting Title :</b> <br>
+                    <b>Description :</b><br>
+                    <b>Physician :</b><br>
+                    <b>Date :</b><br>
+                    <b>Time :</b><br>
+                    <b>Edit History :</b><br>
+                </div>
+            </div>
+            <div id="collapseTwo1" class="collapse  multi-collapse" aria-labelledby="headingTwo"
+                data-parent="#accordion">
+                <div class="card-body">
+                    <b>Meeting Title :</b> <br>
+                    <b>Description :</b><br>
+                    <b>Physician :</b><br>
+                    <b>Date :</b><br>
+                    <b>Time :</b><br>
+                    <b>Edit History :</b><br>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <div class="card-header " id="headingThree">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"
+                        aria-expanded="false" aria-controls="collapseThree">
+                        Appointment #3
+                    </button>
+                    <span class="badge badge-danger">Cancelled</span>
+                </h5>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                <div class="card-body">
+                    <b>Meeting Title :</b> <br>
+                    <b>Description :</b><br>
+                    <b>Physician :</b><br>
+                    <b>Date :</b><br>
+                    <b>Time :</b><br>
+                    <b>Edit History :</b><br>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour"
+                        aria-expanded="false" aria-controls="collapseFour">
+                        Appointment #4
+                    </button>
+                </h5>
+            </div>
+            <div id="collapseFour" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                <div class="card-body">
+                    <b>Meeting Title :</b> <br>
+                    <b>Description :</b><br>
+                    <b>Physician :</b><br>
+                    <b>Date :</b><br>
+                    <b>Time :</b><br>
+                    <b>Edit History :</b><br>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive"
+                        aria-expanded="false" aria-controls="collapseFive">
+                        Appointment #5
+                    </button>
+                </h5>
+            </div>
+            <div id="collapseFive" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                <div class="card-body">
+                    <b>Meeting Title :</b> <br>
+                    <b>Description :</b><br>
+                    <b>Physician :</b><br>
+                    <b>Date :</b><br>
+                    <b>Time :</b><br>
+                    <b>Edit History :</b><br>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSix"
+                        aria-expanded="false" aria-controls="collapseSix">
+                        Appointment #6
+                    </button>
+                </h5>
+            </div>
+            <div id="collapseSix" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                <div class="card-body">
+                    <b>Meeting Title :</b> <br>
+                    <b>Description :</b><br>
+                    <b>Physician :</b><br>
+                    <b>Date :</b><br>
+                    <b>Time :</b><br>
+                    <b>Edit History :</b><br>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
