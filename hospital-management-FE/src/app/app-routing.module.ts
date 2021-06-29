@@ -8,6 +8,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { AuthGuard } from './guard/auth.guard';
 import { LoggedinAuthGuard } from './guard/loggedin-auth.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 
 
 
@@ -19,7 +20,7 @@ const routes: Routes = [
   {path:'patient',component:PatientRegistrationComponent},
   {path:'employee',component:RegistrationComponent,canActivate:[AuthGuard]},
   {path:'inbox',component:DashboardComponent,canActivate:[AuthGuard]},
- 
+  {path:'forgetpassword',component:ForgetPasswordComponent},
 
   
   
