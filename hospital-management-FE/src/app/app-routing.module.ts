@@ -8,6 +8,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { AuthGuard } from './guard/auth.guard';
 import { LoggedinAuthGuard } from './guard/loggedin-auth.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AppoinementsComponent } from './appoinements/appoinements.component';
 
 
 const routes: Routes = [
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'change-password', component: ChangePasswordComponent },
   { path: 'patient', component: PatientRegistrationComponent, canActivate: [AuthGuard] },
   { path: 'employee', component: RegistrationComponent, canActivate: [AuthGuard] },
-  { path: 'inbox', component: DashboardComponent, canActivate: [AuthGuard] }
+  { path: 'inbox', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'inbox/appointment', component: AppoinementsComponent }
 ];
 
 @NgModule({

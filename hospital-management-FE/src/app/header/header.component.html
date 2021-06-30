@@ -1,8 +1,14 @@
-<header>
+
   <nav class="navbar navbar-expand-md bg-primary navbar-dark fixed-right">
-    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+    <!-- <button class="navbar-toggler bg-primary" type="button" data-toggle="collapse" data-target="#basicSidebar">
+      <span class="navbar-toggler-icon"></span>
+    </button> -->
+  <button class="btn btn-primary" data-toggle="collapse" data-target="#sidebar" id="menu-toggle">      
+  <span class="navbar-toggler-icon"></span>
+  </button>
+    <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
       <!--<img src="/assets/citius-logo.png" alt="logo" class="img-fluid" width="200" height="30">-->
-      <span class="fs-4" style="color: white;">CT General Hospital</span>
+      <span class="fs-4" >CT General Hospital</span>
     </a>
 
     <button class="navbar-toggler bg-primary" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -11,24 +17,17 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
       <ul class="nav nav-pills ">
         <!--<li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li> -->
-        <li class="nav-item"><a href="#" class="nav-link " aria-current="page"><span style="color: white;"
-              *ngIf="isWelcomPage()">Home</span></a></li>
-        <li class="nav-item"><a href="#" class="nav-link"><span style="color: white;"
-              *ngIf="isWelcomPage()">Services</span></a></li>
-        <li class="nav-item"><a href="#" class="nav-link"><span style="color: white;"
-              *ngIf="isWelcomPage()">About</span></a></li>
-        <li class="nav-item"><a href="/login" *ngIf="loggedin()" (click)="logout()" class="nav-link"><span
-              style="color: white;">Logout</span></a></li>
-        <!--for inbox view activate this -->
-        <!--
-          <li class="nav-item"><a href="#" class="nav-link " aria-current="page"><span style="color: white;" *ngIf="isInboxPage()">Inbox</span></a></li>
-          <li class="nav-item"><a href="#" class="nav-link"><span style="color: white;" *ngIf="isInboxPage()">Patient Details</span></a></li>
-          <li class="nav-item"><a href="#" class="nav-link"><span style="color: white;" *ngIf="isInboxPage()">Dr. John</span></a></li>
-          <li class="nav-item"><a href="/login"
-            *ngIf="loggedin()" 
-            (click)="logout()"
-            class="nav-link"><span style="color: white;">Logout</span></a></li>-->
+        <li class="nav-item"><a href="#" class="nav-link " aria-current="page"><span >Home</span></a></li>
+        <li class="nav-item"><a href="#" class="nav-link"><span >Services</span></a></li>
+        <li class="nav-item"><a href="#" class="nav-link"><span >About</span></a></li>
+        <li class="nav-item"><a href="/login"
+          *ngIf="loggedin()" 
+          (click)="logout()"
+          class="nav-link"><span style="color: white;">Logout</span></a></li>
       </ul>
     </div>
   </nav>
-</header>
+
+
+
+  
