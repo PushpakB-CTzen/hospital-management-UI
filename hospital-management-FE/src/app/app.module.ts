@@ -13,6 +13,8 @@ import { FormsModule } from '@angular/forms';
 import { ChangePasswordComponent } from './login/change-password/change-password.component';
 import { PatientRegistrationComponent } from './patient/patient-registration/patient-registration.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AuthGuard } from './guard/auth.guard';
 
@@ -44,6 +46,12 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut : 1000,
+      progressBar : true,
+      progressAnimation : 'increasing'
+    })
    
 
   ],
