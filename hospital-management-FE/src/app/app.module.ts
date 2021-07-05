@@ -13,12 +13,15 @@ import { FormsModule } from '@angular/forms';
 import { ChangePasswordComponent } from './login/change-password/change-password.component';
 import { PatientRegistrationComponent } from './patient/patient-registration/patient-registration.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AuthGuard } from './guard/auth.guard';
 
 import { DashboardFooterComponent } from './dashboard-footer/dashboard-footer.component';
 import { DashboardHeaderComponent } from './dashboard-header/dashboard-header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 
 
 @NgModule({
@@ -34,6 +37,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     DashboardComponent,
     DashboardFooterComponent,
     DashboardHeaderComponent,
+    ForgetPasswordComponent,
    
   ],
   imports: [
@@ -42,6 +46,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut : 2000,
+      progressBar : true,
+      progressAnimation : 'increasing'
+    })
    
 
   ],
