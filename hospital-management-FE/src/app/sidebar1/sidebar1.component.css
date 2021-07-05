@@ -52,8 +52,8 @@ nav.navbar {
   top: 0;
   left: 0;
   height: 100%;
-  width: 160px;
-  background: rgb(105, 165, 218);
+  width: 100%;
+  background: #007bff;
   color: #fff;
 }
 
