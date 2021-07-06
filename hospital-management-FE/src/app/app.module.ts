@@ -27,8 +27,8 @@ import { SendNoteComponent } from './note/send-note/send-note.component';
 import { RecievedNoteComponent } from './note/recieved-note/recieved-note.component';
 import { SentNoteComponent } from './note/sent-note/sent-note.component';
 
-import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 
 
 @NgModule({
@@ -49,8 +49,6 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
     RecievedNoteComponent,
     SentNoteComponent,
     ForgetPasswordComponent,
-
-   
   ],
   imports: [
     FormsModule,
