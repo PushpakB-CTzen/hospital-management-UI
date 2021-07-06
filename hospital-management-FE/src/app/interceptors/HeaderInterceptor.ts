@@ -12,7 +12,7 @@ export class HeaderInterceptor implements HttpInterceptor {
         const token1 = token?.slice(1, token.length - 1);
         let tokenStr: string = 'Bearer ' + token1;
         const Authorization = tokenStr;
-        if (httpRequest.url.toString().indexOf('authenticate')) {
+        if (httpRequest.url.includes('authenticate')) {
             return next.handle(httpRequest.clone({ setHeaders: { NO_HEADER } }));
         } else
             return next.handle(httpRequest.clone({ setHeaders: { Authorization } }));
