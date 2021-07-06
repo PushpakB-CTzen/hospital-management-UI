@@ -1,32 +1,31 @@
-<div class="wrapper">
-    <nav id="sidebar">
-        <!-- Sidebar Header -->
-        <div class="sidebar-header">
-            <h3>Collapsible Sidebar</h3>
-        </div>
-
+  
+      <!-- sidebar -->
+     <!-- Sidebar Header -->   
+     <div id="sidebar" class="collapse show navbar-collapse">
         <!-- Sidebar Links -->
-        <ul class="list-unstyled components">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><!-- Link with dropdown items -->
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>
-                <ul class="collapse list-unstyled" id="homeSubmenu">
-                    <li><a href="#">Page</a></li>
-                    <li><a href="#">Page</a></li>
-                    <li><a href="#">Page</a></li>
-                </ul>
-            <li><a href="#">Portfolio</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
+        <ul class="list-unstyled components " >
+         <li class="nav-item"> 
+            <i class="bi bi-inboxes-fill"></i>
 
-    <div id="content">
-        <button type="button" id="sidebarCollapse" class="navbar-btn">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    <div>
+            <a class="nav-link bi bi-inboxes-fill" data-toggle="collapse" href="#notes">
+                <i class="bi bi-inboxes-fill"></i>
+                Inbox</a>
+                <ul class="list-unstyled components "id="notes">
+                    <li>
+                        <a href="#homeSubmenu" data-toggle="collapse" >&nbsp;&nbsp;&nbsp;Notes</a>
+                        <ul class="collapse list-unstyled components " id="homeSubmenu">
+                            <li class="nav-item"><a class="nav-link" routerLink="/note/send" 
+                            routerLinkActive="active">&nbsp;&nbsp;&nbsp;&nbsp;&emsp;Send</a></li>
+                            <li><a href="#" routerLink="/note/recieve" routerLinkActive="active">&nbsp;&nbsp;&nbsp;&nbsp;&emsp;Recieved</a></li>
+                            <li><a href="#" routerLink="/note/sent" routerLinkActive="active">&nbsp;&nbsp;&nbsp;&nbsp;&emsp;Sent</a></li>
+                        </ul>
+                    </li>
+            </ul>
+        </li>
+         <li><a href="#">Schedular</a></li>  
+         <li><a href="#">Portfolio</a></li>
+         <li><a href="#">Contact</a></li>
+     </ul>
+   </div>
 
-</div>
+
