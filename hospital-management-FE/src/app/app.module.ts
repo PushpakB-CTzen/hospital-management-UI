@@ -13,6 +13,8 @@ import { FormsModule } from '@angular/forms';
 import { ChangePasswordComponent } from './login/change-password/change-password.component';
 import { PatientRegistrationComponent } from './patient/patient-registration/patient-registration.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AuthGuard } from './guard/auth.guard';
 
@@ -23,6 +25,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { SendNoteComponent } from './note/send-note/send-note.component';
 import { RecievedNoteComponent } from './note/recieved-note/recieved-note.component';
 import { SentNoteComponent } from './note/sent-note/sent-note.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 
 
 @NgModule({
@@ -42,6 +45,7 @@ import { SentNoteComponent } from './note/sent-note/sent-note.component';
     SendNoteComponent,
     RecievedNoteComponent,
     SentNoteComponent,
+    ForgetPasswordComponent,
    
   ],
   imports: [
@@ -50,6 +54,12 @@ import { SentNoteComponent } from './note/sent-note/sent-note.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut : 2000,
+      progressBar : true,
+      progressAnimation : 'increasing'
+    })
    
 
   ],
