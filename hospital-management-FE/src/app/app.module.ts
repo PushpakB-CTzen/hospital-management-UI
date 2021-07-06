@@ -19,6 +19,10 @@ import { AuthGuard } from './guard/auth.guard';
 import { DashboardFooterComponent } from './dashboard-footer/dashboard-footer.component';
 import { DashboardHeaderComponent } from './dashboard-header/dashboard-header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { SendNoteComponent } from './note/send-note/send-note.component';
+import { RecievedNoteComponent } from './note/recieved-note/recieved-note.component';
+import { SentNoteComponent } from './note/sent-note/sent-note.component';
 
 
 @NgModule({
@@ -34,6 +38,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     DashboardComponent,
     DashboardFooterComponent,
     DashboardHeaderComponent,
+    SidebarComponent,
+    SendNoteComponent,
+    RecievedNoteComponent,
+    SentNoteComponent,
    
   ],
   imports: [
