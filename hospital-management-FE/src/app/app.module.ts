@@ -13,16 +13,22 @@ import { FormsModule } from '@angular/forms';
 import { ChangePasswordComponent } from './login/change-password/change-password.component';
 import { PatientRegistrationComponent } from './patient/patient-registration/patient-registration.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AuthGuard } from './guard/auth.guard';
 
 import { DashboardFooterComponent } from './dashboard-footer/dashboard-footer.component';
 import { DashboardHeaderComponent } from './dashboard-header/dashboard-header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+<<<<<<< HEAD
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SendNoteComponent } from './note/send-note/send-note.component';
 import { RecievedNoteComponent } from './note/recieved-note/recieved-note.component';
 import { SentNoteComponent } from './note/sent-note/sent-note.component';
+=======
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+>>>>>>> 435148094178db14bf72228f34632da1de543ace
 
 
 @NgModule({
@@ -38,10 +44,14 @@ import { SentNoteComponent } from './note/sent-note/sent-note.component';
     DashboardComponent,
     DashboardFooterComponent,
     DashboardHeaderComponent,
+<<<<<<< HEAD
     SidebarComponent,
     SendNoteComponent,
     RecievedNoteComponent,
     SentNoteComponent,
+=======
+    ForgetPasswordComponent,
+>>>>>>> 435148094178db14bf72228f34632da1de543ace
    
   ],
   imports: [
@@ -50,6 +60,12 @@ import { SentNoteComponent } from './note/sent-note/sent-note.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut : 2000,
+      progressBar : true,
+      progressAnimation : 'increasing'
+    })
    
 
   ],
