@@ -9,12 +9,12 @@ export class ForgetPasswordService {
 
   baseURL: string = "http://localhost:8080";
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-   getPassword(email:string):Observable<any>{
-    const headers = { 
+  getPassword(email: string): Observable<any> {
+    const headers = {
       'content-type': 'application/json',
-      }  
-   return this.http.get(`${this.baseURL}/forget-password/${email}`,{responseType:'text' as 'json'});
- }
+    }
+    return this.http.get(`${this.baseURL}/forget-password/${email}`, { responseType: 'text' as 'json' });
+  }
 }

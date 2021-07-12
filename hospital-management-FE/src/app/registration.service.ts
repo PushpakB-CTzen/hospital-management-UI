@@ -14,20 +14,22 @@ export class RegistrationService {
 
   constructor(private http: HttpClient) { }
 
-  registerPatient(patientInfo:any): Observable<any> {
-    const headers = { 
-      'content-type': 'application/json'
-      // 'Access-Control-Allow-Origin':'*',
-      // 'Access-Control-Allow-Methods':' GET, POST, PATCH, PUT, DELETE, OPTIONS',
-      // 'Access-Control-Allow-Headers':' Origin, Content-Type, X-Auth-Token'
-      }  
-    const body=JSON.stringify(patientInfo);
+  registerPatient(patientInfo: any): Observable<any> {
+    this.baseURL = "http://localhost:8080/";
+    const headers = {
+      'content-type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': ' GET, POST, PATCH, PUT, DELETE, OPTIONS',
+      'Access-Control-Allow-Headers': ' Origin, Content-Type, X-Auth-Token'
+    }
+    const body = JSON.stringify(patientInfo);
     console.log("Inside parent api calling method");
-    console.log(body);
-    // let token=localStorage.getItem("jwtToken");
-    // let tokenStr='bearer '+token;
-    // console.log(tokenStr);
-    // const headers=new HttpHeaders().set("Auhorization",tokenStr)
-    return this.http.post(this.baseURL + 'user/patient', body,{headers,responseType:'text' as 'json'})
+    console.log(body)
+    return this.http.post(this.baseURL + 'user/patient', body, { 'headers': headers })
+  }
+
+  getWeeklyAppointments(): Observable<any> {
+    this.baseURL = "http://localhost:8081/";
+    return this.http.get(this.baseURL + 'appointment/weekly');
   }
 }
