@@ -3,6 +3,8 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import JwtClientService from '../service/jwt-client.service';
 import { LoginService } from './login.service';
+import jwt_decode from 'jwt-decode';
+import { ToasterNotificationService } from '../toaster-notification.service';
 
 
 enum LoginStatus {
@@ -11,6 +13,7 @@ enum LoginStatus {
   incorrectPassword="INCORRECT_PASSWORD"
   
   }
+  
 
 @Component({
   selector: 'app-login',
@@ -18,11 +21,16 @@ enum LoginStatus {
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  isPasswordUpdate:boolean = false;
+  tokendata :any
+  role:any;
+  showPassword : boolean = false;
+  count : number = 0;
   //@ViewChild('credentials') loginForm : NgForm;
   constructor(private jwtService:JwtClientService,
               private loginService:LoginService,
-              private router:Router) { }
+              private router:Router,
+              private notifyService : ToasterNotificationService) { }
 
   ngOnInit(): void {
   }
@@ -37,19 +45,58 @@ export class LoginComponent implements OnInit {
           console.log(response)
           let jwtToken:string=JSON.stringify(response);
           console.log(response)
+          this.tokendata = this.getDecodedAccessToken<tokenData>(jwtToken);
+          this.isPasswordUpdate = this.tokendata.isUpdate;
+          this.role = this.tokendata.role
           localStorage.setItem("jwtToken",jwtToken);
-          this.router.navigate(["/employee"])
+          if(this.role == "D" || this.role == "N"){
+            if(this.isPasswordUpdate){
+              this.router.navigate(["/employee"])
+            }else {
+              this.router.navigate(["/changepassword"])
+            }
+          }else {
+            this.router.navigate(["/patient"])
+          }
+          
+          
         }
        
       }, (error) => {
-        console.log(error);
-        location.reload();
+        //this.showPassword = true;
+        // console.log(error);
+        this.count = this.count + 1;
+        if(this.count >= 3){
+            this.notifyService.showError("3 attempts failed acoount has been blocked","Account Blocked !");
+            location.reload();
+        }else {
+          this.notifyService.showError("Unauthorised User","Error");
+        }
+         
+        // 
       },
     
       
     )
   }
 
+  getDecodedAccessToken<T>(token: string): any {
+    try{
+        return jwt_decode<T>(token);
+    }
+    catch(Error){
+        return null;
+    }
+  }
 
 
+
+}
+interface tokenData {
+  sub : string,
+  role:string,
+  exp:number,
+  iat:number,
+  isUpdate : boolean,
+  id : number
 }
