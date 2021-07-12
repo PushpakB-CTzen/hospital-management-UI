@@ -8,17 +8,17 @@ export class ToasterNotificationService {
 
   constructor(private toastr: ToastrService) { }
 
-  showSuccess(message, title){
+  showSuccess(message, title) {
     this.toastr.success(message, title)
-}
+  }
 
-  showError(message, title){
+  showError(message, title) {
     this.toastr.error(message, title)
-}
+  }
 
-  showInfo(message, title){
+  showInfo(message, title) {
     this.toastr.info(message, title)
-}
+  }
 
 
 }

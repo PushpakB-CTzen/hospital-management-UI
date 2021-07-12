@@ -12,25 +12,24 @@ import { RecievedNoteComponent } from './note/recieved-note/recieved-note.compon
 import { SentNoteComponent } from './note/sent-note/sent-note.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { AppoinementsComponent } from './appoinements/appoinements.component';
 
 
 
 const routes: Routes = [
-  {path:'',redirectTo:'/welcome', pathMatch:'full'},
-  {path:'welcome',component:WelcomeComponent},
-  {path:'login',component:LoginComponent,canActivate:[LoggedinAuthGuard]},
-  {path:'patient',component:PatientRegistrationComponent},
-  {path:'employee',component:RegistrationComponent,canActivate:[AuthGuard]},
-  {path:'note/send',component:SendNoteComponent},
-  {path:'note/recieve',component:RecievedNoteComponent},
-  {path:'note/sent',component:SentNoteComponent},
-
-  {path:'inbox',component:DashboardComponent,canActivate:[AuthGuard]},
-  {path:'forgetpassword',component:ForgetPasswordComponent},
+  { path: '', redirectTo: '/welcome', pathMatch: 'full' },
+  { path: 'welcome', component: WelcomeComponent },
+  { path: 'login', component: LoginComponent, canActivate: [LoggedinAuthGuard] },
+  { path: 'patient', component: PatientRegistrationComponent },
+  { path: 'employee', component: RegistrationComponent, canActivate: [AuthGuard] },
+  { path: 'note/send', component: SendNoteComponent },
+  { path: 'note/recieve', component: RecievedNoteComponent },
+  { path: 'note/sent', component: SentNoteComponent },
   {path:'changepassword',component:ChangePasswordComponent,canActivate:[AuthGuard]},
+  { path: 'inbox', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'forgetpassword', component: ForgetPasswordComponent },
+  { path: 'inbox/appointment', component: AppoinementsComponent }
 
-  
-  
 ];
 
 @NgModule({

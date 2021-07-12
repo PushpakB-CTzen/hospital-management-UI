@@ -1,0 +1,26 @@
+.adjust_appointments_view {
+    width: 100%;
+    margin-left: 0%;
+    margin-top: 0%;
+}
+
+/* body {
+    overflow: scroll; 
+  } */
+
+.card_css {
+    background-color: green;
+}
+
+.active_appointment {
+    background: #007bff;
+}
+
+/* div :hover{
+    background: #007bff;
+} */
+
+div.card :hover {
+    background: #007bff;
+    color: white;
+}

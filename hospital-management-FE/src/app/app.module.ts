@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { WelcomeComponent } from './welcome/welcome.component';
@@ -29,6 +29,8 @@ import { SentNoteComponent } from './note/sent-note/sent-note.component';
 
 
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { AppoinementsComponent } from './appoinements/appoinements.component';
+import { HeaderInterceptor } from './interceptors/HeaderInterceptor';
 
 
 @NgModule({
@@ -49,6 +51,7 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
     RecievedNoteComponent,
     SentNoteComponent,
     ForgetPasswordComponent,
+    AppoinementsComponent
   ],
   imports: [
     FormsModule,
@@ -65,7 +68,11 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
    
 
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: HeaderInterceptor,
+    multi: true,
+  },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
