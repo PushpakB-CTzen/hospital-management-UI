@@ -8,7 +8,7 @@ import { EmpRegistrationService } from '../emp-registration.service';
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor(private registrationService: EmpRegistrationService) { 
+  constructor(private registrationService: EmpRegistrationService) {
     console.log(this.maxDate);
   }
 
@@ -31,28 +31,28 @@ export class RegistrationComponent implements OnInit {
     window.location.reload();
   }
 
-  onSave(event) { 
+  onSave(event) {
     let ftitle = ((document.getElementById("titleid") as HTMLInputElement).value);
     let fName = ((document.getElementById("firstName") as HTMLInputElement).value);
     let lName = ((document.getElementById("lastName") as HTMLInputElement).value);
     let idob = ((document.getElementById("dob") as HTMLInputElement).value);
     let icontact = ((document.getElementById("contact") as HTMLInputElement).value);
     let iemail = ((document.getElementById("email") as HTMLInputElement).value);
-     let role1 = (document.getElementById("admin") as HTMLInputElement); 
-     let role2 = (document.getElementById("physician") as HTMLInputElement);
-     let role3 = (document.getElementById("nurse") as HTMLInputElement);
-     let irole = "off";
+    let role1 = (document.getElementById("admin") as HTMLInputElement);
+    let role2 = (document.getElementById("physician") as HTMLInputElement);
+    let role3 = (document.getElementById("nurse") as HTMLInputElement);
+    let irole = "off";
 
-    if(role1.checked){
+    if (role1.checked) {
       irole = role1.value;
-     }else if(role2.checked){
+    } else if (role2.checked) {
       irole = role2.value;
-    }else if(role3.checked){
+    } else if (role3.checked) {
       irole = role3.value;
     }
 
 
-  
+
     let empObj = {
       title: ftitle,
       firstName: fName,
@@ -60,16 +60,16 @@ export class RegistrationComponent implements OnInit {
       dateOfBirth: idob,
       contactNo: icontact,
       email: iemail,
-      role:irole
+      role: irole
     };
- 
-    console.log("Employee Object :: "+JSON.stringify(empObj));  
+
+    console.log("Employee Object :: " + JSON.stringify(empObj));
 
     this.registrationService.registerPatient(empObj).subscribe(data => {
       //alert("sign up successful");
       console.log("api called from component");
       console.log(data);
     })
-  }  
+  }
 
 }

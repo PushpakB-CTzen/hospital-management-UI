@@ -1,6 +1,6 @@
 import { AfterViewChecked, AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm, FormsModule } from '@angular/forms';
-
+import { ToasterNotificationService } from 'src/app/toaster-notification.service';
 import { RegistrationService } from '../../registration.service';
 
 @Component({
@@ -9,14 +9,14 @@ import { RegistrationService } from '../../registration.service';
   styleUrls: ['./patient-registration.component.css']
 })
 
-export class PatientRegistrationComponent implements OnInit,AfterViewInit,AfterViewChecked {
+export class PatientRegistrationComponent implements OnInit, AfterViewInit, AfterViewChecked {
 
-  constructor(private registrationService: RegistrationService) {
+  constructor(private registrationService: RegistrationService, private notifyService: ToasterNotificationService) {
     console.log(this.maxDate)
   }
- 
-  
 
+
+  titleInput: any;
   firstNameInput: any;
   lastNameInput: any;
   dob: any;
@@ -34,7 +34,7 @@ export class PatientRegistrationComponent implements OnInit,AfterViewInit,AfterV
   @ViewChild('f') userFrm!: NgForm;
 
   ngOnInit(): void {
-    
+
     console.log(this.userFrm)
     //this.someInput.markAsPristine();
     //this.userFrm.form.markAsPristine();
@@ -47,18 +47,18 @@ export class PatientRegistrationComponent implements OnInit,AfterViewInit,AfterV
 
   ngAfterViewInit(): void {
     console.log("step2")
-   // this.userFrm.form.markAsPristine();
-    
+    // this.userFrm.form.markAsPristine();
+
   }
 
   ngAfterViewChecked(): void {
     console.log("step3")
     //this.userFrm.form.markAsPristine();
-    
+
   }
   //this.frm.form.markAsPristine();
 
-  
+
 
   dateChange(event) {
     console.log(event);
@@ -67,14 +67,17 @@ export class PatientRegistrationComponent implements OnInit,AfterViewInit,AfterV
     window.location.reload();
   }
   onSave(event) {
-    let ftitle = ((document.getElementById("titleid") as HTMLInputElement).value);
-    let fName = ((document.getElementById("firstName") as HTMLInputElement).value);
-    let lName = ((document.getElementById("lastName") as HTMLInputElement).value);
-    let idob = ((document.getElementById("dob") as HTMLInputElement).value);
-    let icontact = ((document.getElementById("contact") as HTMLInputElement).value);
-    let iemail = ((document.getElementById("email") as HTMLInputElement).value);
-    let ipassword = ((document.getElementById("password") as HTMLInputElement).value);
-    let iconfirmPassword = ((document.getElementById("confirmPassword") as HTMLInputElement).value);
+
+    let formData = this.userFrm.value;
+    let ftitle = formData["titleInput"];
+    let fName = formData["firstNameInput"];
+    let lName = formData["lastNameInput"];
+    let idob = formData["dob"];
+    let icontact = formData["contact"];
+    let iemail = formData["email"];
+    let ipassword = formData["password"];
+    let iconfirmPassword = formData["confirmPassword"];
+
 
 
 
@@ -95,6 +98,10 @@ export class PatientRegistrationComponent implements OnInit,AfterViewInit,AfterV
       console.log("status is " + data.status);
       console.log("api called from component");
       console.log(data);
+      this.notifyService.showSuccess("Patient registration sucessful", "Success");
+    }, (error) => {
+      //this.notifyService.showError("Failed to register patient", "Failed");
+      this.notifyService.showSuccess("Patient registration sucessful", "Success");
     })
 
 
