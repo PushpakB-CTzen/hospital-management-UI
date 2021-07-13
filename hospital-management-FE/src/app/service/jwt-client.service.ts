@@ -7,11 +7,11 @@ import { Injectable } from '@angular/core';
 export default class JwtClientService {
 
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  public generateToken(request:any){
+  public generateToken(request: any) {
     console.log("In a jwt-client service");
-    return this.http.post("http://localhost:8080/authenticate",request,{responseType:'text' as 'json'});
+    return this.http.post("http://localhost:8088/authenticate", request, { responseType: 'text' as 'json' });
   }
 
   // public welcome(token:string){
