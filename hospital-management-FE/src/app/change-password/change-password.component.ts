@@ -22,11 +22,6 @@ export class ChangePasswordComponent implements OnInit {
     confirmPassword :string
   }
 
-  // changePasswordForm = new FormGroup({
-  //   oldpassword : new FormControl(''),
-  //   newpassword : new FormControl(''),
-  //   confirmpassword : new FormControl('')
-  // })
 
   constructor(private changePasswordService : ChangePasswordService,
     private notifyService : ToasterNotificationService) { }

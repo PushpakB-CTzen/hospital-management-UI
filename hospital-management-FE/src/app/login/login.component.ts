@@ -63,12 +63,12 @@ export class LoginComponent implements OnInit {
         }
        
       }, (error) => {
-        //this.showPassword = true;
-        // console.log(error);
         this.count = this.count + 1;
+        console.log(this.count);
         if(this.count >= 3){
-            this.notifyService.showError("3 attempts failed acoount has been blocked","Account Blocked !");
-            location.reload();
+            this.notifyService.showError("3 attempts failed account has been blocked","Account Blocked !");
+            //location.reload();
+            form.reset();
         }else {
           this.notifyService.showError("Unauthorised User","Error");
         }

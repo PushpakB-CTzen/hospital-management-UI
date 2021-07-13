@@ -11,7 +11,7 @@ export default class JwtClientService {
 
   public generateToken(request:any){
     console.log("In a jwt-client service");
-    return this.http.post("http://localhost:8080/authenticate",request,{responseType:'text' as 'json'});
+    return this.http.post("http://localhost:8088/authenticate",request,{responseType:'text' as 'json'});
   }
 
   // public welcome(token:string){
