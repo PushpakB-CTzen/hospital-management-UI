@@ -10,7 +10,7 @@ import { FooterComponent } from './footer/footer.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
-import { ChangePasswordComponent } from './login/change-password/change-password.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 import { PatientRegistrationComponent } from './patient/patient-registration/patient-registration.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
