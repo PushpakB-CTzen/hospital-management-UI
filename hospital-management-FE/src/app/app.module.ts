@@ -31,6 +31,8 @@ import { SentNoteComponent } from './note/sent-note/sent-note.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { AppoinementsComponent } from './appoinements/appoinements.component';
 import { HeaderInterceptor } from './interceptors/HeaderInterceptor';
+import { PatientDetailsComponent } from './patient/patient-details/patient-details.component';
+import { AllergyComponent } from './patient/patient-details/allergy/allergy.component';
 
 
 @NgModule({
@@ -51,7 +53,9 @@ import { HeaderInterceptor } from './interceptors/HeaderInterceptor';
     RecievedNoteComponent,
     SentNoteComponent,
     ForgetPasswordComponent,
-    AppoinementsComponent
+    AppoinementsComponent,
+    PatientDetailsComponent,
+    AllergyComponent
   ],
   imports: [
     FormsModule,

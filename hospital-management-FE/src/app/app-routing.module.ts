@@ -13,6 +13,7 @@ import { RecievedNoteComponent } from './note/recieved-note/recieved-note.compon
 import { SentNoteComponent } from './note/sent-note/sent-note.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { AppoinementsComponent } from './appoinements/appoinements.component';
+import { PatientDetailsComponent } from './patient/patient-details/patient-details.component';
 
 
 
@@ -29,8 +30,9 @@ const routes: Routes = [
 
   { path: 'inbox', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'forgetpassword', component: ForgetPasswordComponent },
-  { path: 'inbox/appointment', component: AppoinementsComponent }
-
+  { path: 'inbox/appointment', component: AppoinementsComponent },
+  { path: 'patient-details', component: PatientDetailsComponent }
+    
 
 ];
 
