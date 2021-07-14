@@ -2,6 +2,7 @@
    <div class="order-md-first">
       <app-sidebar></app-sidebar>
    </div>
+
    <div class="container">
       <form class="needs-validation" novalidate>
 
@@ -16,7 +17,7 @@
                   <div class="row g-3">
                      <div class="col-sm-2">
                         <label for="title" class="form-label">Title</label>
-                        <select class="form-select" id="titleid" required>
+                        <select class="form-select" id="titleid" [(ngModel)]="titleInput" name="titleInput" required>
                            <option selected>Mr</option>
                            <option>Mrs</option>
                            <option>Ms</option>
@@ -139,6 +140,7 @@
                         <label for="password" class="form-label">Password</label>
                         <input type="password" [(ngModel)]="password" #dpassword="ngModel" name="password" id="password"
                            class="form-control" placeholder="" value="" required minlength="8">
+
                         <div *ngIf="dpassword.invalid && (dpassword.dirty || dpassword.touched)">
                            <div *ngIf="dpassword.errors?.required" class="validation_error_red">
                               password is required.
@@ -158,6 +160,7 @@
                         <input type="password" class="form-control" [(ngModel)]="confirmPassword"
                            #confirmPassword1="ngModel" name="confirmPassword1" id="confirmPassword" placeholder=""
                            value="" required minlength="8">
+
 
                         <div *ngIf="confirmPassword !== password" class="validation_error_red">password not matching
                         </div>
@@ -179,10 +182,10 @@
                   </div>
 
 
-                  <button id="submitbutton" class="w-10 btn btn-primary btn-lg" type="button" (click)="onSave($event)"
-                     href="#myModal" data-toggle="modal">Submit</button>&nbsp;&nbsp;
-                  <button id="submitbutton" class="w-10 btn btn-primary btn-lg" type="button" routerLink="/inbox"
-                     data-toggle="modal">Inbox</button>
+                  <!--<button id="submitbutton" class="w-10 btn btn-primary btn-lg" type="button" (click)="onSave($event)"
+                     href="#myModal" data-toggle="modal">Submit</button>-->
+                  <button id="submitbutton" class="w-10 btn btn-primary btn-lg" type="button"
+                     (click)="onSave($event)">Submit</button>
                </form>
             </div>
          </div>

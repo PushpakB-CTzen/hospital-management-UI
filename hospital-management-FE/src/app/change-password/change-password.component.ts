@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms/';
+import { FormControl, FormGroup, NgForm } from '@angular/forms/';
+import { Router } from '@angular/router';
 import { error } from 'protractor';
 import { ChangePasswordService } from '../change-password.service';
 import { ToasterNotificationService } from '../toaster-notification.service';
@@ -21,15 +22,17 @@ export class ChangePasswordComponent implements OnInit {
     newPassword :string,
     confirmPassword :string
   }
-
+  showbutton : boolean = true;
+  showgobutton : boolean = false;
 
   constructor(private changePasswordService : ChangePasswordService,
-    private notifyService : ToasterNotificationService) { }
+    private notifyService : ToasterNotificationService,
+    private router:Router) { }
 
   ngOnInit(): void {
   }
 
-  onSave(oldpassword1:any,newpassword1:any,confirmpassword1:any){
+  onSave(oldpassword1:any,newpassword1:any,confirmpassword1:any,form: NgForm){
 
     this.ChangePasswordObj = {
       oldPassword: oldpassword1,
@@ -40,8 +43,11 @@ export class ChangePasswordComponent implements OnInit {
       this.changePasswordService.updatePassword(this.ChangePasswordObj).subscribe( data => {
           console.log(data);
           this.notifyService.showSuccess("Password is updated Successfully","Success!")
+          //this.showbutton = false;
+          //this.showgobutton = true;
+          form.reset();
           
-          
+   
         },
         error => {
           if(oldpassword1 == null && newpassword1 == null && confirmpassword1==null){
@@ -61,6 +67,11 @@ export class ChangePasswordComponent implements OnInit {
         
         
       )
+  }
+
+  logout() {
+    localStorage.removeItem("jwtToken");
+    this.router.navigate["/login"];
   }
 
  

@@ -9,20 +9,17 @@
         <!-- <app-sidebar></app-sidebar> -->
         
         </div>
-            <div class="col-md-3 col-lg-3 order-md-last">
-                <div class="form-signin">
-                    <form (ngSubmit)="onSubmit(credentials)" #credentials="ngForm">
-                        <h3 class="h3 mb-3 fw-normal">SIGN IN</h3>
-                            <div class="form-floating">
-                                    <label for="floatingInput">Email address</label>
-                                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
-                                name="email"
-                                ngModel
-                                required
-                                email
-                                #email="ngModel">
-                                <span class="validation_error_red" *ngIf="!email.valid && email.touched">Please enter valid email address!</span>
-                            </div><br>
+        <div class="col-md-3 col-lg-3 order-md-last">
+            <div class="form-signin">
+                <form (ngSubmit)="onSubmit(credentials)" #credentials="ngForm">
+                    <h3 class="h3 mb-3 fw-normal">SIGN IN</h3>
+                    <div class="form-floating">
+                        <label for="floatingInput">Email address</label>
+                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
+                            name="email" ngModel required email #email="ngModel">
+                        <span class="validation_error_red" *ngIf="!email.valid && email.touched">Please enter valid
+                            email address!</span>
+                    </div><br>
 
                             <div class="form-floating inner-addon right-addon">
                                 <label for="floatingPassword">Password</label>
@@ -54,19 +51,19 @@
                         <button class="w-10 btn btn-lg btn-primary" [disabled]="!credentials.valid" type="submit">Sign in</button>&nbsp;&nbsp;
                          <br>
                 </form>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-6">
+            <h1 class="display-4">Welcome To CT General Hospital!</h1>
+            <h6>
+                <img src="assets/images/patient.jpg" class="img-fluid" height="400px" width="400px">
+            </h6>
+
         </div>
     </div>
-    
-            <div class="col-md-6 col-lg-6">
-                <h1 class="display-4">Welcome To CT General Hospital!</h1>
-                <h6>
-                    <img src="assets/images/patient.jpg"  class="img-fluid" height="400px" width="400px">
-                </h6>
-            
-            </div>       
 </div>
-</div>
- <!--
+<!--
             <div class="col-md-8 col-lg-8">
                 <ng-template #empRegistration>  
                     <div>

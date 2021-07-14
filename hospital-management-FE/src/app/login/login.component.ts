@@ -35,15 +35,15 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit(form:NgForm){
+  onSubmit(form: NgForm) {
     console.log(form.value);
-    let resp=this.jwtService.generateToken(form.value);
+    let resp = this.jwtService.generateToken(form.value);
 
     resp.subscribe(
-      response=>{
-        if(response!='' && response != null){
+      response => {
+        if (response != '' && response != null) {
           console.log(response)
-          let jwtToken:string=JSON.stringify(response);
+          let jwtToken: string = JSON.stringify(response);
           console.log(response)
           this.tokendata = this.getDecodedAccessToken<tokenData>(jwtToken);
           this.isPasswordUpdate = this.tokendata.isUpdate;
@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
           
           
         }
-       
+
       }, (error) => {
         this.count = this.count + 1;
         console.log(this.count);
@@ -75,8 +75,8 @@ export class LoginComponent implements OnInit {
          
         // 
       },
-    
-      
+
+
     )
   }
 
