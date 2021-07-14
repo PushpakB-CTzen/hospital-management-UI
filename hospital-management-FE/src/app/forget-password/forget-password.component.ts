@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { error } from 'protractor';
 
 import { ForgetPasswordService } from '../forget-password.service';
@@ -23,7 +24,7 @@ export class ForgetPasswordComponent implements OnInit {
 
  
 
-  sendPassword(email:any){
+  sendPassword(email:any,form: NgForm){
     this.load = true;
     this.forgetPasswordService.getPassword(email).subscribe(
       data => {
@@ -32,6 +33,7 @@ export class ForgetPasswordComponent implements OnInit {
          this.load = false;
          this.showbutton = false;
          this.showgobutton = true;
+         form.reset();
       },error => {
         this.notifyService.showError("Email Sending Failed", "Error")
         //console.log(error);   
