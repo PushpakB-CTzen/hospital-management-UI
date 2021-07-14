@@ -12,15 +12,29 @@
     background-color: green;
 }
 
-.active_appointment {
-    background: #007bff;
-}
-
-/* div :hover{
+/* .active_appointment {
     background: #007bff;
 } */
 
+/* .active_appointment {
+    background: grey;
+} */
+
+.active_appointment {
+    background: rgb(105, 165, 218);
+}
+
 div.card :hover {
-    background: #007bff;
+    background: rgb(105, 165, 218);
     color: white;
 }
+
+/* div :hover{
+    rgb(105, 165, 218);
+    background: #007bff;
+} */
+
+/* div.card :hover {
+    background: grey;
+    color: white;
+} */
