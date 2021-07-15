@@ -43,11 +43,10 @@ export class ChangePasswordComponent implements OnInit {
       this.changePasswordService.updatePassword(this.ChangePasswordObj).subscribe( data => {
           console.log(data);
           this.notifyService.showSuccess("Password is updated Successfully","Success!")
-          //this.showbutton = false;
-          //this.showgobutton = true;
+          this.showbutton = false;
+          this.showgobutton = true;
           form.reset();
           
-   
         },
         error => {
           if(oldpassword1 == null && newpassword1 == null && confirmpassword1==null){
@@ -71,7 +70,7 @@ export class ChangePasswordComponent implements OnInit {
 
   logout() {
     localStorage.removeItem("jwtToken");
-    this.router.navigate["/login"];
+    this.router.navigate(["/login"]);
   }
 
  
