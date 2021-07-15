@@ -6,7 +6,7 @@ import { PatientRegistrationComponent } from './patient/patient-registration/pat
 import { RegistrationComponent } from './registration/registration.component';
 import { AuthGuard } from './guard/auth.guard';
 import { LoggedinAuthGuard } from './guard/loggedin-auth.guard';
-import { DashboardComponent } from './dashboard/dashboard.component';
+
 import { SendNoteComponent } from './note/send-note/send-note.component';
 import { RecievedNoteComponent } from './note/recieved-note/recieved-note.component';
 import { SentNoteComponent } from './note/sent-note/sent-note.component';
@@ -26,12 +26,11 @@ const routes: Routes = [
   { path: 'note/send', component: SendNoteComponent },
   { path: 'note/recieve', component: RecievedNoteComponent },
   { path: 'note/sent', component: SentNoteComponent },
-  {path:'changepassword',component:ChangePasswordComponent,canActivate:[AuthGuard]},
-  { path: 'inbox', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'changepassword', component: ChangePasswordComponent, canActivate: [AuthGuard] },
   { path: 'forgetpassword', component: ForgetPasswordComponent },
   { path: 'inbox/appointment', component: AppoinementsComponent },
   { path: 'patient-details', component: PatientDetailsComponent }
-    
+
 
 ];
 
