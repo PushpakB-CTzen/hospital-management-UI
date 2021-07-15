@@ -1,98 +1,65 @@
 <div class="container-fluid">
-  <div class="row">
-    <div class="order-md-first">
-      <app-sidebar></app-sidebar>
+    <div class="row">
+        <div class="order-md-first">
+            <app-sidebar></app-sidebar>
+        </div>
+        <div class="col center order-md-last ">
+
+    <h1>Sent Notes</h1>
+  
+  <table class="table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Reciever's Name</th>
+      <th>Designation</th>
+      <th>Notes</th>
+      <th>Urgency</th>
+      <th>Date</th>
+      <th>Response</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let sentNote of sentNotes">
+        <td>{{sentNote.toEmployee}}</td>
+        <td>{{sentNote.role}}</td>
+        <td>{{sentNote.message}}</td>
+        <td>{{sentNote.urgency}}</td>
+        <td>{{sentNote.dateTime | date : 'short'}}</td>
+        <td><button type="button" class="btn btn-primary btn-sm"(click)="onSelect(content,sentNote.id);">View</button>
+        <td><button type="button" class="btn btn-danger btn-sm" (click)="onDelete(sentNote.id)">Delete </button>
+        </td>
+    </tr>
+  </tbody>
+  </table>
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Note Response</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
-    <div class="col center order-md-last ">
-
-      <h1>Sent Notes</h1>
-
+    <div class="modal-body">
       <table class="table table-bordered table-striped table-hover">
         <thead>
-          <tr>
-            <th>Reciever's Name</th>
-            <th>Designation</th>
-            <th>Notes</th>
-            <th>Urgency</th>
+          <tr>      
             <th>Date</th>
-            <th>Delete</th>
-
+            <th>Response</th>    
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>XYZ</td>
-            <td>Doctor</td>
-            <td>Your Meetings has been fixed</td>
-            <td>Yes</td>
-            <td>23-05-21,Sun</td>
-
-
-            <td><button type="button" class="btn btn-danger btn-sm">Delete </button>
-            </td>
-          </tr>
-          <tr>
-            <td>ABC</td>
-            <td>Staff Nurse</td>
-            <td>Your Meetings has been fixed</td>
-            <td>Yes</td>
-            <td>21-05-21,Sat</td>
-
-            <td><button type="button" class="btn btn-danger btn-sm">Delete </button>
-            </td>
-          </tr>
-          <tr>
-            <td>AAC</td>
-            <td>Physician</td>
-            <td>Your appointment is there at 8:00 pm</td>
-            <td>No</td>
-            <td>20-05-21,Fri</td>
-
-
-            <td><button type="button" class="btn btn-danger btn-sm">Delete </button>
-            </td>
-          </tr>
-          <tr>
-            <td>MNO</td>
-            <td>Head Nurse</td>
-            <td>Your Appintment ID -2031 with Patient..</td>
-            <td>Yes</td>
-            <td>19-05-21,Thur</td>
-            <td><button type="button" class="btn btn-danger btn-sm">Delete </button>
-            </td>
-          </tr>
-          <tr>
-            <td>ABC</td>
-            <td>Staff Nurse</td>
-            <td>Your Meetings has been fixed</td>
-            <td>Yes</td>
-            <td>21-05-21,Sat</td>
-
-            <td><button type="button" class="btn btn-danger btn-sm">Delete </button>
-            </td>
-          </tr>
-          <tr>
-            <td>ABC</td>
-            <td>Staff Nurse</td>
-            <td>Your Meetings has been fixed</td>
-            <td>Yes</td>
-            <td>21-05-21,Sat</td>
-
-            <td><button type="button" class="btn btn-danger btn-sm">Delete </button>
-            </td>
-          </tr>
-          <tr>
-            <td>ABC</td>
-            <td>Staff Nurse</td>
-            <td>Your Meetings has been fixed</td>
-            <td>Yes</td>
-            <td>21-05-21,Sat</td>
-
-            <td><button type="button" class="btn btn-danger btn-sm">Delete </button>
-            </td>
+          <tr *ngFor="let noteRes of noteResponses">
+              <td>{{noteRes.responseDateTime | date : 'short' }}</td>
+              <td>{{noteRes.responseMessage }}</td>         
           </tr>
         </tbody>
-      </table>
+        </table>
     </div>
-  </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="modal.close('close')">Close</button>
+    </div>
+  </ng-template>
+  <ngb-pagination [collectionSize]="50" [(page)]="page"></ngb-pagination>
+</div>    
+</div>
 </div>

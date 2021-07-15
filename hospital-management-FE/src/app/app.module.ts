@@ -15,6 +15,7 @@ import { PatientRegistrationComponent } from './patient/patient-registration/pat
 import { RegistrationComponent } from './registration/registration.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AuthGuard } from './guard/auth.guard';
 
@@ -68,8 +69,9 @@ import { AllergyComponent } from './patient/patient-details/allergy/allergy.comp
       timeOut : 2000,
       progressBar : true,
       progressAnimation : 'increasing'
-    })
-   
+    }),
+    NgbModule
+
 
   ],
   providers: [{
