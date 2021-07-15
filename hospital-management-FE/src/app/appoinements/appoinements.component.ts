@@ -11,16 +11,22 @@ export class AppoinementsComponent implements OnInit {
 
   constructor(private apiService: RegistrationService) { }
 
-  weekklyAppointmentList :any;
+  weekklyAppointmentList: any;
 
   ngOnInit(): void {
     this.apiService.getWeeklyAppointments().subscribe(data => {
       console.log("status is " + data.status);
       console.log("weekly apointments api called");
+      for (var val of data) {
+        if (val["editHistory"] == null || val["editHistory"] == undefined) {
+          val["editHistory"] = "NA";
+        }
+      }
       this.weekklyAppointmentList = data;
-      console.log( this.weekklyAppointmentList);
-     
+      console.log(this.weekklyAppointmentList);
+
     })
   }
+
 
 }
