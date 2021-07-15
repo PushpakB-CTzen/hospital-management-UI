@@ -214,18 +214,21 @@
         <div class="col center order-md-last ">
             <div id="accordion" class="adjust_appointments_view">
 
-                <div class="card" *ngFor="let obj of weekklyAppointmentList">
-                    <div class="card-header active_appointment" id="headingOne">
+                <div class="card" *ngFor="let obj of weekklyAppointmentList; let i = index">
+                    <div class="card-header active_appointment"
+                        [ngStyle]="{'background-color': (i==0) ? ' #007bff' : 'rgb(105, 165, 218)'}" id="headingOne">
                         <h5 class="mb-0">
-                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
-                                aria-expanded="true" aria-controls="collapseOne">
+                            <button class="btn btn-link" data-toggle="collapse" [attr.data-target]="'#collapseOne'+i"
+                                aria-expanded="true" [attr.aria-controls]="'collapseOne'+i">
                                 <pre>{{obj.title}}                                                      {{obj.date}}</pre>
                             </button>
                         </h5>
                     </div>
 
-                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div [attr.id]="'collapseOne'+i" class="collapse show" aria-labelledby="headingOne"
+                        data-parent="#accordion">
                         <div class="card-body">
+
                             <b>Title : {{obj.title}} </b> <br>
                             <b>Description : {{obj.description}} </b><br>
                             <b>Physician : {{obj.physician}}</b><br>

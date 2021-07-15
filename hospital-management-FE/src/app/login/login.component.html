@@ -18,7 +18,9 @@
                             name="email" ngModel required email #email="ngModel">
                         <span class="validation_error_red" *ngIf="!email.valid && email.touched">Please enter valid
                             email address!</span>
-                    </div><br> 
+
+                    </div><br>
+
                             <div class="form-floating inner-addon right-addon">
                                 <label for="floatingPassword">Password</label>
                                     <input name="password" [type]="showPassword ? 'text' : 'password'"  class="form-control" id="floatingPassword" placeholder="Password"
