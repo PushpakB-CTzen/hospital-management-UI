@@ -6,22 +6,38 @@
          <form #f="ngForm">
             <div class="row g-3">
 
-               <div class="col-sm-4">
-              <label for="allergyId" class="form-label">Allergy Id</label>
-              <select class="form-select" id="allergyId"
-              
-              (input)="getAllergyDetailsByAllergyId($event)" 
-              [(ngModel)]="allergyIdInput" name="allergyIdInput" required>
 
-                <option>{{allergyIdInput}}</option>
-                <option  *ngFor="let id of allergyIds">{{id}}</option>
-                
-               
-              </select> 
-              <div class="invalid-feedback">
-                 Please select a valid Title
-              </div>
-          </div>
+
+               <div class="col-sm-4">
+                  <label for="allergyType" class="form-label">Allergy Type</label>
+                  <select
+                  (input)="getAllergyDetailsByAllergyType($event)"
+                  
+                  class="form-select" id="allergyType" [(ngModel)]="allergy.allergyTypeInput"
+                  
+                     name="allergyTypeInput" required>
+
+                     <!-- <option>{{allergyTypeInput}}</option> -->
+                    
+               <!-- <option>---------</option> -->
+               <option>Animal</option>
+                <option>Bacteria Airway</option> 
+                <option>Bacteria Skin</option> 
+                <option>Contact</option>
+                <option>Drug</option>
+                <option>Food </option> 
+                <option>Fungi</option>
+                <option>Insect</option>
+                <option>Mite</option>
+                <option>Parasite</option>
+                <option>Plant</option>
+                <option>Vaccine</option>    
+                <option>Venom or Salivary</option>
+                <option>Others</option> 
+                  </select>
+               </div>
+
+      
 
 
                <!-- <div class="col-sm-4">
@@ -64,8 +80,6 @@
                      
                      <option *ngFor="let name of allergyNames">{{name}}</option>
                      
-
-
                   </select>
                   <div class="invalid-feedback">
                      Please select a valid Title
@@ -73,36 +87,34 @@
                </div>
 
               
-             
-
                <div class="col-sm-4">
-                  <label for="allergyType" class="form-label">Allergy Type</label>
-                  <select
-                  (input)="getAllergyDetailsByAllergyType($event)"
+                  <label for="allergyId" class="form-label">Allergy Id</label>
+                  <select class="form-select" id="allergyId"
                   
-                  class="form-select" id="allergyType" [(ngModel)]="allergy.allergyTypeInput"
-                  
-                     name="allergyTypeInput" required>
-
-                     <option>{{allergyTypeInput}}</option>
+                  (input)="getAllergyDetailsByAllergyId($event)" 
+                  [(ngModel)]="allergyIdInput" name="allergyIdInput" required>
+    
+                    <option>{{allergyIdInput}}</option>
+                    <option  *ngFor="let id of allergyIds">{{id}}</option>
                     
-               <option>---------</option>
-               <option>Animal</option>
-                <option>Bacteria Airway</option> 
-                <option>Bacteria Skin</option> 
-                <option>Contact</option>
-                <option>Drug</option>
-                <option>Food </option> 
-                <option>Fungi</option>
-                <option>Insect</option>
-                <option>Mite</option>
-                <option>Parasite</option>
-                <option>Plant</option>
-                <option>Vaccine</option>    
-                <option>Venom or Salivary</option>
-                <option>Others</option> 
-                  </select>
-               </div>
+                   
+                  </select> 
+                  <div class="invalid-feedback">
+                     Please select a valid Title
+                  </div>
+              </div>
+
+
+
+
+
+
+
+               
+
+
+
+
                <div class="col-sm-12">
                   <label for="Allergy Description" class="form-label">Allergy Description</label>
                   <textarea rows="3" cols="100" id="allergyDescriptionInput" class="form-control"

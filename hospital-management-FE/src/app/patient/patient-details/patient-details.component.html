@@ -185,7 +185,7 @@
                            <div class="col-6" style="margin-top: 5px;">
                               <label for="emails" class="form-label">Email Id</label>
                               <input type="emails" [(ngModel)]="emails" #demail="ngModel"
-                                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="emails" id="emails" class="form-control"
+                                 pattern="[(A-Z)(a-z)0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="emails" id="emails" class="form-control"
                                  placeholder="" required email>
          
                               <div *ngIf="demail.invalid && (demail.dirty || demail.touched)">
@@ -304,7 +304,7 @@
                                  <div class="col-12" style="margin-top: 5px;">
                                     <label for="emergEmail" class="form-label">Email Id</label>
                                     <input type="emergEmail" [(ngModel)]="emergEmail" #email="ngModel"
-                                       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="emergEmail" id="emergEmail" class="form-control"
+                                       pattern="[(A-Z)(a-z)0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="emergEmail" id="emergEmail" class="form-control"
                                        placeholder="" required email>
 
                                     <div *ngIf="email.invalid && (email.dirty || email.touched)">
