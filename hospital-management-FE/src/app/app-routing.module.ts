@@ -14,7 +14,7 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { AppoinementsComponent } from './appoinements/appoinements.component';
 import { PatientDetailsComponent } from './patient/patient-details/patient-details.component';
-
+import { PhysianAppointmentComponent } from './physician-appointment/physician-appointment.component';
 
 
 const routes: Routes = [
@@ -29,8 +29,8 @@ const routes: Routes = [
   { path: 'changepassword', component: ChangePasswordComponent, canActivate: [AuthGuard] },
   { path: 'forgetpassword', component: ForgetPasswordComponent },
   { path: 'inbox/appointment', component: AppoinementsComponent },
-  { path: 'patient-details', component: PatientDetailsComponent }
-
+  { path: 'patient-details', component: PatientDetailsComponent },
+  {path:'appointment/add',component:PhysianAppointmentComponent}
 
 ];
 

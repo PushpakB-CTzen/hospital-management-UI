@@ -35,7 +35,7 @@ import { HeaderInterceptor } from './interceptors/HeaderInterceptor';
 import { PatientDetailsComponent } from './patient/patient-details/patient-details.component';
 import { AllergyComponent } from './patient/patient-details/allergy/allergy.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
-
+import { PhysianAppointmentComponent } from './physician-appointment/physician-appointment.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +57,8 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
     ForgetPasswordComponent,
     AppoinementsComponent,
     PatientDetailsComponent,
-    AllergyComponent
+    AllergyComponent,
+    PhysianAppointmentComponent
   ],
   imports: [
     FormsModule,
