@@ -24,10 +24,12 @@
     background: rgb(105, 165, 218);
 }
 
-div.card :hover {
-    background: rgb(105, 165, 218);
+/* div.card :hover {
+    background: rgb(235, 233, 224);
     color: white;
-}
+} */
+
+
 
 /* div :hover{
     rgb(105, 165, 218);
