@@ -1,5 +1,10 @@
    <!-- <app-header></app-header> -->
-   <div class="container">
+   <div class="container-fluid">
+      <div class="row">
+      <div class="order-md-first">
+         <app-sidebar></app-sidebar>
+     </div>
+     <div class="col center order-md-last">
       <form class="needs-validation" novalidate>
          <div class="py-5 text-center">
             <h1>Patient Details Screen</h1><br>
@@ -24,7 +29,7 @@
                            </div>
 
                            <div class="col-sm-5">
-                              <label for="firstName" class="form-label">First name</label>
+                              <label for="firstName" class="form-label">First name <span>*</span></label>
                               <input type="text" class="form-control " #name="ngModel" name="firstName"
                                  [(ngModel)]="firstName" placeholder="" value="" minlength="2" id="firstName" required>
          
@@ -394,6 +399,8 @@
                href="#myModal" data-toggle="modal">Submit</button>
             </form>   
       </form>
+     </div>
+   </div>
       </div>
 
       <br>

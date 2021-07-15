@@ -14,12 +14,12 @@ export class ForgetPasswordComponent implements OnInit {
   email :string ='';
   message :string = '';
   load : boolean = false;
-  showbutton : boolean = true;
+  showbutton : boolean = true;  
   showgobutton : boolean = false;
   constructor(private forgetPasswordService : ForgetPasswordService,
     private notifyService : ToasterNotificationService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
   }
 
  
