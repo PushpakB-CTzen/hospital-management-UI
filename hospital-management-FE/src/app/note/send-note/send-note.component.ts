@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms/';
 import { ApicallService } from 'src/app/apicall.service';
 import { Profile } from 'src/app/models/profile-model';
+import { ToasterNotificationService } from 'src/app/toaster-notification.service';
 import { Note } from '../note-model';
 
 @Component({
@@ -19,13 +20,10 @@ export class SendNoteComponent implements OnInit {
   role:string='';
   note:Note;
   noteForm:any;
-  constructor(private apiService:ApicallService) { }
+  constructor(private apiService:ApicallService,private notifyService : ToasterNotificationService) { }
 
   ngOnInit(): void {
-    //this.getNameAndDesignation(this.searchName);
-    //this.onSelect();
-    //this.selectedProfile.role="";
-  }
+   }
 
   getNameAndDesignation(name:string){   
     this.apiService.getAllEmployeeByName(name).subscribe(
@@ -37,8 +35,8 @@ export class SendNoteComponent implements OnInit {
               }​​​​);
   }
 
-  onSelect(name){
-    this.selectedProfile=this.profiles.find(e=>e.firstName===name.target.value);
+  onSelect(event){
+    this.selectedProfile=this.profiles.find(e=>e.firstName===event.target.value);
     this.role=this.selectedProfile?.role!;
   }
 
@@ -51,16 +49,17 @@ export class SendNoteComponent implements OnInit {
 
 onSubmit(sendNote:NgForm){
   console.log(sendNote.value);
-  console.log(sendNote.value.message);
+  console.log(this.selectedProfile?.id);
   this.note=new Note(this.selectedProfile?.id!,sendNote.value.message,sendNote.value.urgency,this.role)
  console.log(this.note)
  this.apiService.sendNote(this.note).subscribe(
     data => {​​​​ 
-            console.log(data)
-            alert("Note Send successfully!!");
-        }​​​​,  
+          this.notifyService.showSuccess(data,"Send Note");
+          //location.reload();
+        }​​​​,  
     error => {​​​​
-            alert("error has occured while sending note!!");
+            this.notifyService.showError(error,"Send Note");
+            location.reload();
         }​​​​
  )
   
