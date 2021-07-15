@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem("jwtToken",jwtToken);
           if(this.role == "D" || this.role == "N"){
             if(this.isPasswordUpdate){
-              this.router.navigate(["/employee"])
+              this.router.navigate(["/inbox/appointment"])
             }else {
               this.router.navigate(["/changepassword"])
             }

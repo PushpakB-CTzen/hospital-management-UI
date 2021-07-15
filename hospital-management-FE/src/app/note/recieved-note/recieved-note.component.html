@@ -5,118 +5,57 @@
         </div>
         <div class="col center order-md-last ">
 
-            <h1> Notes Recieved</h1>
+            <h1> Notes Received</h1>
             <table class="table table-bordered table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th>Sender's Name</th>
-                        <th>Designation</th>
-                        <th>Notes</th>
-                        <th>Urgency</th>
-                        <th>Date</th>
-                        <th>Reply</th>
-                        <th>Delete</th>
+            <thead>
+                <tr>
+                <th>Sender's Name</th>
+                <th>Designation</th>
+                <th>Notes</th>
+                <th>Urgency</th>
+                <th>Date</th>
+                <th>Reply</th>
+                <th>Delete</th>
 
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>XYZ</td>
-                        <td>Doctor</td>
-                        <td>Your Meetings has been fixed</td>
-                        <td>Yes</td>
-                        <td>23-05-21,Sun</td>
-
-                        <td><button type="button" class="btn btn-primary btn-sm">Reply</button>
-                        </td>
-                        <td><button type="button" class="btn btn-danger btn-sm">Delete </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>ABC</td>
-                        <td>Staff Nurse</td>
-                        <td>Your Meetings has been fixed</td>
-                        <td>Yes</td>
-                        <td>21-05-21,Sat</td>
-                        <td><button type="button" class="btn btn-primary btn-sm">Reply</button>
-                        </td>
-                        <td><button type="button" class="btn btn-danger btn-sm">Delete </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>AAC</td>
-                        <td>Physician</td>
-                        <td>Your appointment is there at 8:00 pm</td>
-                        <td>No</td>
-                        <td>20-05-21,Fri</td>
-
-                        <td><button type="button" class="btn btn-primary btn-sm">Reply</button>
-                        </td>
-                        <td><button type="button" class="btn btn-danger btn-sm">Delete </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>MNO</td>
-                        <td>Head Nurse</td>
-                        <td>Your Appintment ID -2031 with Patient..</td>
-                        <td>Yes</td>
-                        <td>19-05-21,Thur</td>
-
-                        <td><button type="button" class="btn btn-primary btn-sm">Reply</button>
-                        </td>
-                        <td><button type="button" class="btn btn-danger btn-sm">Delete </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>MNO</td>
-                        <td>Head Nurse</td>
-                        <td>Your Appintment ID -2031 with Patient..</td>
-                        <td>Yes</td>
-                        <td>19-05-21,Thur</td>
-
-                        <td><button type="button" class="btn btn-primary btn-sm">Reply</button>
-                        </td>
-                        <td><button type="button" class="btn btn-danger btn-sm">Delete </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>MNO</td>
-                        <td>Head Nurse</td>
-                        <td>Your Appintment ID -2031 with Patient..</td>
-                        <td>NO</td>
-                        <td>19-05-21,Thur</td>
-
-                        <td><button type="button" class="btn btn-primary btn-sm">Reply</button>
-                        </td>
-                        <td><button type="button" class="btn btn-danger btn-sm">Delete </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>MNO</td>
-                        <td>Head Nurse</td>
-                        <td>Your Appintment ID -2031 with Patient..</td>
-                        <td>Yes</td>
-                        <td>19-05-21,Thur</td>
-
-                        <td><button type="button" class="btn btn-primary btn-sm">Reply</button>
-                        </td>
-                        <td><button type="button" class="btn btn-danger btn-sm">Delete </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>MNO</td>
-                        <td>Head Nurse</td>
-                        <td>Your Appintment ID -2031 with Patient..</td>
-                        <td>No</td>
-                        <td>19-05-21,Thur</td>
-
-                        <td><button type="button" class="btn btn-primary btn-sm">Reply</button>
-                        </td>
-                        <td><button type="button" class="btn btn-danger btn-sm">Delete </button>
-                        </td>
-                    </tr>
-                </tbody>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let recievedNote of recievedNotes">
+                <td>{{recievedNote.fromEmployee}}</td>
+                <td>{{recievedNote.role}}</td>
+                <td>{{recievedNote.message}}</td>
+                <td>{{recievedNote.urgency}}</td>
+                <td>{{recievedNote.dateTime | date : 'short'}}</td>    
+                <td><button type="button" class="btn btn-primary btn-sm" (click)="openContent(content);onSelect(recievedNote.id)" >Reply</button>
+                </td>
+                <td><button type="button" class="btn btn-danger btn-sm" (click)="onDelete(recievedNote.id)">Delete </button>
+                </td>
+                </tr>
+                        
+            </tbody>
             </table>
-        </div>
+            <ng-template #content let-modal>
+                <div class="modal-header">
+                  <h4 class="modal-title" id="modal-basic-title">Note Response</h4>
+                  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form (ngSubmit)="onSubmit(note)" #note="ngForm">
+                    <div class="form-group">
+                        <label name="message" for="message">Message</label>
+                        <textarea name="message" ngModel id="message"class="form-control" rows="5"></textarea>
+                        <!-- <span class="validation_error_red" *ngIf="!message.valid && message.touched">Please enter a message</span> -->  
+                    </div> 
+                    <button type="submit"  class="btn btn-info">Send</button>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" (click)="modal.close('close')">Close</button>
+                </div>
+              </ng-template>
+              <ngb-pagination [collectionSize]="50" [(page)]="page"></ngb-pagination>
+        </div>    
     </div>
 </div>

@@ -15,6 +15,7 @@ import { PatientRegistrationComponent } from './patient/patient-registration/pat
 import { RegistrationComponent } from './registration/registration.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AuthGuard } from './guard/auth.guard';
 
@@ -28,11 +29,12 @@ import { RecievedNoteComponent } from './note/recieved-note/recieved-note.compon
 import { SentNoteComponent } from './note/sent-note/sent-note.component';
 
 
-import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+
 import { AppoinementsComponent } from './appoinements/appoinements.component';
 import { HeaderInterceptor } from './interceptors/HeaderInterceptor';
 import { PatientDetailsComponent } from './patient/patient-details/patient-details.component';
 import { AllergyComponent } from './patient/patient-details/allergy/allergy.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 
 
 @NgModule({
@@ -68,8 +70,9 @@ import { AllergyComponent } from './patient/patient-details/allergy/allergy.comp
       timeOut : 2000,
       progressBar : true,
       progressAnimation : 'increasing'
-    })
-   
+    }),
+    NgbModule
+
 
   ],
   providers: [{
