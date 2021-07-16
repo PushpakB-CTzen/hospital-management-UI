@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EmpRegistrationService } from '../emp-registration.service';
+import { ToasterNotificationService } from '../toaster-notification.service';
 
 @Component({
   selector: 'app-registration',
@@ -8,7 +9,7 @@ import { EmpRegistrationService } from '../emp-registration.service';
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor(private registrationService: EmpRegistrationService) {
+  constructor(private registrationService: EmpRegistrationService,private toaster:ToasterNotificationService) {
     console.log(this.maxDate);
   }
 
@@ -66,9 +67,7 @@ export class RegistrationComponent implements OnInit {
     console.log("Employee Object :: " + JSON.stringify(empObj));
 
     this.registrationService.registerPatient(empObj).subscribe(data => {
-      //alert("sign up successful");
-      console.log("api called from component");
-      console.log(data);
+     this.toaster.showSuccess("Employee Registration Successful","success");  
     })
   }
 
