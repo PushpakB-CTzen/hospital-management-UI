@@ -29,13 +29,14 @@ export class ForgetPasswordComponent implements OnInit {
     this.forgetPasswordService.getPassword(email).subscribe(
       data => {
          this.message = data;
-         this.notifyService.showSuccess(this.message, "Done!")
+         this.notifyService.showSuccess("your password has been sent to your mail", "Done!")
          this.load = false;
          this.showbutton = false;
          this.showgobutton = true;
          form.reset();
       },error => {
         this.notifyService.showError("Email Sending Failed", "Error")
+        this.load = false;
         //console.log(error);   
       } )
   }
