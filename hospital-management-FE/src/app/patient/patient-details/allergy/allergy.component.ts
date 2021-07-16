@@ -62,7 +62,7 @@ export class AllergyComponent implements OnInit, AfterViewInit, AfterViewChecked
     this.apiservice.getAllergyDetailsById(inputValue).subscribe(data => {
       let tempData = JSON.parse(data)[0];
       console.log("tempdata"+tempData);
-      this.allergyTypeInput = tempData["allergyType"];
+     // this.allergyTypeInput = tempData["allergyType"];
       this.allergyNameInput = tempData["allergyName"];
       this.allergyClinicalInfoInput = tempData["allergenSource"];
       console.log("allergyNameInput"+this.allergyNameInput);
