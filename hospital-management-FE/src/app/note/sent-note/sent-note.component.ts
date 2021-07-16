@@ -16,6 +16,7 @@ export class SentNoteComponent implements OnInit {
   page=1;
   selectedNoteId: any;
   noteResponses:NoteResponse[];
+  collectionSize:number=0;
   constructor( private apiService:ApicallService,config: NgbPaginationConfig,private modalService: NgbModal,private notifyService : ToasterNotificationService) {
     config.size = 'sm';
     config.boundaryLinks = true;
@@ -25,6 +26,7 @@ export class SentNoteComponent implements OnInit {
     this.apiService.getAllNotes().subscribe(
       data=>{
         this.sentNotes=data;
+        this.collectionSize=this.sentNotes.length;
       },
       error=>{console.error("Sent Note Error"+error)}
     );

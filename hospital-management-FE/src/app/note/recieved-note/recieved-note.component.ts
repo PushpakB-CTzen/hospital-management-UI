@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbModal,ModalDismissReasons, NgbPaginationConfig } from '@ng-bootstrap/ng-bootstrap';
+import { findIndex } from 'rxjs/operators';
 import { ApicallService } from 'src/app/apicall.service';
 import { SentNote } from 'src/app/models/sentNote-model';
 import { ToasterNotificationService } from 'src/app/toaster-notification.service';
@@ -18,6 +19,7 @@ export class RecievedNoteComponent implements OnInit {
   recievedNotes:SentNote[];
   page=1;
   selectedNoteId;
+  collectionSize:number=0;
   constructor(private modalService: NgbModal,private apiService:ApicallService,config: NgbPaginationConfig,
     private notifyService : ToasterNotificationService, private router:Router) {
     config.size = 'sm';
@@ -28,6 +30,9 @@ export class RecievedNoteComponent implements OnInit {
     this.apiService.getAllRecievedNotes(this.page-1).subscribe(
       data=>{
         this.recievedNotes=data;
+        //this.collectionSize=this.recievedNotes.
+         // let first=this.recievedNotes.find(e=>true);
+          this.collectionSize=this.recievedNotes.length;
       },
       error=>{console.error("Sent Note Error"+error)}
     );
