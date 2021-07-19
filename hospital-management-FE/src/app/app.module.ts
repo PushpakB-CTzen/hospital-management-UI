@@ -58,7 +58,9 @@ import { PhysianAppointmentComponent } from './physician-appointment/physician-a
     AppoinementsComponent,
     PatientDetailsComponent,
     AllergyComponent,
-    PhysianAppointmentComponent
+    PhysianAppointmentComponent,
+  
+    
   ],
   imports: [
     FormsModule,

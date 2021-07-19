@@ -32,7 +32,11 @@ export class RecievedNoteComponent implements OnInit {
         this.recievedNotes=data;
         //this.collectionSize=this.recievedNotes.
          // let first=this.recievedNotes.find(e=>true);
-          this.collectionSize=this.recievedNotes.length;
+         let a=this.recievedNotes.find(e=>true)?.collectionSize;
+         if(a!=undefined){
+          this.collectionSize=a;
+         }
+          
       },
       error=>{console.error("Sent Note Error"+error)}
     );
@@ -96,5 +100,10 @@ export class RecievedNoteComponent implements OnInit {
       },
       error=>{console.error("Sent Note Error"+error)}
     );
+  }
+
+  nextPage(currentPage){
+    this.page=currentPage;
+    this.ngOnInit();
   }
 }

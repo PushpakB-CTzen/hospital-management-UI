@@ -52,12 +52,13 @@ export class ApicallService {
     const headers=new HttpHeaders().set("Authorization",tokenStr)
     return this.httpClient.post<string>("http://localhost:8081/note/send-note-response/"+id,noteReq,{headers,responseType:'text' as 'json'});
   }
-  getAllNotes():Observable<SentNote[]>{
+  getAllNotes(page):Observable<SentNote[]>{
     let token = localStorage.getItem("jwtToken");
     let tokenStr='Bearer '+token;
     console.log(tokenStr)
     const headers=new HttpHeaders().set("Authorization",tokenStr)
-    return this.httpClient.get<SentNote[]>("http://localhost:8081/note/sent-note",{headers})
+    const params=new HttpParams().set("page",page);
+    return this.httpClient.get<SentNote[]>("http://localhost:8081/note/sent-note",{headers,params})
                     .pipe(
                       map((data:SentNote[])=>{
                         return data.map((item)=>this.sentAdapter.adapt(item));
