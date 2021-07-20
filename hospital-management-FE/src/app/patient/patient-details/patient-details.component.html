@@ -62,13 +62,42 @@
                                  </div>
                               </div>
                            </div>
-            
-                           <div class="col-12" style="margin-top: 10px;">
+
+                           <div class="col-6">
+                              <label for="emails" class="form-label">Email Id</label>
+                              <input type="emails" [(ngModel)]="emails" #demail="ngModel"
+                                 pattern="[(A-Z)(a-z)0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="emails" id="emails" 
+                                 (change)="changePatientInfo($event)"
+                                 class="form-control"
+                                 placeholder="" required email>
+         
+                              <div *ngIf="demail.invalid && (demail.dirty || demail.touched)">
+                                 <div *ngIf="demail.errors?.required" class="validation_error_red">
+                                    email is required.
+                                 </div>
+                                 <div *ngIf="demail.errors?.minlength" class="validation_error_red">
+                                    email length small
+                                 </div>
+                                 <div *ngIf="demail.errors?.pattern" class="validation_error_red">
+                                    not a valid email
+                                 </div>
+                                 <div *ngIf="demail.errors?.forbiddenName">
+                                    Name cannot be Bob.
+                                 </div>
+                              </div>
+                           </div>
+
+<!-- 
+                           (change)=" ageCalculator()" -->
+                           <div class="col-6">
                               <label for="dateOfBirth" class="form-label">Date of Birth </label>
                                  <div class="input-group date" data-provide="datepicker">
-                                    <input type="date" [max]="maxDate" (change)="dateChange($event.target)" [(ngModel)]="dateOfBirth"
-                                       #ddate="ngModel" name="dateOfBirth" id="dateOfBirth" class="form-control" required date>
-            
+                                    <input type="date" [max]="maxDate"
+                               
+                                    (change)="dateChange($event.target)" [(ngModel)]="dateOfBirth"
+                                       #ddate="ngModel" name="dateOfBirth" id="dateOfBirth" 
+                                       class="form-control" required date>
+                                       
                                        <div *ngIf="ddate.invalid && (ddate.dirty || ddate.touched)">
                                              <div *ngIf="ddate.errors?.required" style="color: red;">
                                                 enter valid date
@@ -181,28 +210,25 @@
                               </div>
                            </div>
                   
-
-                           <div class="col-6" style="margin-top: 5px;">
-                              <label for="emails" class="form-label">Email Id</label>
-                              <input type="emails" [(ngModel)]="emails" #demail="ngModel"
-                                 pattern="[(A-Z)(a-z)0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="emails" id="emails" class="form-control"
-                                 placeholder="" required email>
+                           <!-- <div class="col-sm-6">
+                              <label for="age" class="form-label">Age</label>
+                              <input type="text" class="form-control " id="age" #dage="ngModel" name="age"
+                                 [(ngModel)]="age" placeholder="" value="" required minlength="2">
          
-                              <div *ngIf="demail.invalid && (demail.dirty || demail.touched)">
-                                 <div *ngIf="demail.errors?.required" class="validation_error_red">
-                                    email is required.
+                              <div *ngIf="dage.invalid && (dage.dirty || dage.touched)">
+                                 <div *ngIf="dage.errors?.required" class="validation_error_red">
+                                    age is required.
                                  </div>
-                                 <div *ngIf="demail.errors?.minlength" class="validation_error_red">
-                                    email length small
+                                 <div *ngIf="dage.errors?.minlength" class="validation_error_red">
+                                    Atleast 2 characters
                                  </div>
-                                 <div *ngIf="demail.errors?.pattern" class="validation_error_red">
-                                    not a valid email
-                                 </div>
-                                 <div *ngIf="demail.errors?.forbiddenName">
+                                 <div *ngIf="dage.errors?.forbiddenName">
                                     Name cannot be Bob.
                                  </div>
                               </div>
-                           </div>
+                           </div> -->
+
+                          
 
                            <div class="col-sm-12">
                               <label for="Home Address create_gap" class="form-label">Home Address</label>

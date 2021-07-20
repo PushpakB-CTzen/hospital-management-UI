@@ -1,3 +1,4 @@
+import { temporaryDeclaration } from '@angular/compiler/src/compiler_util/expression_converter';
 import { AfterViewChecked, EventEmitter, Input, Output } from '@angular/core';
 import { ElementRef } from '@angular/core';
 import { ViewChild } from '@angular/core';
@@ -5,6 +6,7 @@ import { AfterViewInit } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 
 import { NgForm } from '@angular/forms/';
+import { empty } from 'rxjs';
 import { Allergy } from 'src/app/allergy';
 import { PatientDetailsService } from '../patient-details.service';
 
@@ -63,7 +65,7 @@ export class AllergyComponent implements OnInit, AfterViewInit, AfterViewChecked
       let tempData = JSON.parse(data)[0];
       console.log("tempdata"+tempData);
      // this.allergyTypeInput = tempData["allergyType"];
-      this.allergyNameInput = tempData["allergyName"];
+    //  this.allergyNameInput = tempData["allergyName"];
       this.allergyClinicalInfoInput = tempData["allergenSource"];
       console.log("allergyNameInput"+this.allergyNameInput);
       console.log("allergyType" + tempData["allergyType"]);
@@ -76,32 +78,37 @@ export class AllergyComponent implements OnInit, AfterViewInit, AfterViewChecked
     console.log("inputValue is " + inputValue);
    
     this.apiservice.getAllergyDetailsByType(inputValue).subscribe(data => {
-    //  let tempData = JSON.parse(data)[0];
+     //let tempData = JSON.parse(data)[0];
 
-      let tempData: any[] = JSON.parse(data);
+     let tempData: any[] = JSON.parse(data);
        tempData.forEach( (value) => {
+      
+        if (this.allergyIdInput==null || this.allergyIdInput!=null ){
+
+      //  this.allergyNameInput= value.allergyName;
+       // this.allergyIdInput = value.allergyId;
         
-       
-        if (this.allergyIdInput==null || this.allergyIdInput!=null){
-
-        this.allergyNameInput= value.allergyName;
-        this.allergyIdInput = value.allergyId;
-        this.allergyNames?.push(this.allergyNameInput);
+        
+        this.allergyNames?.push(value.allergyName);
+         this.allergyNames = this.allergyNames.filter((element, i) => i === this.allergyNames.indexOf(element))
+      
+        
         console.log(value);
-
-        }
-
+      
+              }
+   
       }); 
-
-      this.allergyNames = this.allergyNames.filter((element, i) => i === this.allergyNames.indexOf(element))
-
+     
+     
+     
       console.log(this.allergyNames);
       console.log("===============");
       
       console.log("tempdata"+tempData);
-   
+    
+  
     });
-
+    this.allergyNames.length=0;
   }
 
 
@@ -119,45 +126,25 @@ export class AllergyComponent implements OnInit, AfterViewInit, AfterViewChecked
           if (this.allergyIdInput==null || this.allergyIdInput!=null){
   
         //  this.allergyNameInput= value.allergyName;
-          this.allergyIdInput = value;
-          this.allergyIds?.push(this.allergyIdInput);
+        //  this.allergyIdInput = value;
+          
+          this.allergyIds?.push(value);
          
+          this.allergyIds = this.allergyIds.filter((element, i) => i === this.allergyIds.indexOf(element))
           
           console.log(value);
   
           }
-  
+          
+        //  tempData.length=0;
         }); 
-  
+       
      console.log(this.allergyIds);
       });
-
+      this.allergyIds.length=0;
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
   onSave(event) {
-
 
     let formData = this.userFrm.value;
     let iallergyIdInput = formData["allergyIdInput"];

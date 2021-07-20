@@ -1,6 +1,7 @@
 import { AfterViewChecked, AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm, FormsModule } from '@angular/forms';
 import { Allergy } from 'src/app/allergy';
+import { AppointmentService } from 'src/app/physician-appointment/appointment.service';
 import { ToasterNotificationService } from 'src/app/toaster-notification.service';
 import {PatientDetailsService } from './patient-details.service';
 @Component({
@@ -10,7 +11,7 @@ import {PatientDetailsService } from './patient-details.service';
 })
 export class PatientDetailsComponent implements OnInit, AfterViewInit, AfterViewChecked  {
 
-  constructor(private patientDetailsService: PatientDetailsService,private notifyService: ToasterNotificationService) { 
+  constructor(private patientDetailsService: PatientDetailsService,private apiService:AppointmentService,private notifyService: ToasterNotificationService) { 
     console.log(this.maxDate)
   }
 
@@ -37,6 +38,7 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, AfterView
   dateOfBirth:any;
   role:any;
   gender:any;
+  age:any;
   race:any;
   ethniCity:any;
   languagesKnown:any;
@@ -74,6 +76,34 @@ console.log(this.allergies);
 
 
 
+  changePatientInfo(event){
+    let inputValue: any = (event.target as HTMLInputElement).value;
+    console.log("inputValue is " + inputValue);
+    this.apiService.getPatientByEmail(inputValue).subscribe(
+              data2 => {​​​​ 
+                 
+                  let tempData = JSON.parse(data2)[0];
+                  console.log("tempdata"+tempData);
+
+                  this.titleInput = tempData["title"];
+                  this.firstName = tempData["firstName"];
+                  this.lastName = tempData["lastName"];
+                
+                  this.gender = tempData["gender"];
+                  this.dateOfBirth = tempData["dateOfBirth"];
+                  this.contactNo = tempData["contactNo"];
+            
+
+                }​​​​,  
+              error => {​​​​
+                  console.log('Error: ', error);
+              }​​​​); 
+      
+  }
+
+
+
+
   // allergyIdInput:any;
   // allergyNameInput:any;
   // allergyTypeInput:any;
@@ -99,6 +129,7 @@ console.log(this.allergies);
 
   
   dateChange(event) {
+   
     console.log(event);
   }
 
@@ -106,6 +137,21 @@ console.log(this.allergies);
     window.location.reload();
   }
 
+  ageCalculator() {
+    console.log('inside age')
+  
+   // let today = new Date().toISOString().slice(0, 10)
+    const convertAge = new Date(this.dateOfBirth);
+    console.log(Date.now());
+    
+    console.log("hi");
+    
+    console.log(convertAge);
+    
+    this.dateOfBirth =convertAge;
+    const timeDiff = Math.abs(Date.now() - convertAge.getTime());
+    this.age = Math.floor((timeDiff / (1000 * 3600 * 24)) / 365);
+    }
   
   
   onSave(event) {
@@ -116,6 +162,7 @@ console.log(this.allergies);
   let iFName=formData["firstName"];
   let iLName=formData["lastName"];
   let idob=formData["dateOfBirth"];
+  let iage=formData["age"];
   let igender=formData["gender"];
   let icontact=formData["contactNo"];
   let irace=formData["race"];
@@ -146,6 +193,7 @@ console.log(this.allergies);
     firstName: iFName,
     lastName:iLName,
     dateOfBirth:idob,
+    age:iage,
     gender:igender,
     contactNo:icontact,
     race:irace,
