@@ -55,7 +55,7 @@
                   <button type="button" class="btn btn-secondary" (click)="modal.close('close')">Close</button>
                 </div>
               </ng-template>
-              <ngb-pagination [collectionSize]="50" [(page)]="page"></ngb-pagination>
+              <ngb-pagination [collectionSize]="collectionSize" [(page)]="page"(pageChange)="nextPage(page)"></ngb-pagination>
         </div>    
     </div>
 </div>

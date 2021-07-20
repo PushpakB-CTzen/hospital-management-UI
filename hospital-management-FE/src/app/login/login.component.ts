@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
               this.router.navigate(["/changepassword"])
             }
           }else {
-            this.router.navigate(["/patient"])
+            this.router.navigate(["/patient-details"])
           }
           
           

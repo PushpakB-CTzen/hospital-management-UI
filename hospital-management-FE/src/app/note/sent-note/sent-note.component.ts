@@ -16,15 +16,21 @@ export class SentNoteComponent implements OnInit {
   page=1;
   selectedNoteId: any;
   noteResponses:NoteResponse[];
+  collectionSize:number=0;
   constructor( private apiService:ApicallService,config: NgbPaginationConfig,private modalService: NgbModal,private notifyService : ToasterNotificationService) {
     config.size = 'sm';
     config.boundaryLinks = true;
    }
 
   ngOnInit(): void {
-    this.apiService.getAllNotes().subscribe(
+    this.apiService.getAllNotes(this.page-1).subscribe(
       data=>{
         this.sentNotes=data;
+        //this.collectionSize=this.sentNotes.length;
+        let a=this.sentNotes.find(e=>true)?.collectionSize;
+        if(a!=undefined){
+         this.collectionSize=a;
+        }
       },
       error=>{console.error("Sent Note Error"+error)}
     );
@@ -82,5 +88,9 @@ export class SentNoteComponent implements OnInit {
     console.log(this.selectedNoteId)
   }
 
+  nextPage(currentPage){
+    console.log()
+    this.ngOnInit();
+  }
 
 }

@@ -30,7 +30,9 @@ const routes: Routes = [
   { path: 'forgetpassword', component: ForgetPasswordComponent },
   { path: 'inbox/appointment', component: AppoinementsComponent },
   { path: 'patient-details', component: PatientDetailsComponent },
-  {path:'appointment/add',component:PhysianAppointmentComponent}
+  {path:'appointment/add',component:PhysianAppointmentComponent},
+
+  
 
 ];
 
