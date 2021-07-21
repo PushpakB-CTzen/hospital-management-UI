@@ -35,9 +35,12 @@ export class ForgetPasswordComponent implements OnInit {
          this.showgobutton = true;
          form.reset();
       },error => {
-        this.notifyService.showError("Email Sending Failed", "Error")
+     
+          this.notifyService.showError("Email Sending Failed", "Error")
         this.load = false;
-        //console.log(error);   
+        
+        
+       
       } )
   }
 
