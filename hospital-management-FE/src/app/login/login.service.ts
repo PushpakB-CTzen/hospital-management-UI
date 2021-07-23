@@ -1,20 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-// import jwt_decode from "jwt-decode";
+ import jwt_decode from "jwt-decode";
+import { tokenData } from '../payload';
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
   constructor() { }
-
-  // public generateToken(request:any){
-  //   return this.http.post("http://localhost:8081/authenticate",request,{responseType:'text' as 'json'});
-  // }
-
-  // public login(request:any){
-  //  return this.http
-  //             .post("http://localhost:8080/user/patient/login",request,{responseType:'text' as 'json'});
-  // }
+ 
+  tokendata : any;
+  name :string;
 
   isloggedin() {
     let token = localStorage.getItem("jwtToken");
@@ -24,19 +19,22 @@ export class LoginService {
       return false
     }
 
+
   }
 
   logout() {
-    localStorage.removeItem("jwtToken")
-
-    //return true;
+    localStorage.removeItem("jwtToken");
+    sessionStorage.removeItem("username");
+    sessionStorage.removeItem("role");
   }
 
-  decodeToken(){
-   
-    //var decoded = jwt_decode(token);
- 
-    //console.log(decoded);
+  getDecodedAccessToken<T>(token: string): any {
+    try{
+        return jwt_decode<T>(token);
+    }
+    catch(Error){
+        return null;
+    }
   }
-
 }
+

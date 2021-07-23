@@ -1,10 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, Output, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import JwtClientService from '../service/jwt-client.service';
 import { LoginService } from './login.service';
-import jwt_decode from 'jwt-decode';
 import { ToasterNotificationService } from '../toaster-notification.service';
+import { tokenData } from '../payload';
 
 
 enum LoginStatus {
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   role:any;
   showPassword : boolean = false;
   count : number = 0;
-  //@ViewChild('credentials') loginForm : NgForm;
+  name : string;
   constructor(private jwtService:JwtClientService,
               private loginService:LoginService,
               private router:Router,
@@ -45,21 +45,24 @@ export class LoginComponent implements OnInit {
           console.log(response)
           let jwtToken: string = JSON.stringify(response);
           console.log(response)
-          this.tokendata = this.getDecodedAccessToken<tokenData>(jwtToken);
+          this.tokendata = this.loginService.getDecodedAccessToken<tokenData>(jwtToken);
           this.isPasswordUpdate = this.tokendata.isUpdate;
-          this.role = this.tokendata.role
+          this.role = this.tokendata.role;
+          this.name = this.tokendata.name;
           localStorage.setItem("jwtToken",jwtToken);
+          sessionStorage.setItem("username",this.name);
+          sessionStorage.setItem("role",this.role);
           if(this.role == "D" || this.role == "N"){
             if(this.isPasswordUpdate){
               this.router.navigate(["/inbox/appointment"])
             }else {
               this.router.navigate(["/changepassword"])
             }
+          } else if(this.role == "A"){
+            this.router.navigate(["/welcome"])
           }else {
             this.router.navigate(["/patient-details"])
-          }
-          
-          
+          }   
         }
 
       }, (error) => {
@@ -67,36 +70,12 @@ export class LoginComponent implements OnInit {
         console.log(this.count);
         if(this.count >= 3){
             this.notifyService.showError("3 attempts failed account has been blocked","Account Blocked !");
-            //location.reload();
             form.reset();
         }else {
           this.notifyService.showError("Unauthorised User","Error");
         }
-         
-        // 
       },
-
-
     )
   }
-
-  getDecodedAccessToken<T>(token: string): any {
-    try{
-        return jwt_decode<T>(token);
-    }
-    catch(Error){
-        return null;
-    }
-  }
-
-
-
 }
-interface tokenData {
-  sub : string,
-  role:string,
-  exp:number,
-  iat:number,
-  isUpdate : boolean,
-  id : number
-}
+

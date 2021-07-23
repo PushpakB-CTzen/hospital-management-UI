@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { EmpRegistrationService } from '../emp-registration.service';
 import { ToasterNotificationService } from '../toaster-notification.service';
 
@@ -12,7 +13,7 @@ export class RegistrationComponent implements OnInit {
   constructor(private registrationService: EmpRegistrationService,private toaster:ToasterNotificationService) {
     console.log(this.maxDate);
   }
-
+  load : boolean = false;
   firstNameInput: any;
   lastNameInput: any;
   dob: any;
@@ -33,6 +34,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   onSave(event) {
+    this.load = true;
     let ftitle = ((document.getElementById("titleid") as HTMLInputElement).value);
     let fName = ((document.getElementById("firstName") as HTMLInputElement).value);
     let lName = ((document.getElementById("lastName") as HTMLInputElement).value);
@@ -68,6 +70,8 @@ export class RegistrationComponent implements OnInit {
 
     this.registrationService.registerPatient(empObj).subscribe(data => {
      this.toaster.showSuccess("Employee Registration Successful","success");  
+     this.load = false;
+     
     })
   }
 

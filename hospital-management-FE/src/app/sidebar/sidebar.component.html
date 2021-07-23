@@ -4,6 +4,7 @@
     <!-- Sidebar Links -->
     <ul class="list-unstyled components ">
         <div class="collapse show">
+            <div *ngIf="role =='PHYSICIAN'">
         <li class="nav-item">
             <i class="bi bi-inboxes-fill"></i>
             <a class="nav-link bi bi-inboxes-fill" data-toggle="collapse" href="#inboxSubmenu">
@@ -23,10 +24,10 @@
                                 routerLinkActive="active">&nbsp;&nbsp;&nbsp;&nbsp;&emsp;Sent</a></li>
                     </ul>
                 </li>
-                <li><a routerLinkActive="active" routerLink="/patient-details">&nbsp;&nbsp;&nbsp;patient-details</a>
-                </li>
             </ul>
         </li>
+    </div>
+    <div *ngIf="role =='NURSE'">
         <li><a routerLinkActive="active" routerLink="/appointment/add">Schedular</a></li>
         <li class="nav-item collapse show">
             <a class="nav-link bi bi-inboxes-fill" data-toggle="collapse" href="#medication">
@@ -37,8 +38,18 @@
                 </li>
             </ul>
         </li>
+        </div>
+        <div *ngIf="role =='ADMIN'">
+        <li><a routerLinkActive="active" routerLink="/appointment/add">Patient Management</a></li>
+        <li><a routerLinkActive="active" routerLink="/appointment/add">Hospital Staff Management</a></li>
+        </div>
+        <div *ngIf="role =='PATIENT'">
+            <li><a routerLinkActive="active" routerLink="/patient-details">&nbsp;&nbsp;&nbsp;patient-details</a>
+            </li>
+        </div>
     </div>
-        <!--<li><a href="#">Portfolio</a></li>
-        <li><a href="#">Contact</a></li>-->
     </ul>
 </div>
+
+<!------------------------------>
+

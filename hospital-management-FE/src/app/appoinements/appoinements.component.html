@@ -236,17 +236,37 @@
 
 <div *ngIf="!hasAppointmentsToday">
     <div class="row">
-        <div>
+        <div class="order-md-first">
             <app-sidebar></app-sidebar>
+            <div class="p-4"></div>
+            <div class="p-4"></div>
+            <div class="p-4"></div>
+            <div class="p-4"></div>
+            <div class="p-4"></div>
+            <div class="p-4"></div>
+            <div class="p-4"></div>
+            <div class="p-4"></div>
+            <div class="p-4"></div>
         </div>
-    </div>
 
-    <h4 class="text-primary p-5" style="margin-left: 40%;display: inline;">Appointments</h4>
-    <h1 class="text-center text-danger text-uppercase font-weight-bold shadow p-4 mb-5 bg-white rounded"
-        style="width: 70%;margin-left: 15%;">There are no
-        appointments today</h1>
+        <div class="col center order-md-last">
+
+            <h4 class="text-primary p-5" style="margin-left: 40%;display: inline;">Appointments</h4>
+            <h1 class="text-center text-danger text-uppercase font-weight-bold shadow p-4 mb-5 bg-white rounded"
+                style="width: 70%;margin-left: 15%;">There are no
+                appointments today</h1>
+            </div>
+
+            
+    </div >
+
+            
+    
 
 </div>
+
+
+
 
 
 <div *ngIf="hasAppointmentsToday" class="container-fluid">
@@ -289,3 +309,4 @@
         </div>
     </div>
 </div>
+
