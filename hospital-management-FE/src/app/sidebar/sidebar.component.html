@@ -2,8 +2,10 @@
 <!-- Sidebar Header -->
 <div id="sidebar" class="collapse show navbar-collapse">
     <!-- Sidebar Links -->
-    <ul class="list-unstyled components ">
+    <ul class="list-unstyled components">
         <div class="collapse show">
+
+
             <div *ngIf="role =='PHYSICIAN'">
                 <li class="nav-item">
                     <i class="bi bi-inboxes-fill"></i>
@@ -28,6 +30,8 @@
                     </ul>
                 </li>
             </div>
+
+
             <div *ngIf="role =='NURSE'">
                 <a class="nav-link bi bi-inboxes-fill" data-toggle="collapse" href="#inboxSubmenu">
                     <i class="bi bi-inboxes-fill"></i>
@@ -60,10 +64,14 @@
                     </ul>
                 </li>
             </div>
+
+
             <div *ngIf="role =='ADMIN'">
                 <li><a routerLinkActive="active" routerLink="/appointment/add">Patient Management</a></li>
                 <li><a routerLinkActive="active" routerLink="/appointment/add">Hospital Staff Management</a></li>
             </div>
+
+
             <div *ngIf="role =='PATIENT'">
                 <li><a routerLinkActive="active" routerLink="/patient-details">&nbsp;&nbsp;&nbsp;Patient Details</a>
                 </li>

@@ -27,12 +27,39 @@
 
 </div>
 
+
+
 <div *ngIf="hasAppointmentsToday" class="container-fluid">
     <div class="row">
         <div class="order-md-first">
             <app-sidebar></app-sidebar>
+
         </div>
+
         <div class="col center order-md-last ">
+
+            <div *ngIf="role =='PHYSICIAN' " class="input-group"
+                style="margin-top: 3px;margin-bottom: 5px;width: 70%;margin-left: 30%;">
+                <b style="margin-top: 4px;">Search Appointment History</b>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" class="form-control"
+                    placeholder="Enter name here" aria-label="Enter name here" aria-describedby="basic-addon2"
+                    [(ngModel)]="name">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" id="patientName" type="button"
+                        (click)="getPatientAppintmentHistory($event)">Patient</button>
+                </div>
+            </div>
+
+            <div *ngIf="role =='NURSE' " class="input-group"
+                style="margin-top: 3px;margin-bottom: 5px;width: 70%;margin-left: 30%;">
+                <b style="margin-top: 4px;">Search Appointment History</b>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" class="form-control"
+                    placeholder="Enter name here" aria-label="Enter name here" aria-describedby="basic-addon2"  [(ngModel)]="name">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" (click)="getPatientAppintmentHistory($event)">Patient</button>
+                    <button class="btn btn-outline-secondary" type="button">Physician</button>
+                </div>
+            </div>
 
             <div id="accordion" *ngIf="hasAppointmentsToday" class="adjust_appointments_view">
 

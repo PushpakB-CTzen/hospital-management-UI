@@ -14,6 +14,7 @@ export class AppoinementsComponent implements OnInit {
   weekklyAppointmentList: any;
   hasAppointmentsToday: Boolean = false;
   role: any;
+  name: string;
 
   ngOnInit(): void {
 
@@ -41,6 +42,21 @@ export class AppoinementsComponent implements OnInit {
       console.log(this.weekklyAppointmentList);
 
     })
+  }
+
+  getPatientAppintmentHistory(event) {
+    console.log("val " + this.name);
+    this.apiService.getPatientAppintmentHistory(this.name).subscribe(data => {
+      console.log("data is " + JSON.stringify(data));
+      for (var val of data) {
+        this.hasAppointmentsToday = true;
+        if (val["editHistory"] == null || val["editHistory"] == undefined) {
+          val["editHistory"] = "NA";
+        }
+      }
+      this.weekklyAppointmentList = data;
+    })
+    //((document.getElementById("titleid") as HTMLInputElement).value) = 1;
   }
 
 
