@@ -59,10 +59,25 @@
                             <b>Physician : {{obj.physician}}</b><br>
                             <b>Date : {{obj.date | date:'dd/MM/yyyy' }}</b><br>
                             <b>Time : {{obj.time}}</b>
-                            <br>
-                            <div *ngIf='obj.editHistory.length == 0'><b>Edit History : NA</b></div>
 
-                            <div *ngIf="obj.editHistory.length > 0"><b>Edit History :</b></div>
+                            <b *ngIf="role =='PATIENT'  && obj.accepted"><br> Accepted Status : <span
+                                    class="badge badge-success">Appointment accepted</span></b>
+
+                            <b *ngIf="role =='PATIENT'  && !obj.accepted"><br>Accepted Status : <span
+                                    class="badge badge-danger">Appointment rejected</span></b>
+
+                            <div *ngIf='obj.editHistory.length == 0 && role =="PATIENT"'><b>Appointment Reschedule
+                                    History : NA</b></div>
+
+                            <div *ngIf="obj.editHistory.length > 0 && role =='PATIENT'"><b>Appointment Reschedule
+                                    History :</b></div>
+
+                            <div *ngIf='obj.editHistory.length == 0 && (role =="NURSE"|| role =="PHYSICIAN")'><b>Edit
+                                    History : NA</b></div>
+
+                            <div *ngIf='obj.editHistory.length > 0 && (role =="NURSE"|| role =="PHYSICIAN")'><b>Edit
+                                    History :</b></div>
+
                             <p>
                             <ul class="list-group" *ngFor="let singleObj of obj.editHistory">
                                 <div>
