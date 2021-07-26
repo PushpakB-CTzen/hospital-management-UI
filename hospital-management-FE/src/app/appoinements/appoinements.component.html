@@ -54,10 +54,13 @@
                 style="margin-top: 3px;margin-bottom: 5px;width: 70%;margin-left: 30%;">
                 <b style="margin-top: 4px;">Search Appointment History</b>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" class="form-control"
-                    placeholder="Enter name here" aria-label="Enter name here" aria-describedby="basic-addon2"  [(ngModel)]="name">
+                    placeholder="Enter name here" aria-label="Enter name here" aria-describedby="basic-addon2"
+                    [(ngModel)]="name">
                 <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button" (click)="getPatientAppintmentHistory($event)">Patient</button>
-                    <button class="btn btn-outline-secondary" type="button">Physician</button>
+                    <button class="btn btn-outline-secondary" type="button"
+                        (click)="getPatientAppintmentHistory($event)">Patient</button>
+                    <button class="btn btn-outline-secondary" type="button"
+                        (click)="getPhysicianAppintmentHistory($event)">Physician</button>
                 </div>
             </div>
 

@@ -59,5 +59,20 @@ export class AppoinementsComponent implements OnInit {
     //((document.getElementById("titleid") as HTMLInputElement).value) = 1;
   }
 
+  getPhysicianAppintmentHistory(event) {
+    console.log("val " + this.name);
+    this.apiService.getPhysicianAppintmentHistory(this.name).subscribe(data => {
+      console.log("data is " + JSON.stringify(data));
+      for (var val of data) {
+        this.hasAppointmentsToday = true;
+        if (val["editHistory"] == null || val["editHistory"] == undefined) {
+          val["editHistory"] = "NA";
+        }
+      }
+      this.weekklyAppointmentList = data;
+    })
+    //((document.getElementById("titleid") as HTMLInputElement).value) = 1;
+  }
+
 
 }
