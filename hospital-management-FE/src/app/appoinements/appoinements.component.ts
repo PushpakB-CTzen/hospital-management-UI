@@ -15,6 +15,7 @@ export class AppoinementsComponent implements OnInit {
   hasAppointmentsToday: Boolean = false;
   role: any;
   name: string;
+  p: number = 1;
 
   ngOnInit(): void {
 

@@ -36,6 +36,7 @@ import { PatientDetailsComponent } from './patient/patient-details/patient-detai
 import { AllergyComponent } from './patient/patient-details/allergy/allergy.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { PhysianAppointmentComponent } from './physician-appointment/physician-appointment.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { PhysianAppointmentComponent } from './physician-appointment/physician-a
   ],
   imports: [
     FormsModule,
+    NgxPaginationModule,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
