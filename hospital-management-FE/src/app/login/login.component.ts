@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
   showPassword : boolean = false;
   count : number = 0;
   name : string;
+  blocked : boolean = false;
   constructor(private jwtService:JwtClientService,
               private loginService:LoginService,
               private router:Router,
@@ -66,13 +67,16 @@ export class LoginComponent implements OnInit {
         }
 
       }, (error) => {
+        console.log(error);
         this.count = this.count + 1;
-        console.log(this.count);
-        if(this.count >= 3){
-            this.notifyService.showError("3 attempts failed account has been blocked","Account Blocked !");
-            form.reset();
+        if(error.error =="INVALID USERNAME OR PASSWORD!") {
+          this.notifyService.showError("Unauthorised User","Error"); 
+          form.reset();
+        }else if(error.error =="Blocked") {
+          this.notifyService.showError("Your Account is Blocked","Blocked"); 
+          form.reset();
         }else {
-          this.notifyService.showError("Unauthorised User","Error");
+          form.reset();
         }
       },
     )

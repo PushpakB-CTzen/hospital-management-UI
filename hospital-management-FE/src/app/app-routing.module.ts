@@ -15,6 +15,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { AppoinementsComponent } from './appoinements/appoinements.component';
 import { PatientDetailsComponent } from './patient/patient-details/patient-details.component';
 import { PhysianAppointmentComponent } from './physician-appointment/physician-appointment.component';
+import { PatientManagementComponent } from './patient-management/patient-management.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path: 'inbox/appointment', component: AppoinementsComponent },
   { path: 'patient-details', component: PatientDetailsComponent },
   {path:'appointment/add',component:PhysianAppointmentComponent},
+  {path:'patient/show',component:PatientManagementComponent},
 
   
 
