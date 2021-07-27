@@ -12,9 +12,24 @@ export class AppoinementsComponent implements OnInit {
   constructor(private apiService: RegistrationService) { }
 
   weekklyAppointmentList: any;
-  hasAppointmentsToday:Boolean = false;
+  hasAppointmentsToday: Boolean = false;
+  role: any;
+  name: string;
+  p: number = 1;
 
   ngOnInit(): void {
+
+    this.role = sessionStorage.getItem("role");
+    if (this.role == 'A') {
+      this.role = "ADMIN";
+    } else if (this.role == 'D') {
+      this.role = "PHYSICIAN";
+    } else if (this.role == 'N') {
+      this.role = "NURSE";
+    } else {
+      this.role = "PATIENT";
+    }
+
     this.apiService.getWeeklyAppointments().subscribe(data => {
       console.log("status is " + data.status);
       console.log("weekly apointments api called");
@@ -28,6 +43,36 @@ export class AppoinementsComponent implements OnInit {
       console.log(this.weekklyAppointmentList);
 
     })
+  }
+
+  getPatientAppintmentHistory(event) {
+    console.log("val " + this.name);
+    this.apiService.getPatientAppintmentHistory(this.name).subscribe(data => {
+      console.log("data is " + JSON.stringify(data));
+      for (var val of data) {
+        this.hasAppointmentsToday = true;
+        if (val["editHistory"] == null || val["editHistory"] == undefined) {
+          val["editHistory"] = "NA";
+        }
+      }
+      this.weekklyAppointmentList = data;
+    })
+    //((document.getElementById("titleid") as HTMLInputElement).value) = 1;
+  }
+
+  getPhysicianAppintmentHistory(event) {
+    console.log("val " + this.name);
+    this.apiService.getPhysicianAppintmentHistory(this.name).subscribe(data => {
+      console.log("data is " + JSON.stringify(data));
+      for (var val of data) {
+        this.hasAppointmentsToday = true;
+        if (val["editHistory"] == null || val["editHistory"] == undefined) {
+          val["editHistory"] = "NA";
+        }
+      }
+      this.weekklyAppointmentList = data;
+    })
+    //((document.getElementById("titleid") as HTMLInputElement).value) = 1;
   }
 
 
