@@ -32,4 +32,14 @@ export class RegistrationService {
     this.baseURL = "http://localhost:8081/";
     return this.http.get(this.baseURL + 'appointment/weekly');
   }
+
+  getPatientAppintmentHistory(patientName: string): Observable<any> {
+    this.baseURL = "http://localhost:8081/";
+    return this.http.get(this.baseURL + 'appointment/patientsearch/'.concat(patientName));
+  }
+
+  getPhysicianAppintmentHistory(patientName: string): Observable<any> {
+    this.baseURL = "http://localhost:8081/";
+    return this.http.get(this.baseURL + 'appointment/physiciansearch/'.concat(patientName));
+  }
 }
