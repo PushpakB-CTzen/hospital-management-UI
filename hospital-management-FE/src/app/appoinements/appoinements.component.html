@@ -75,7 +75,7 @@
                             <button class="btn btn-link" data-toggle="collapse" [attr.data-target]="'#collapseOne'+i"
                                 aria-expanded="true" [attr.aria-controls]="'collapseOne'+i">
                                 <b>
-                                    <pre>{{obj.title}}                                                      {{obj.date | date:'dd/MM/yyyy'}}</pre>
+                                    <pre>{{obj.title}}                                                      {{obj.date | date:'dd/MM/yyyy'}}                        <button type="button" (click)="declineAppointment(obj)" class="btn btn-danger">Decline Appointment</button></pre> 
                                 </b>
                             </button>
                         </h5>

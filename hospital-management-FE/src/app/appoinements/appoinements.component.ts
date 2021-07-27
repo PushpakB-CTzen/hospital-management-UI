@@ -75,5 +75,12 @@ export class AppoinementsComponent implements OnInit {
     //((document.getElementById("titleid") as HTMLInputElement).value) = 1;
   }
 
+  declineAppointment(obj) {
+    console.log("appointment declined for " + JSON.stringify(obj));
+    console.log("appoitnemtn ID " + obj.appointmentId);
+    this.apiService.declineAppointment(obj.appointmentId).subscribe(data => {
+      console.log("appointment declined response " + JSON.stringify(data));
+    })
+  }
 
 }

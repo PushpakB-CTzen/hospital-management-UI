@@ -67,8 +67,8 @@ export class PatientRegistrationComponent implements OnInit, AfterViewInit, Afte
     window.location.reload();
   }
   onSave(event) {
-
     let formData = this.userFrm.value;
+    console.log("formData " + formData);
     let ftitle = formData["titleInput"];
     let fName = formData["firstNameInput"];
     let lName = formData["lastNameInput"];
@@ -78,19 +78,25 @@ export class PatientRegistrationComponent implements OnInit, AfterViewInit, Afte
     let ipassword = formData["password"];
     let iconfirmPassword = formData["confirmPassword"];
 
-
+    let genderVar: string = "FEMALE";
+    if (ftitle == "Mr") {
+      genderVar = "MALE"
+    }
 
 
     let patientObj = {
       title: ftitle,
       firstName: fName,
       lastName: lName,
+      gender: genderVar,
       dateOfBirth: idob,
       contactNo: icontact,
       email: iemail,
       password: ipassword,
       confirmPassword: iconfirmPassword
     };
+
+
 
     console.log("patient OBJ " + JSON.stringify(patientObj));
 
