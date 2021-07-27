@@ -119,3 +119,7 @@ a.span {
 a{
   color: white;
 }
+
+cur {
+  cursor: pointer;
+}
