@@ -82,9 +82,25 @@ export class AppoinementsComponent implements OnInit {
     this.apiService.declineAppointment(obj.appointmentId).subscribe(data => {
       console.log("appointment declined response " + JSON.stringify(data));
       this.notifyService.showSuccess("Appointment declined successfully", "Success");
+      this.updateDataModel(obj.appointmentId);
     }, (error) => {
       this.notifyService.showSuccess("Appointment declined successfully", "Success");
+      this.updateDataModel(obj.appointmentId);
     })
+  }
+
+  updateDataModel(appointmentId: string) {
+    var temp = this.weekklyAppointmentList;
+    const temp2 = Array();
+    for (var val of temp) {
+      if (val["appointmentId"] == appointmentId) {
+        continue;
+      }
+      temp2.push(val);
+    }
+    console.log("data model updated for Id" + appointmentId);
+    console.log("New data model " + temp2);
+    this.weekklyAppointmentList = temp2;
   }
 
 }
