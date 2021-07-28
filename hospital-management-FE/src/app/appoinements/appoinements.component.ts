@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RegistrationService } from '../registration.service';
+import { ToasterNotificationService } from '../toaster-notification.service';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { RegistrationService } from '../registration.service';
 })
 export class AppoinementsComponent implements OnInit {
 
-  constructor(private apiService: RegistrationService) { }
+  constructor(private apiService: RegistrationService, private notifyService: ToasterNotificationService) { }
 
   weekklyAppointmentList: any;
   hasAppointmentsToday: Boolean = false;
@@ -80,6 +81,9 @@ export class AppoinementsComponent implements OnInit {
     console.log("appoitnemtn ID " + obj.appointmentId);
     this.apiService.declineAppointment(obj.appointmentId).subscribe(data => {
       console.log("appointment declined response " + JSON.stringify(data));
+      this.notifyService.showSuccess("Appointment declined successfully", "Success");
+    }, (error) => {
+      this.notifyService.showSuccess("Appointment declined successfully", "Success");
     })
   }
 

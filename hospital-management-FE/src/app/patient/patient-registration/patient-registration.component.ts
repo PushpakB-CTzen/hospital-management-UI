@@ -105,9 +105,11 @@ export class PatientRegistrationComponent implements OnInit, AfterViewInit, Afte
       console.log("api called from component");
       console.log(data);
       this.notifyService.showSuccess("Patient registration sucessful", "Success");
+      this.userFrm.reset();
     }, (error) => {
       //this.notifyService.showError("Failed to register patient", "Failed");
       this.notifyService.showSuccess("Patient registration sucessful", "Success");
+      this.userFrm.reset();
     })
 
 

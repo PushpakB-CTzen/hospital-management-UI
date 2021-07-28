@@ -75,7 +75,7 @@
                             <button class="btn btn-link" data-toggle="collapse" [attr.data-target]="'#collapseOne'+i"
                                 aria-expanded="true" [attr.aria-controls]="'collapseOne'+i">
                                 <b>
-                                    <pre>{{obj.title}}                                                      {{obj.date | date:'dd/MM/yyyy'}}                        <button type="button" (click)="declineAppointment(obj)" class="btn btn-danger">Decline Appointment</button></pre> 
+                                    <pre><div style="display: inline;">{{obj.title}} </div>                                                     <div style="display: inline;">{{obj.date | date:'dd/MM/yyyy'}}</div>                        <div style="display: inline;"></div><button type="button" (click)="declineAppointment(obj)" class="btn btn-danger">Decline Appointment</button></pre>
                                 </b>
                             </button>
                         </h5>
@@ -124,7 +124,11 @@
                             </ul>
                         </div>
                     </div>
+
                 </div>
+                <br>
+                <pagination-controls (pageChange)="p = $event" class="float-right">
+                </pagination-controls>
                 <div class="p-4"></div>
                 <div class="p-4"></div>
                 <div class="p-4"></div>
@@ -134,10 +138,11 @@
                 <div class="p-4"></div>
                 <div class="p-4"></div>
             </div>
+
         </div>
+
     </div>
-    <pagination-controls (pageChange)="p = $event" class="float-right">
-    </pagination-controls>
+
     <!-- <div class="row" style="margin-left: 81.7%;margin-top: 2%;">
         <nav aria-label="Page navigation example">
             <ul class="pagination">
