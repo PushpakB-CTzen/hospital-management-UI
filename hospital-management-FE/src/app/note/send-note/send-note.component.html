@@ -3,9 +3,9 @@
         <div class="order-md-first">
             <app-sidebar></app-sidebar>
         </div>
-        <div class="col-6 center order-md-last ">
+        <div class="col-6 center order-md-last upper_space">
             <form (ngSubmit)="onSubmit(note)" #note="ngForm">
-                <h1>Send Notes</h1> 
+                <h1 class="bottom_space">Send Notes</h1> 
                 <div class="form-group">
                     <!-- <label for="searchName">Search</label> -->
                     <input type="text" class="form-control" name="searchName" [(ngModel)]="searchName" (input)="nameChange($event)" id="searchName" placeholder="Search Name">

@@ -16,11 +16,11 @@
             <div class="p-4"></div>
         </div>
 
-        <div class="col center order-md-last">
+        <div class="col center order-md-last" style="margin-top: 5%;">
 
             <h4 class="text-primary p-5" style="margin-left: 40%;display: inline;">Appointments</h4>
-            <h1 class="text-center text-danger text-uppercase font-weight-bold shadow p-4 mb-5 bg-white rounded"
-                style="width: 70%;margin-left: 15%;">There are no
+            <h1 class="text-center text-danger text-uppercase font-weight-bold shadow p-7 mb-5 bg-white rounded"
+                style="width: 70%;margin-left: 15%;margin-top: 2%;">There are no
                 appointments today</h1>
         </div>
     </div>
@@ -36,10 +36,10 @@
 
         </div>
 
-        <div class="col center order-md-last ">
+        <div class="col-9 center order-md-last " style="margin-top: 2%;">
 
             <div *ngIf="role =='PHYSICIAN' " class="input-group"
-                style="margin-top: 3px;margin-bottom: 5px;width: 70%;margin-left: 30%;">
+                style="margin-top: 3px;margin-bottom: 5px;width: 70%;margin-left: 34%;">
                 <b style="margin-top: 4px;">Search Appointment History</b>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" class="form-control"
                     placeholder="Enter name here" aria-label="Enter name here" aria-describedby="basic-addon2"
@@ -51,7 +51,7 @@
             </div>
 
             <div *ngIf="role =='NURSE' " class="input-group"
-                style="margin-top: 3px;margin-bottom: 5px;width: 70%;margin-left: 30%;">
+                style="margin-top: 3px;margin-bottom: 5px;width: 70%;margin-left: 34%;">
                 <b style="margin-top: 4px;">Search Appointment History</b>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" class="form-control"
                     placeholder="Enter name here" aria-label="Enter name here" aria-describedby="basic-addon2"
@@ -64,10 +64,10 @@
                 </div>
             </div>
 
-            <div id="accordion" *ngIf="hasAppointmentsToday" class="adjust_appointments_view">
+            <div id="accordion" *ngIf="hasAppointmentsToday" class="adjust_appointments_view" style="margin-top: 2%;">
 
                 <div class="card" *ngFor="let obj of weekklyAppointmentList | paginate: 
-                    { itemsPerPage: 4, currentPage: p } ;let i = index;  ">
+                    { itemsPerPage: 8, currentPage: p } ;let i = index;">
                     <div class="card-header active_appointment"
                         [ngStyle]="{'background-color': (i==0) ? '  rgb(105, 165, 218)' : 'rgb(235, 233, 224)'}"
                         id="headingOne">
@@ -75,7 +75,7 @@
                             <button class="btn btn-link" data-toggle="collapse" [attr.data-target]="'#collapseOne'+i"
                                 aria-expanded="true" [attr.aria-controls]="'collapseOne'+i">
                                 <b>
-                                    <pre><div style="display: inline;">{{obj.title}} </div>                                                     <div style="display: inline;">{{obj.date | date:'dd/MM/yyyy'}}</div>                        <div style="display: inline;"></div><button type="button" (click)="declineAppointment(obj)" class="btn btn-danger">Decline Appointment</button></pre>
+                                    <pre><div style="display: inline;">{{obj.title}} </div>                 <div style="display: inline;">{{obj.date | date:'dd/MM/yyyy'}}</div>                        <div style="display: inline;"></div><button type="button" (click)="declineAppointment(obj)" class="btn btn-danger">Decline Appointment</button></pre>
                                 </b>
                             </button>
                         </h5>
@@ -137,6 +137,19 @@
                 <div class="p-4"></div>
                 <div class="p-4"></div>
                 <div class="p-4"></div>
+                <div class="p-4"></div>
+                <div class="p-4"></div>
+                <div class="p-4"></div>
+                <div class="p-4"></div>
+                <div class="p-4"></div>
+                <div class="p-4"></div>
+                <div class="p-4"></div>
+                <div class="p-4"></div>
+                <div class="p-4"></div>
+                <div class="p-4"></div>
+                <div class="p-4"></div>
+                <div class="p-4"></div>
+                
             </div>
 
         </div>
