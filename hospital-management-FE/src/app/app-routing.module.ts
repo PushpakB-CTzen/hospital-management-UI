@@ -15,6 +15,10 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { AppoinementsComponent } from './appoinements/appoinements.component';
 import { PatientDetailsComponent } from './patient/patient-details/patient-details.component';
 import { PhysianAppointmentComponent } from './physician-appointment/physician-appointment.component';
+import { MedicationComponent } from './patient-visit/medication/medication.component';
+import { DiagnosisComponent } from './patient-visit/diagnosis/diagnosis.component';
+import { PatientVisitComponent } from './patient-visit/patient-visit.component';
+import { VisitDetailsComponent } from './patient-visit/view/visit-details/visit-details.component';
 
 
 const routes: Routes = [
@@ -30,9 +34,10 @@ const routes: Routes = [
   { path: 'forgetpassword', component: ForgetPasswordComponent },
   { path: 'inbox/appointment', component: AppoinementsComponent },
   { path: 'patient-details', component: PatientDetailsComponent },
-  {path:'appointment/add',component:PhysianAppointmentComponent},
+  { path:'appointment/add',component:PhysianAppointmentComponent},
+  { path: 'patient-visit/add', component: PatientVisitComponent },
+  { path: 'patient-visit/view', component: VisitDetailsComponent }
 
-  
 
 ];
 
