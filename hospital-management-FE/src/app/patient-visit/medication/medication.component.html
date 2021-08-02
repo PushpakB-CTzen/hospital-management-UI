@@ -1,0 +1,86 @@
+<div>
+       <h4 class="mb-3">Medication Details</h4><hr>
+        <form class="needs-validation" novalidate>
+          <div class="row g-3">    
+         
+            <div class="col-sm-3 form-group">
+                <label for="drugId" class="form-label">Drug Id</label>
+                <select class="form-control" id="drugId" required>
+                  <option value="">A001</option>
+                  <option>A002</option> 
+                  <option>A003</option> 
+                </select>   
+            </div><br>
+            <div class="col-sm-3">
+                <label for="drugName" class="form-label">Drug Name</label>
+                <select class="form-control" id="drugName" required>
+                  <option value="">D1</option>
+                  <option>D2</option> 
+                  <option>D3</option> 
+                </select>
+            </div><br>
+            <div class="col-sm-3">
+                <label for="drugNameGeneric" class="form-label">Generic Name</label><br>
+                <select class="form-control" id="drugNameGeneric" required>
+                  <option value="">D1</option>
+                  <option>D2</option> 
+                  <option>D3</option> 
+                </select>
+            </div>
+            <!-- <div class="col-sm-3">
+                <label for="drugNameBrand" >Drug Brand Name</label>
+                <select class="form-control" multiple id="drugNameBrand"  required>
+                  <option value="">D1</option>
+                  <option>D2</option> 
+                  <option>D3</option> 
+                </select>
+            </div> -->
+            <div class="col-sm-3">
+                <label for="drugForm" class="form-label">Drug Form</label>
+                <select class="form-control" id="drugForm" required>
+                  <option value="">D1</option>
+                  <option>D2</option> 
+                  <option>D3</option> 
+                </select>
+            </div>
+        </div>
+        <br>
+        <button class="w-5 btn btn-primary btn-lg" type="button">Save</button>&nbsp;
+        <button class="w-10 btn btn-primary btn-lg" type="submit">Submit</button>
+        </form><br>
+      
+      <div style="text-align:center">
+        <table class="table table-bordered table-striped table-hover">
+          <thead>
+              <tr>
+              <th>Drug Id</th>
+              <th>Drug Name</th>
+              <th>Generic Drug Name</th>
+              <th>Drug Brand Name</th>
+              <th>Drug Form</th>
+              <th>Delete</th>
+
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let recievedNote of medications">
+              <td>{{recievedNote.fromEmployee}}</td>
+              <td>{{recievedNote.role}}</td>
+              <td>{{recievedNote.message}}</td>
+              <td>{{recievedNote.urgency}}</td>
+              <td>{{recievedNote.dateTime | date : 'short'}}</td>                
+              <td><button type="button" class="btn btn-danger btn-sm">Delete</button>
+              </td>
+              </tr>
+                      
+          </tbody>
+          </table>
+        
+      
+        <!-- <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls> -->
+      
+      </div>
+     
+      <br><br>
+      <br>  <div class="p-4"></div>
+</div>
