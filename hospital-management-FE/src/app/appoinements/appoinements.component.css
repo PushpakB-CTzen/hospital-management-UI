@@ -1,7 +1,12 @@
 .adjust_appointments_view {
     width: 100%;
-    margin-left: 0%;
+    margin-left: 4%;
     margin-top: 0%;
+}
+
+
+.card-header{
+    width: 100%;
 }
 
 /* body {

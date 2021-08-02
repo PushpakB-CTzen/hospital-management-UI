@@ -42,6 +42,10 @@ import { ProcedureComponent } from './patient-visit/procedure/procedure.componen
 import { PatientVisitComponent } from './patient-visit/patient-visit.component';
 import { VitalSignsComponent } from './patient-visit/vital-signs/vital-signs.component';
 import { VisitDetailsComponent } from './patient-visit/view/visit-details/visit-details.component';
+import { PatientManagementComponent } from './patient-management/patient-management.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { Ng2OrderModule } from 'ng2-order-pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -71,11 +75,14 @@ import { VisitDetailsComponent } from './patient-visit/view/visit-details/visit-
     PatientVisitComponent,
     VitalSignsComponent,
     VisitDetailsComponent,
+    PatientManagementComponent,
+    
   
     
   ],
   imports: [
     FormsModule,
+    NgxPaginationModule,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
@@ -86,7 +93,11 @@ import { VisitDetailsComponent } from './patient-visit/view/visit-details/visit-
       progressBar : true,
       progressAnimation : 'increasing'
     }),
-    NgbModule
+    NgbModule,
+    Ng2SearchPipeModule,
+    Ng2OrderModule,
+    NgxPaginationModule,
+    
 
 
   ],

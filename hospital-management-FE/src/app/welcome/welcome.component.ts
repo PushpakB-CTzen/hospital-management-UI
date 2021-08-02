@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../login/login.service';
 import { RegistrationComponent } from '../registration/registration.component';
 
+
 @Component({
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
@@ -9,9 +10,12 @@ import { RegistrationComponent } from '../registration/registration.component';
 })
 export class WelcomeComponent implements OnInit {
   
+  
+
   constructor(private loginService:LoginService
-    //,private employeeRegistration:RegistrationComponent
-    ) { }
+    ) {
+      
+     }
 
   ngOnInit(): void {
    // this.loggedin();

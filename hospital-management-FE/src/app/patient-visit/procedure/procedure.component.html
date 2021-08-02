@@ -60,8 +60,10 @@
           <tr *ngFor="let procedure of procedures1; let i=index;">
           <td>{{procedure.procedureCode}}</td>
           <td>{{procedure.procedureDescription}}</td>
-          <td>{{procedure.procedureIsdeprecated}}</td>           
-          <td><button type="button" (click)="removeProcedure(i)" class="btn btn-danger btn-sm">Clear</button></td>
+          <td>{{procedure.procedureIsdeprecated}}</td> 
+         <td> <i (click)="removeProcedure(i)" class="fas fa-trash"></i></td>
+          <!-- <td><i type="button" (click)="removeProcedure(i)" class="btn btn-danger btn-sm">Clear</button></td> -->
+          <!-- <td><button type="button" (click)="removeProcedure(i)" class="btn btn-danger btn-sm">Clear</button></td> -->
           </tr>              
       </tbody>
 </table>

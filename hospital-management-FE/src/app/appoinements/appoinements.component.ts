@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RegistrationService } from '../registration.service';
+import { ToasterNotificationService } from '../toaster-notification.service';
 
 
 @Component({
@@ -9,12 +10,13 @@ import { RegistrationService } from '../registration.service';
 })
 export class AppoinementsComponent implements OnInit {
 
-  constructor(private apiService: RegistrationService) { }
+  constructor(private apiService: RegistrationService, private notifyService: ToasterNotificationService) { }
 
   weekklyAppointmentList: any;
   hasAppointmentsToday: Boolean = false;
   role: any;
   name: string;
+  p: number = 1;
 
   ngOnInit(): void {
 
@@ -59,5 +61,46 @@ export class AppoinementsComponent implements OnInit {
     //((document.getElementById("titleid") as HTMLInputElement).value) = 1;
   }
 
+  getPhysicianAppintmentHistory(event) {
+    console.log("val " + this.name);
+    this.apiService.getPhysicianAppintmentHistory(this.name).subscribe(data => {
+      console.log("data is " + JSON.stringify(data));
+      for (var val of data) {
+        this.hasAppointmentsToday = true;
+        if (val["editHistory"] == null || val["editHistory"] == undefined) {
+          val["editHistory"] = "NA";
+        }
+      }
+      this.weekklyAppointmentList = data;
+    })
+    //((document.getElementById("titleid") as HTMLInputElement).value) = 1;
+  }
+
+  declineAppointment(obj) {
+    console.log("appointment declined for " + JSON.stringify(obj));
+    console.log("appoitnemtn ID " + obj.appointmentId);
+    this.apiService.declineAppointment(obj.appointmentId).subscribe(data => {
+      console.log("appointment declined response " + JSON.stringify(data));
+      this.notifyService.showSuccess("Appointment declined successfully", "Success");
+      this.updateDataModel(obj.appointmentId);
+    }, (error) => {
+      this.notifyService.showSuccess("Appointment declined successfully", "Success");
+      this.updateDataModel(obj.appointmentId);
+    })
+  }
+
+  updateDataModel(appointmentId: string) {
+    var temp = this.weekklyAppointmentList;
+    const temp2 = Array();
+    for (var val of temp) {
+      if (val["appointmentId"] == appointmentId) {
+        continue;
+      }
+      temp2.push(val);
+    }
+    console.log("data model updated for Id" + appointmentId);
+    console.log("New data model " + temp2);
+    this.weekklyAppointmentList = temp2;
+  }
 
 }

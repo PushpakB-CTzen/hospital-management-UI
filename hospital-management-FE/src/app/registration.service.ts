@@ -35,6 +35,16 @@ export class RegistrationService {
 
   getPatientAppintmentHistory(patientName: string): Observable<any> {
     this.baseURL = "http://localhost:8081/";
-    return this.http.get(this.baseURL + 'appointment/search/'.concat(patientName));
+    return this.http.get(this.baseURL + 'appointment/patientsearch/'.concat(patientName));
+  }
+
+  getPhysicianAppintmentHistory(patientName: string): Observable<any> {
+    this.baseURL = "http://localhost:8081/";
+    return this.http.get(this.baseURL + 'appointment/physiciansearch/'.concat(patientName));
+  }
+
+  declineAppointment(appointmentId: string): Observable<any> {
+    this.baseURL = "http://localhost:8081/";
+    return this.http.get(this.baseURL + 'appointment/decline/'.concat(appointmentId));
   }
 }
