@@ -14,14 +14,7 @@ export class VitalSignApiService {
   constructor(private httpClient: HttpClient,private vitalAdapter:VitalSignAdapter) { }
 
   saveVitalSigns(vitalSigns: any): Observable<VitalSign[]> {
-     return this.httpClient.post<VitalSign[]>(this.baseUrl+'/vitalsigns/save', vitalSigns, { responseType:'text' as 'json' })
-    .pipe(
-      map((data: VitalSign[]) => {
-        return data.map((item) => this.vitalAdapter.adapt(item));
-      }), catchError(error => {
-        return throwError("something went wrong.")
-      })
-    );
+     return this.httpClient.post<VitalSign[]>(this.baseUrl+'/vitalsigns/save', vitalSigns, { responseType:'text' as 'json' });
   }
 
 }

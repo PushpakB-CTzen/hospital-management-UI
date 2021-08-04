@@ -4,6 +4,7 @@ import { debounceTime, distinctUntilChanged, filter, switchMap } from 'rxjs/oper
 import { ApicallService } from 'src/app/apicall.service';
 import { Diagnosis } from 'src/app/models/diagnosis-model';
 import { ProcedureAdapter } from 'src/app/models/procedure-model';
+import { ToasterNotificationService } from 'src/app/toaster-notification.service';
 import { DiagnosisApiService } from '../diagnosis-api.service';
 
 @Component({
@@ -14,12 +15,13 @@ import { DiagnosisApiService } from '../diagnosis-api.service';
 export class DiagnosisComponent implements OnInit {
 
   isDepricated;
-  
+  submitCount=0;
   diagnoses:any;
   diagnosis:Diagnosis[];
   diagnosis1:any=[];
   index;
-  constructor(private diagnosisApiService:DiagnosisApiService,private diagnosisAdapter:ProcedureAdapter) { }
+  constructor(private diagnosisApiService:DiagnosisApiService,private diagnosisAdapter:ProcedureAdapter,
+    private notifyService : ToasterNotificationService) { }
 
   ngOnInit(): void {
     console.log("NG on init")
@@ -70,6 +72,23 @@ searchDescription= (text$: Observable<string>) =>  text$.pipe(
   removeDiagnoses(index){
     console.log(index)
     this.diagnosis1.splice(index,1);
-    }
+  }
 
+  removeAllDiagnosis(){
+    
+  }
+  onSubmit(){
+    this.diagnosisApiService.saveDiagnosis(this.diagnosis1).subscribe(
+       data => {​​​​ 
+             this.notifyService.showSuccess(data,"Dignosis saved!");
+             this.diagnosis1=this.diagnosis1.slice(0,this.diagnosis1.length);  
+             //this.submitCount=this.submitCount+1;
+             //location.reload();
+           }​​​​,  
+       error => {​​​​
+               this.notifyService.showError(error,"Failed to save dignosis!");
+           }​​​​
+    );
+   }
+       
 }

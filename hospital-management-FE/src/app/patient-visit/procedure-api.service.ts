@@ -34,4 +34,10 @@ getAllProceduresByDescription(searchText: String): Observable<Procedure[]> {
       })
     );
   }
+
+saveProcedures(procedures: any): Observable<string> {
+
+    return this.httpClient.post<string>(this.baseUrl+"/saveprocedure/create", procedures, {responseType:'text' as 'json' });
+
+  }
 }

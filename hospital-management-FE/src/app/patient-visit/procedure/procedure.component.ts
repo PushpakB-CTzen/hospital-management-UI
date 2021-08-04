@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, switchMap } from 'rxjs/operators';
 import { ApicallService } from 'src/app/apicall.service';
 import { Procedure, ProcedureAdapter } from 'src/app/models/procedure-model';
+import { ToasterNotificationService } from 'src/app/toaster-notification.service';
 import { ProcedureApiService } from '../procedure-api.service';
 
 @Component({
@@ -17,7 +18,8 @@ export class ProcedureComponent implements OnInit {
   procedure:any;
   procedures:Procedure[];
   procedures1:any=[];
-  constructor(private apiService:ApicallService,private procedureApiService:ProcedureApiService,private procedureAdapter:ProcedureAdapter) { }
+  constructor(private apiService:ApicallService,private procedureApiService:ProcedureApiService,
+    private procedureAdapter:ProcedureAdapter,private notifyService : ToasterNotificationService) { }
 
   ngOnInit(): void {
     console.log("NG on init")
@@ -62,13 +64,35 @@ searchDescription= (text$: Observable<string>) =>  text$.pipe(
     this.procedure.patientId=1;
     this.procedure.procedureIsdeprecated=this.isDepricated;
     this.procedures1.push(this.procedure);
+    console.log(this.procedures1);
+    for(var no in this.procedures1){
+      console.log(no);
+    }
     this.index=this.procedures1.length;
-    console.log(this.index)
   }
 
   removeProcedure(index){
     console.log(index)
     this.procedures1.splice(index,1);
     }
+
+onSubmit(){
+  //console.log(procedure.value);
+  //console.log(this.selectedProfile?.id);
+  //this.note=new Note(this.selectedProfile?.id!,sendNote.value.message,sendNote.value.urgency,this.role)
+ //console.log(this.note)
+ console.log(this.procedures1);
+alert(this.procedures1)
+ this.procedureApiService.saveProcedures(this.procedures1).subscribe(
+    data => {​​​​ 
+          this.notifyService.showSuccess(data,"Send Note");
+          //location.reload();
+        }​​​​,  
+    error => {​​​​
+            this.notifyService.showError(error,"Send Note");
+        }​​​​
+ );
+  console.log("Saving"+this.procedures1);
+}
 
 }

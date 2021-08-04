@@ -33,4 +33,10 @@ getAllDiagnosisByDescription(searchText: String): Observable<Diagnosis[]> {
       })
     );
   }
+
+  saveDiagnosis(diagnosis: any): Observable<string> {
+
+    return this.httpClient.post<string>(this.baseUrl+"/savediagnosis/create", diagnosis, {responseType:'text' as 'json' });
+
+  }
 }

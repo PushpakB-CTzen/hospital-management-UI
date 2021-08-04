@@ -1,75 +1,88 @@
 <div>
-       <h4 class="mb-3">Medication Details</h4><hr>
-        <form class="needs-validation" novalidate>
-          <div class="row g-3">    
-         
-            <div class="col-sm-3 form-group">
-                <label for="drugId" class="form-label">Drug Id</label>
-                <select class="form-control" id="drugId" required>
-                  <option value="">A001</option>
-                  <option>A002</option> 
-                  <option>A003</option> 
-                </select>   
-            </div><br>
-            <div class="col-sm-3">
-                <label for="drugName" class="form-label">Drug Name</label>
-                <select class="form-control" id="drugName" required>
-                  <option value="">D1</option>
-                  <option>D2</option> 
-                  <option>D3</option> 
-                </select>
-            </div><br>
-            <div class="col-sm-3">
-                <label for="drugNameGeneric" class="form-label">Generic Name</label><br>
-                <select class="form-control" id="drugNameGeneric" required>
-                  <option value="">D1</option>
-                  <option>D2</option> 
-                  <option>D3</option> 
-                </select>
-            </div>
-            <!-- <div class="col-sm-3">
-                <label for="drugNameBrand" >Drug Brand Name</label>
-                <select class="form-control" multiple id="drugNameBrand"  required>
-                  <option value="">D1</option>
-                  <option>D2</option> 
-                  <option>D3</option> 
-                </select>
-            </div> -->
-            <div class="col-sm-3">
-                <label for="drugForm" class="form-label">Drug Form</label>
-                <select class="form-control" id="drugForm" required>
-                  <option value="">D1</option>
-                  <option>D2</option> 
-                  <option>D3</option> 
-                </select>
-            </div>
-        </div>
-        <br>
-        <button class="w-5 btn btn-primary btn-lg" type="button">Save</button>&nbsp;
-        <button class="w-10 btn btn-primary btn-lg" type="submit">Submit</button>
-        </form><br>
+       <h4 class="mb-3">Medication Details</h4>
+       <form class="needs-validation"  novalidate>
+        <div class="row g-3">   
+          <div class="col-sm-3 form-group">
+              <label for="drugId" class="form-label">Drug Id</label>
+              <input id="drugId"  type="text" class="form-control" name="drugId" placeholder="Drug Id"
+                      [(ngModel)]="medications"
+                      [ngbTypeahead]="searchCode"
+                      [editable]='false'
+                      [inputFormatter]="inputCodeFormatValue"
+                      [resultFormatter]="resultCodeFormatValue"
+                      />
+          </div><br>
+          <div class="col-sm-9">
+              <label for="drugName" class="form-label">Drug Name</label>
+              <input id="drugName"  type="text" class="form-control" name="drugName"  placeholder="Drug Name"
+              [(ngModel)]="medications"
+              [ngbTypeahead]="searchDrugName"
+              [editable]='false'
+              [inputFormatter]="inputDrugNameFormatValue"
+              [resultFormatter]="resultDrugNameFormatValue"
+              />
+          </div><br>
+          <div class="col-sm-4">
+            <label for="drugStrength" class="form-label">Drug Strength</label>
+            <input id="drugStrength"  type="text" class="form-control" name="drugStrength"  placeholder="Drug Strength"
+            [(ngModel)]="medications"
+            [ngbTypeahead]="searchFilter"
+            [editable]='false'
+            [inputFormatter]="inputDrugStrengthFormatValue"
+            [resultFormatter]="resultDrugStrengthFormatValue"
+            />
+          </div><br> 
+          <div class="col-sm-4">
+            <label for="drugGenericName" class="form-label">Generic Name</label>
+            <input id="drugGenericName"  type="text" class="form-control" name="drugGenericName"  placeholder="Generic Name"
+            [(ngModel)]="medications"
+            [ngbTypeahead]="searchFilter"
+            [editable]='false'
+            [inputFormatter]="inputGenericNameFormatValue"
+            [resultFormatter]="resultGenericNameFormatValue"
+            />
+        </div><br>    
+                
+        <div class="col-sm-4">
+          <label for="drugForm" class="form-label">Drug Form</label>
+          <input id="drugForm"  type="text" class="form-control" name="drugForm"  placeholder="Drug Form"
+          [(ngModel)]="medications"
+          [ngbTypeahead]="searchFilter"
+          [editable]='false'
+          [inputFormatter]="inputDrugFormFormatValue"
+          [resultFormatter]="resultDrugFormFormatValue"
+          />
+        </div><br> 
+          
+      </div>
+      <br>
+      <button class="w-5 btn btn-primary btn-lg" (click)="addMedication()"type="button">Save</button>&nbsp;
+      <button class="w-10 btn btn-primary btn-lg" (click)="onSubmit()" type="button">Submit</button>
+      </form><br>
+       
       
       <div style="text-align:center">
-        <table class="table table-bordered table-striped table-hover">
+        <table *ngIf="index>0" class="table table-bordered table-striped table-hover">
           <thead>
               <tr>
               <th>Drug Id</th>
               <th>Drug Name</th>
               <th>Generic Drug Name</th>
-              <th>Drug Brand Name</th>
+              <th>Drug Strength</th>
               <th>Drug Form</th>
               <th>Delete</th>
 
               </tr>
           </thead>
           <tbody>
-              <tr *ngFor="let recievedNote of medications">
-              <td>{{recievedNote.fromEmployee}}</td>
-              <td>{{recievedNote.role}}</td>
-              <td>{{recievedNote.message}}</td>
-              <td>{{recievedNote.urgency}}</td>
-              <td>{{recievedNote.dateTime | date : 'short'}}</td>                
-              <td><button type="button" class="btn btn-danger btn-sm">Delete</button>
+              <tr *ngFor="let medication of medications1; let i=index;">
+              <td>{{medication.drugId}}</td>
+              <td>{{medication.drugName}}</td>
+              <td>{{medication.drugGenericName}}</td>
+              <td>{{medication.drugStrength}}</td>
+              <td>{{medication.drugForm}}</td>       
+              <td>
+                <i  (click)="removeMedication(i)"  class="fas fa-trash"></i>
               </td>
               </tr>
                       
@@ -81,6 +94,5 @@
       
       </div>
      
-      <br><br>
-      <br>  <div class="p-4"></div>
+
 </div>
