@@ -75,8 +75,24 @@
                             <button class="btn btn-link" data-toggle="collapse" [attr.data-target]="'#collapseOne'+i"
                                 aria-expanded="true" [attr.aria-controls]="'collapseOne'+i">
                                 <b>
-                                    <pre><div style="display: inline;">{{obj.title}} </div>                 <div style="display: inline;">{{obj.date | date:'dd/MM/yyyy'}}</div>                        <div style="display: inline;"></div><button type="button" (click)="declineAppointment(obj)" class="btn btn-danger">Decline Appointment</button></pre>
+                                    <pre><div style="display: inline;">{{obj.title.substring(0,40)}} </div>                 <div style="display: inline;">{{obj.date | date:'dd/MM/yyyy'}}</div>                        <div style="display: inline;"><button type="button" (click)="declineAppointment(obj)" class="btn btn-danger">Decline Appointment</button></div></pre>
                                 </b>
+
+                                <!-- <div class="row">
+                                        
+                                        <div class="col">
+                                            <div style="display: inline;">{{obj.title.substring(0,40)}} </div>
+                                            <div style="display: inline;">{{obj.date | date:'dd/MM/yyyy'}}
+                                            </div>
+                                        </div>
+
+                                        <div class="col">
+                                            <button type="button"
+                                                (click)="declineAppointment(obj)" class="btn btn-danger float-right" >Decline
+                                                Appointment</button>
+                                        </div>
+                                        
+                                    </div>-->
                             </button>
                         </h5>
                     </div>
@@ -149,7 +165,7 @@
                 <div class="p-4"></div>
                 <div class="p-4"></div>
                 <div class="p-4"></div>
-                
+
             </div>
 
         </div>
