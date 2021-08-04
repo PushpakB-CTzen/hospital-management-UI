@@ -1,14 +1,14 @@
 import { Injectable } from "@angular/core";
 
-export class Procedure {
+export class Medication {
 
     constructor(
        public patientId:number,  
-       public height:number,
-       public weight:number,
-       public bloodPressure:string,
-       public bodyTemperature:string,
-       public respirationRate:string){}
+       public drugId:string,
+       public drugName:string,
+       public drugGenericName:string,
+       public drugStrength:string,
+       public drugForm:string){}
 
     
 }
@@ -16,8 +16,8 @@ export class Procedure {
 @Injectable({
     providedIn: "root",
   })
-  export class ProcedureAdapter {
-    adapt(procedure: any): Procedure {
-      return new Procedure(procedure.patientId,procedure.height,procedure.weight,procedure.bloodPressure,procedure.bodyTemperature,procedure.respirationRate);
+  export class MedicationAdapter {
+    adapt(medication: any): Medication {
+      return new Medication(medication.patientId,medication.drugId,medication.drugName,medication.drugGenericName,medication.drugStrength,medication.drugForm);
     }
   }
