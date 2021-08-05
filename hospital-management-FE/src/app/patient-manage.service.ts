@@ -1,7 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { PatientProfile, PatientProfileAdapter } from './models/patient-profile-model';
+import { Profile, ProfileAdapter } from './models/profile-model';
 
 
 @Injectable({
@@ -11,7 +14,7 @@ export class PatientManageService {
 
   baseURL: string = "http://localhost:8080";
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private patientProfileAdapter:PatientProfileAdapter,private profileAdapter:ProfileAdapter) { }
 
   getAllPatients():Observable<any>{
 
@@ -49,5 +52,24 @@ export class PatientManageService {
 
   }
 
-  
+  getAllPatientsForVisit(): Observable<PatientProfile[]> {
+    return this.http.get<PatientProfile[]>(this.baseURL+'/user/patient/visit/profile',{})
+    .pipe(
+      map((data: PatientProfile[]) => {
+        return data.map((item) => this.patientProfileAdapter.adapt(item));
+      }), catchError(error => {
+        return throwError("something went wrong.")
+      })
+    );
+  }
+  getPatientProfileByName(name): Observable<Profile[]> {
+    return this.http.get<Profile[]>(this.baseURL+'/user/patient/profile/'+name,{})
+    .pipe(
+      map((data: Profile[]) => {
+        return data.map((item) => this.profileAdapter.adapt(item));
+      }), catchError(error => {
+        return throwError("something went wrong.")
+      })
+    );
+  }
 }

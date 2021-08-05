@@ -6,7 +6,8 @@ export class Diagnosis {
        public patientId:number,  
        public diagnosisCode:string,
        public diagnosisDescription:string,
-       public diagnosisIsdeprecated:boolean){}
+       public diagnosisIsdeprecated:boolean,
+       public createdAt:string){}
 }
 
 @Injectable({
@@ -14,6 +15,6 @@ export class Diagnosis {
   })
   export class DiagnosisAdapter {
     adapt(diagnosis: any): Diagnosis {
-      return new Diagnosis(diagnosis.patientId,diagnosis.diagnosisCode,diagnosis.diagnosisDescription,diagnosis.diagnosisIsdeprecated);
+      return new Diagnosis(diagnosis.patientId,diagnosis.diagnosisCode,diagnosis.diagnosisDescription,diagnosis.diagnosisIsdeprecated,diagnosis.createdAt);
     }
   }

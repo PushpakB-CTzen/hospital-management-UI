@@ -74,25 +74,29 @@
                         <h5 class="mb-0">
                             <button class="btn btn-link" data-toggle="collapse" [attr.data-target]="'#collapseOne'+i"
                                 aria-expanded="true" [attr.aria-controls]="'collapseOne'+i">
-                                <b>
-                                    <pre><div style="display: inline;">{{obj.title.substring(0,40)}} </div>                 <div style="display: inline;">{{obj.date | date:'dd/MM/yyyy'}}</div>                        <div style="display: inline;" *ngIf="role !='PATIENT'"><button type="button" (click)="declineAppointment(obj)" class="btn btn-danger">Decline Appointment</button></div></pre>
-                                </b>
+                                <!-- <b>
+                                    <pre><div style="display: inline;">{{obj.title.substring(0,40)}}                                    </div><div style="display: inline;">{{obj.date | date:'dd/MM/yyyy'}}</div>   <div style="display: inline;" *ngIf="role !='PATIENT'"><button type="button" (click)="declineAppointment(obj)" class="btn btn-danger">Decline Appointment</button></div></pre>
+                                </b> -->
 
-                                <!-- <div class="row">
-                                        
-                                        <div class="col">
-                                            <div style="display: inline;">{{obj.title.substring(0,40)}} </div>
-                                            <div style="display: inline;">{{obj.date | date:'dd/MM/yyyy'}}
-                                            </div>
+                                <div style="width: 100%;">
+
+                                    <div>
+                                        <div style="display: inline; width: 200px;max-width: 200px;">
+                                            {{formatString(obj.title)}} </div>
+                                        <div style="display: inline;width: 20px;max-width: 20px;margin-left: 150px;">{{obj.date
+                                            |
+                                            date:'dd/MM/yyyy'}}
                                         </div>
 
-                                        <div class="col">
-                                            <button type="button"
-                                                (click)="declineAppointment(obj)" class="btn btn-danger float-right" >Decline
-                                                Appointment</button>
-                                        </div>
-                                        
-                                    </div>-->
+                                        <button type="button" (click)="declineAppointment(obj)"
+                                            class="btn btn-danger float-right"
+                                            style=" display: inline;margin-right: 3px;margin-left: 70px;" *ngIf="role !='PATIENT'">Decline
+                                            Appointment</button>
+
+                                    </div>
+
+                                </div>
+
                             </button>
                         </h5>
                     </div>
