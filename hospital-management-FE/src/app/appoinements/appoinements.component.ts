@@ -70,10 +70,26 @@ export class AppoinementsComponent implements OnInit {
         if (val["editHistory"] == null || val["editHistory"] == undefined) {
           val["editHistory"] = "NA";
         }
+
       }
       this.weekklyAppointmentList = data;
     })
     //((document.getElementById("titleid") as HTMLInputElement).value) = 1;
+  }
+
+  formatString(title: string): string {
+    var newTitle = title;
+    if (title.length > 40) {
+      newTitle = title.substring(0, 60);
+      return newTitle;
+    } else {
+      console.log("TITLE "+newTitle+" "+newTitle.length)
+      while (newTitle.length < 41) {
+        newTitle = newTitle.concat("                    ");
+      }
+      console.log("newTitle length " + newTitle.length)
+    }
+    return newTitle;
   }
 
   declineAppointment(obj) {
