@@ -36,12 +36,6 @@ import { PatientDetailsComponent } from './patient/patient-details/patient-detai
 import { AllergyComponent } from './patient/patient-details/allergy/allergy.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { PhysianAppointmentComponent } from './physician-appointment/physician-appointment.component';
-import { MedicationComponent } from './patient-visit/medication/medication.component';
-import { DiagnosisComponent } from './patient-visit/diagnosis/diagnosis.component';
-import { ProcedureComponent } from './patient-visit/procedure/procedure.component';
-import { PatientVisitComponent } from './patient-visit/patient-visit.component';
-import { VitalSignsComponent } from './patient-visit/vital-signs/vital-signs.component';
-import { VisitDetailsComponent } from './patient-visit/view/visit-details/visit-details.component';
 import { PatientManagementComponent } from './patient-management/patient-management.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { Ng2OrderModule } from 'ng2-order-pipe';
@@ -72,12 +66,7 @@ import {ChartsModule } from 'ng2-charts';
     PatientDetailsComponent,
     AllergyComponent,
     PhysianAppointmentComponent,
-    MedicationComponent,
-    DiagnosisComponent,
-    ProcedureComponent,
-    PatientVisitComponent,
-    VitalSignsComponent,
-    VisitDetailsComponent,
+    
     PatientManagementComponent,
     AdminDasboardComponent,
     
