@@ -46,6 +46,9 @@ import { PatientManagementComponent } from './patient-management/patient-managem
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { AdminDasboardComponent } from './admin-dasboard/admin-dasboard.component';
+import {ChartsModule } from 'ng2-charts';
+
 
 @NgModule({
   declarations: [
@@ -76,6 +79,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     VitalSignsComponent,
     VisitDetailsComponent,
     PatientManagementComponent,
+    AdminDasboardComponent,
     
   
     
@@ -97,6 +101,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     Ng2SearchPipeModule,
     Ng2OrderModule,
     NgxPaginationModule,
+    ChartsModule,
+    
     
 
 
