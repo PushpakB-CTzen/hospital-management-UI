@@ -48,4 +48,6 @@ export class PatientManageService {
     return this.http.put(`${this.baseURL}/user/patient/update`, body,{headers,responseType:'text' as 'json'})
 
   }
+
+  
 }
