@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, switchMap } from 'rxjs/operators';
 import { ApicallService } from '../apicall.service';
 import { Profile } from '../models/profile-model';
+import { PatientManageService } from '../patient-manage.service';
 
 @Component({
   selector: 'app-patient-visit',
@@ -16,7 +17,7 @@ export class PatientVisitComponent implements OnInit {
 
   patient:any;
   
-  constructor(private apiService:ApicallService,) { }
+  constructor(private apiService:ApicallService,private patientManageService:PatientManageService) { }
 
   ngOnInit(): void {
  
@@ -36,7 +37,7 @@ export class PatientVisitComponent implements OnInit {
     debounceTime(200),
     distinctUntilChanged(),
     filter(term => term.length >= 2),
-    switchMap((searchText)=>this.apiService.getAllEmployeeByName(searchText)),
+    switchMap((searchText)=>this.patientManageService.getPatientProfileByName(searchText)),
   );
 
    extractPatientId(event:any){

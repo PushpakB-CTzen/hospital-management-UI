@@ -186,6 +186,5 @@ export class VisitDetailsComponent implements OnInit {
       //location.reload();
             }    
     )
-    console.log(this.selectedNoteId)
   }
 }
