@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { LoginService } from '../login/login.service';
 
 @Component({
@@ -8,15 +8,28 @@ import { LoginService } from '../login/login.service';
 })
 export class HeaderComponent implements OnInit {
 
-  //isLoggedin:any=false;
+  name:any;
+  tokendata : any;
+  role:any;
   constructor(private loginService: LoginService) { }
+  
 
   ngOnInit(): void {
+
   }
 
   loggedin(): boolean {
-    console.log("logged in status");
-    console.log(this.loginService.isloggedin());
+    this.name = sessionStorage.getItem("username");  
+    this.role = sessionStorage.getItem("role");
+    if(this.role == 'A'){
+      this.role = "ADMIN";
+    }else if(this.role == 'D'){
+      this.role = "PHYSICIAN";
+    }else if(this.role == 'N'){
+      this.role = "NURSE";
+    }else {
+      this.role = "PATIENT";
+    }
     return this.loginService.isloggedin();
   }
 

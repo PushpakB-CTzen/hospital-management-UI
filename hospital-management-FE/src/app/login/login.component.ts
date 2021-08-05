@@ -1,8 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, Output, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import JwtClientService from '../service/jwt-client.service';
 import { LoginService } from './login.service';
+import { ToasterNotificationService } from '../toaster-notification.service';
+import { tokenData } from '../payload';
 
 
 enum LoginStatus {
@@ -11,6 +13,7 @@ enum LoginStatus {
   incorrectPassword="INCORRECT_PASSWORD"
   
   }
+  
 
 @Component({
   selector: 'app-login',
@@ -18,41 +21,65 @@ enum LoginStatus {
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-
-
-
-  //@ViewChild('credentials') loginForm : NgForm;
+  isPasswordUpdate:boolean = false;
+  tokendata :any
+  role:any;
+  showPassword : boolean = false;
+  count : number = 0;
+  name : string;
+  blocked : boolean = false;
   constructor(private jwtService:JwtClientService,
               private loginService:LoginService,
-              private router:Router) { }
+              private router:Router,
+              private notifyService : ToasterNotificationService) { }
 
   ngOnInit(): void {
   }
 
-  onSubmit(form:NgForm){
-    //console.log(form.value);
-    let resp=this.jwtService.generateToken(form.value);
-    //localStorage.setItem("JwtToken",resp);
+  onSubmit(form: NgForm) {
+    console.log(form.value);
+    let resp = this.jwtService.generateToken(form.value);
 
     resp.subscribe(
-      response=>{
-        if(response!='' && response != null){
+      response => {
+        if (response != '' && response != null) {
           console.log(response)
-          let jwtToken:string=JSON.stringify(response);
+          let jwtToken: string = JSON.stringify(response);
           console.log(response)
+          this.tokendata = this.loginService.getDecodedAccessToken<tokenData>(jwtToken);
+          this.isPasswordUpdate = this.tokendata.isUpdate;
+          this.role = this.tokendata.role;
+          this.name = this.tokendata.name;
           localStorage.setItem("jwtToken",jwtToken);
-          this.router.navigate(["/employee"])
+          sessionStorage.setItem("username",this.name);
+          sessionStorage.setItem("role",this.role);
+          if(this.role == "D" || this.role == "N"){
+            if(this.isPasswordUpdate){
+              this.router.navigate(["/inbox/appointment"])
+            }else {
+              this.router.navigate(["/changepassword"])
+            }
+          } else if(this.role == "A"){
+            this.router.navigate(["/welcome"])
+          }else {
+            this.router.navigate(["/patient-details"])
+          }   
         }
-       
+
       }, (error) => {
-        location.reload();
+        console.log(error);
+        this.count = this.count + 1;
+        if(error.error =="INVALID USERNAME OR PASSWORD!") {
+          this.notifyService.showError("Unauthorised User","Error"); 
+          form.reset();
+        }else if(error.error =="Blocked") {
+          this.notifyService.showError("Your Account is Blocked","Blocked"); 
+          form.reset();
+        }else {
+          form.reset();
+        }
       },
-    
-      
     )
   }
-
-
-
 }
+

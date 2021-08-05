@@ -1,20 +1,26 @@
-<app-header></app-header>
-<div  style="background-color:rgb(235, 233, 224);">
-    <div class="container" style="background-color:rgb(235, 233, 224);">
+
+    <div class="container-fluid" style="background-color:rgb(235, 233, 224);">
         <main>
             <div class="row g-6">
-                <div class="col-md-4 col-lg-4 order-md-last">
+                 <div *ngIf="loggedin()" class="order-md-first">
+                    <app-sidebar></app-sidebar>
+                </div>
+                <div class="col-md-3 col-lg-3 order-md-last">
                     <h3 class="display-4">Specially For Our User !</h3>
                     <div class="row">
                         <div class="col-6 col-sm-6 col-md-6" *ngIf="!loggedin()">
-                            <button class="btn btn-warning btn-lg" routerLink='/login' type="button">Registred User</button>
+                            <button class="btn btn-warning btn-lg" routerLink='/login' type="button">Registred User</button>&nbsp;
                         </div>
-                        <div class="col-6 col-sm-6 col-md-6">
+                        
+                        <div class="col-6 col-sm-6 col-md-6 text-right">
                             <button class="btn btn-primary btn-lg"  routerLink='/patient' type="button">New Patient</button>
                         </div>
-                    </div> 
+                        <div class="col-6 col-sm-6 col-md-6">
+                            <button class="btn btn-primary btn-lg" *ngIf="loggedin()" routerLink='/employee' type="button">New Employee</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-8 col-lg-8">
+                <div class="col-md-6 col-lg-6">
                     <h1 class="display-4">Welcome To CT General Hospital!</h1>
                     <h6>
                         <img src="assets/images/patient.jpg"  class="img-fluid" height="400px">
@@ -23,6 +29,5 @@
                 </div>
             </div>
         </main>
-    </div>
     </div>
     <app-footer></app-footer>
